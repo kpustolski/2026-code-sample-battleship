@@ -4,13 +4,13 @@ using System.Collections.Generic;
 //? How was DidChange cleaned up when a view model was removed?
 public class ObservableProperty<T>
 {
-    private T m_Value;
+    private T _value;
 
     public T Value
     {
         get
         {
-            return m_Value;
+            return _value;
         }
     }
 
@@ -18,10 +18,10 @@ public class ObservableProperty<T>
 
     public void SetAsMutable(T newValue)
     {
-        if (!EqualityComparer<T>.Default.Equals(newValue, m_Value))
+        if (!EqualityComparer<T>.Default.Equals(newValue, _value))
         {
-            T oldValue = m_Value;
-            m_Value = newValue;
+            T oldValue = _value;
+            _value = newValue;
             this.DidChange?.Invoke(oldValue, newValue);
         }
     }
