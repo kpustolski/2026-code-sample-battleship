@@ -2,12 +2,11 @@ using UnityEngine.Rendering;
 
 public class MapViewModel : IViewModel
 {
-    public ObservableProperty<int> TotalRows {get; set;}
-    public ObservableProperty<int> TotalColumns {get; set;}
+    // (int: Rows, int: Columns)
+    public ObservableProperty<Map> Map {get; set;} = new();
 
-    public MapViewModel(int rows, int columns)
+    public MapViewModel(Map map)
     {
-        TotalRows.SetAsMutable(rows);
-        TotalColumns.SetAsMutable(columns);
+        Map.SetAsMutable(map);
     }
 }

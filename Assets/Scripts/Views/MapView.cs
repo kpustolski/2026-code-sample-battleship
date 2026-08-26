@@ -19,8 +19,7 @@ public class MapView : MonoBehaviour, IViewModelReceiver<MapViewModel>
         if (viewModel == null)
             return;
 
-        viewModel.TotalRows.DidChange += OnTotalRowsDidChange;
-        viewModel.TotalColumns.DidChange += OnTotalColumnsDidChange;
+        viewModel.Map.DidChange += OnMapChange;
     }
 
     private void UnSubscribeToViewModel(MapViewModel viewModel)
@@ -28,20 +27,14 @@ public class MapView : MonoBehaviour, IViewModelReceiver<MapViewModel>
         if (viewModel == null)
             return;
         
-        viewModel.TotalRows.DidChange -= OnTotalRowsDidChange;
-        viewModel.TotalColumns.DidChange -= OnTotalColumnsDidChange;
+        viewModel.Map.DidChange -= OnMapChange;
     }
 
-    private void OnTotalRowsDidChange(int _, int newValue)
+    private void OnMapChange(Map _, Map newValue)
     {
-        _totalRows = newValue;
-        Debug.Log($"OnTotalRowsDidChange | oldValue: {_} | newValue: {newValue}");
+        _totalRows = newValue.TotalRows;
+        _totalColumns = newValue.TotalColumns;
 
-    }
-
-    private void OnTotalColumnsDidChange(int _, int newValue)
-    {
-        _totalColumns = newValue;
-        Debug.Log($"OnTotalColumnsDidChange | oldValue: {_} | newValue: {newValue}");
+        this.Log($"rows: {_totalRows}, columns: {_totalColumns}");
     }
 }
