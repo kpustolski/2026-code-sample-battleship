@@ -1,4 +1,4 @@
 public interface IGameManager
 {
-    public void CreateGame();
+    public void CreateGameView();
 }
