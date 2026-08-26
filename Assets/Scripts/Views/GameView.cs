@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
@@ -15,10 +17,12 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
     #region Variables
     private GameViewModel _gameViewModel;
     private MapView _currentMapView;
+    private List<IDisposable> _viewModelSubscriptionList = new List<IDisposable>();
     #endregion
 
     public void SetViewModel(GameViewModel viewModel)
     {
+        this.Log("SetViewModel | Start");
         UnSubscribeToViewModel(_gameViewModel);
         _gameViewModel = viewModel;
         SubscribeToViewModel(_gameViewModel);
@@ -34,7 +38,8 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
         if (viewModel == null)
             return;
 
-        viewModel.Map.DidChange += OnMapChange;
+        var mapSub = viewModel.Map.Subscribe(OnMapChange);
+        _viewModelSubscriptionList.Add(mapSub);
     }
 
     private void UnSubscribeToViewModel(GameViewModel viewModel)
@@ -42,7 +47,13 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
         if (viewModel == null)
             return;
 
-        viewModel.Map.DidChange -= OnMapChange;
+        // viewModel.Map.DidChange -= OnMapChange;
+        
+        // Make sure to remove the callback from the DidChange action.
+        foreach (var subscription in _viewModelSubscriptionList)
+        {
+            subscription.Dispose();
+        }
     }
 
     private void OnMapChange(Map _, Map newValue)
@@ -52,9 +63,11 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
 
         if (_currentMapView == null)
         {
+            this.Log("Creating MapView");
             _currentMapView = Instantiate(_mapViewPrefab, _mapViewParentTransform);   
         }
 
         _currentMapView.SetViewModel(mapViewModel);
+        this.Log($"{mapViewModel}");
     }
 }
