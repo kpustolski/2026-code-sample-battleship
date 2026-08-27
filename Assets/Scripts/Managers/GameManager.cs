@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour, IGameManager
     public void CreateGameView()
     {
         // Currently only one in there now.
-        GameDef def = GameDefList.Defs[0];
+        GameDef def = GameDefList.GetDefById(GameIds.Default01);
         Map map = CreateMap(def);
 
         GameViewModel gameViewModel = new GameViewModel(def.Id, map);
