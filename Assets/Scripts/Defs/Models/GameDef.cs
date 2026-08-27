@@ -1,6 +1,6 @@
 public class GameDef
 {
-    public string Id;
+    public Id<Game> Id;
     public int TotalRows;
     public int TotalColumns;
 }

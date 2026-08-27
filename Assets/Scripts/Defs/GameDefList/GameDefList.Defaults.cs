@@ -4,7 +4,7 @@ public partial class GameDefList
     {
         return new GameDef
         {
-            Id = "Default_01",
+            Id = GameIds.Default01,
             TotalRows = 5,
             TotalColumns = 5,
         };
