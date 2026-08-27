@@ -1,6 +1,6 @@
 public class GameModeDef
 {
-    public Id<Game> Id;
+    public Id<GameMode> Id;
     public int TotalRows;
     public int TotalColumns;
 }
