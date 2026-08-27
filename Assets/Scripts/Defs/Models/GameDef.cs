@@ -1,4 +1,4 @@
-public struct GameDef
+public class GameDef
 {
     public string Id;
     public int TotalRows;
