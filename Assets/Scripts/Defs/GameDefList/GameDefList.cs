@@ -5,6 +5,6 @@ public static partial class GameDefList
 {
     public static List<GameDef> Defs = new List<GameDef>()
     {
-        CreateDefaultDef01()
+        CreateDefaultGameDef01()
     };
 }

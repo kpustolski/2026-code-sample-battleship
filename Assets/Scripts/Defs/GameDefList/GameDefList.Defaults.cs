@@ -1,6 +1,6 @@
 public partial class GameDefList
 {
-    public static GameDef CreateDefaultDef01()
+    public static GameDef CreateDefaultGameDef01()
     {
         return new GameDef
         {
