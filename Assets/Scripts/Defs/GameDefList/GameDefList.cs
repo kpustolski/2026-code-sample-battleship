@@ -1,9 +1,14 @@
 using System.Collections.Generic;
+using System.Linq;
 
-//? How to not make this static?
 public static partial class GameDefList
 {
-    public static List<GameDef> Defs = new List<GameDef>()
+    public static GameDef GetDefById(Id<Game> id)
+    {
+        return Defs.FirstOrDefault(def => def.Id.Equals(id));
+    }
+
+    private static List<GameDef> Defs = new List<GameDef>()
     {
         CreateDefaultGameDef01()
     };
