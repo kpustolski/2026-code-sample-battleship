@@ -53,7 +53,6 @@ public class GameManager : MonoBehaviour, IGameManager
 
     private Map CreateMap(GameDef def)
     {
-        //TODO: Generate a better id?
-        return new Map(01, def.TotalRows, def.TotalColumns);
+        return new Map(def.TotalRows, def.TotalColumns);
     }
 }
