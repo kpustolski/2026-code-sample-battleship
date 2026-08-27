@@ -38,7 +38,7 @@ public class GameManager : MonoBehaviour, IGameManager
     public void CreateGameView()
     {
         // Currently only one in there now.
-        GameDef def = GameDefList.GetDefById(GameIds.Default01);
+        GameModeDef def = GameModeDefList.GetDefById(GameModeIds.Default);
         Map map = CreateMap(def);
 
         GameViewModel gameViewModel = new GameViewModel(def.Id, map);
@@ -51,7 +51,7 @@ public class GameManager : MonoBehaviour, IGameManager
         _currentGameView.SetViewModel(gameViewModel);
     }
 
-    private Map CreateMap(GameDef def)
+    private Map CreateMap(GameModeDef def)
     {
         return new Map(def.TotalRows, def.TotalColumns);
     }

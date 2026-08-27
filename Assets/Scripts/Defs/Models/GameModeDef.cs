@@ -1,4 +1,4 @@
-public class GameDef
+public class GameModeDef
 {
     public Id<Game> Id;
     public int TotalRows;
