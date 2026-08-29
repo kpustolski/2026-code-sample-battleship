@@ -1,13 +1,13 @@
+using UnityEngine.Tilemaps;
+
 public class TileViewModel : IViewModel
 {
-    public ObservableProperty<Point> Point {get; set;}
-    public ObservableProperty<float> WorldPositionX {get; set;}
-    public ObservableProperty<float> WorldPositionY {get; set;}
+    public ObservableProperty<Tile> Tile {get; set;} = new();
 
-    public TileViewModel(Point point, float worldPosX, float worldPosY)
+    public Point Point => Tile.HasValue ? new Point(0,0) : Tile.Value.Point;
+
+    public TileViewModel(Tile tile)
     {
-        Point.SetAsMutable(point);
-        WorldPositionX.SetAsMutable(worldPosX);
-        WorldPositionY.SetAsMutable(worldPosY);
+        Tile.SetAsMutable(tile);
     }
 }

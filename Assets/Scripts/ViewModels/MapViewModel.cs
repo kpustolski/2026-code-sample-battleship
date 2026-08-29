@@ -1,13 +1,25 @@
-using UnityEngine.Rendering;
+using System;
+using System.Collections.Generic;
+using System.Text;
 
 public class MapViewModel : IViewModel
 {
-    public ObservableProperty<int> TotalRows {get; set;}
-    public ObservableProperty<int> TotalColumns {get; set;}
+    public ObservableList<Tile> TileList {get; set;} = new();
 
-    public MapViewModel(int rows, int columns)
+    public Map Map {get; set;}
+    public int TotalRows => (Map != null) ? Map.TotalRows : 0;
+    public int TotalColumns => (Map != null) ? Map.TotalColumns : 0;
+
+    public MapViewModel(Map map)
     {
-        TotalRows.SetAsMutable(rows);
-        TotalColumns.SetAsMutable(columns);
+        Map = map;
+        TileList.SetAsMutable(map._tileList);
+    }
+
+    public override string ToString()
+    {
+        StringBuilder sb = new StringBuilder();
+        sb.AppendLine($"Map: [{Map}]");
+        return sb.ToString();
     }
 }

@@ -8,21 +8,23 @@ public static class DebugLogExtensions
     private const string LogWarningColor = nameof(Color.yellow);
     private const string LogErrorColor = nameof(Color.red);
 
-    public static void Log(this object msg, Object context = null, [CallerMemberName] string methodName = "", [CallerFilePath] string filePath = "")
+    public static void Log(this object obj, string msg, Object context = null, [CallerMemberName] string memberName = "", [CallerFilePath] string filePath = "")
     {
-        string fileName = Path.GetFileNameWithoutExtension(filePath);
-        Debug.Log($"<color={LogColor}>[{fileName} | {methodName}]</color>: {msg}", context);
+        // File name is the class and member name is the method name.
+        // .ctor means the log call is being used in a constructor.
+        string fileName = Path.GetFileName(filePath);
+        Debug.Log($"<color={LogColor}>[{fileName} | {memberName}]</color>: {msg}", context);
     }
 
-    public static void LogWarning(this object msg, Object context = null, [CallerMemberName] string methodName = "", [CallerFilePath] string filePath = "")
+    public static void LogWarning(this object obj, string msg, Object context = null, [CallerMemberName] string memberName = "", [CallerFilePath] string filePath = "")
     {
-        string fileName = Path.GetFileNameWithoutExtension(filePath);
-        Debug.LogWarning($"<color={LogWarningColor}>[{fileName} | {methodName}]</color>: {msg}", context);
+        string fileName = Path.GetFileName(filePath);
+        Debug.LogWarning($"<color={LogWarningColor}>[{fileName} | {memberName}]</color>: {msg}", context);
     }
 
-    public static void LogError(this object msg, Object context = null, [CallerMemberName] string methodName = "", [CallerFilePath] string filePath = "")
+    public static void LogError(this object obj, string msg, Object context = null, [CallerMemberName] string memberName = "", [CallerFilePath] string filePath = "")
     {
-        string fileName = Path.GetFileNameWithoutExtension(filePath);
-        Debug.LogError($"<color={LogErrorColor}>[{fileName} | {methodName}]</color>: {msg}", context);
+        string fileName = Path.GetFileName(filePath);
+        Debug.LogError($"<color={LogErrorColor}>[{fileName} | {memberName}]</color>: {msg}", context);
     }
 }
