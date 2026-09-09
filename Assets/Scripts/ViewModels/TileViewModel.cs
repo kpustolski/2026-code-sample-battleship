@@ -1,13 +1,20 @@
 using UnityEngine.Tilemaps;
+using UnityEngine;
 
 public class TileViewModel : IViewModel
 {
-    public ObservableProperty<Tile> Tile {get; set;} = new();
+    // TODO: Do I need to know the point here?
+    public ObservableProperty<Color> Color {get; set;} = new();
 
-    public Point Point => Tile.HasValue ? new Point(0,0) : Tile.Value.Point;
+    public Point Point {get; private set;}
 
-    public TileViewModel(Tile tile)
+    public TileViewModel(Point point)
     {
-        Tile.SetAsMutable(tile);
+        Point = point;
+    }
+
+    public void SetColor(Color color)
+    {
+        Color.SetAsMutable(color);
     }
 }
