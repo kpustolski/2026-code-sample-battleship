@@ -1,13 +1,25 @@
 
+using System.Collections.Generic;
+using UnityEngine;
+
 public class GameViewModel : IViewModel
 {
-    public ObservableProperty<Map> Map {get; set;} = new();
-
+    public ObservableList<Point> OccupiedPointList {get; set;} = new();
     public Id<GameMode> GameModeId {get; set;}
+    public List<Point> PointMap => _gameManager.PointMap;
 
-    public GameViewModel(Id<GameMode> gameModeId, Map map)
+    private IGameManager _gameManager;
+
+    public GameViewModel(Id<GameMode> gameModeId, List<Point> occupiedPointList, IGameManager gameManager)
     {
+        _gameManager = gameManager;
+
         GameModeId = gameModeId;
-        Map.SetAsMutable(map);
+        OccupiedPointList.SetAsMutable(occupiedPointList);
+    }
+
+    public Color DebugGetShipColorByPoint(Point point)
+    {
+        return _gameManager.DebugGetShipColorByPoint(point);
     }
 }
