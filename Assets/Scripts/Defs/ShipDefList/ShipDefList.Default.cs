@@ -1,5 +1,3 @@
-using System.Drawing;
-
 public static partial class ShipDefList
 {
     public static ShipDef CreateDefaultCarrier()
@@ -8,7 +6,8 @@ public static partial class ShipDefList
         {
             Id = ShipIds.Carrier,
             Group = ShipGroupIds.Default,
-            Size = 5
+            Size = 5,
+            DebugColor = (r: 148, g:0, b:211) // Violet
         };
     }
 
@@ -18,7 +17,8 @@ public static partial class ShipDefList
         {
             Id = ShipIds.Battleship,
             Group = ShipGroupIds.Default,
-            Size = 4
+            Size = 4,
+            DebugColor = (r: 255, g:165, b:0) //Orange
         };
     }
 
@@ -28,7 +28,8 @@ public static partial class ShipDefList
         {
             Id = ShipIds.Destroyer,
             Group = ShipGroupIds.Default,
-            Size = 3
+            Size = 3,
+            DebugColor = (r: 0, g:0, b:255) // Blue
         };
     }
 
@@ -38,7 +39,8 @@ public static partial class ShipDefList
         {
             Id = ShipIds.Submarine,
             Group = ShipGroupIds.Default,
-            Size = 3
+            Size = 3,
+            DebugColor = (r: 0, g:255, b:0) // Green
         };
     }
 
@@ -47,7 +49,8 @@ public static partial class ShipDefList
         return new ShipDef
         {
             Id = ShipIds.PatrolBoat,
-            Size = 2
+            Size = 2,
+            DebugColor = (r: 255, g:255, b:0) // Yellow
         };
     }
 }
