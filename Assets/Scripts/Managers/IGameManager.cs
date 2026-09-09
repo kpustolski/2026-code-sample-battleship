@@ -1,4 +1,8 @@
+using System.Collections.Generic;
+using UnityEngine;
+
 public interface IGameManager
 {
-    public void CreateGameView();
+    // Properties
+    public List<Point> PointMap {get;}
 }
