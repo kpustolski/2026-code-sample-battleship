@@ -88,3 +88,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 285a078c11caa449abb47387aeb6beb9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TileView
+  _imageComponent: {fileID: 861706162304776031}
