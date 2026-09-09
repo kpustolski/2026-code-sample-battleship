@@ -5,8 +5,9 @@ public partial class GameModeDefList
         return new GameModeDef
         {
             Id = GameModeIds.Default,
-            TotalRows = 5,
-            TotalColumns = 5,
+            ShipGroup = ShipGroupIds.Default,
+            TotalRows = 10,
+            TotalColumns = 10,
         };
     }
 }
