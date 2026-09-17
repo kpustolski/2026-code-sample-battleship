@@ -28,7 +28,6 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
 
     public void SetViewModel(GameViewModel viewModel)
     {
-        this.Log("SetViewModel | Start");
         UnSubscribeToViewModel(_gameViewModel);
         _gameViewModel = viewModel;
         
