@@ -4,6 +4,8 @@ using System;
 using UnityEngine;
 using System.Linq;
 using System.Text;
+using UnityEngine.InputSystem;
+using NUnit.Framework;
 
 //? Does this need to be a MonoBehavior
 public class GameManager : MonoBehaviour, IGameManager
@@ -28,23 +30,35 @@ public class GameManager : MonoBehaviour, IGameManager
     public List<Point> PointMap => _pointMap;
     #endregion
 
+    #region Debug
+    private Keyboard _debugKeyboard;
+    private GameModeDef _currentGameModeDef;
+    #endregion
+
     #region Unity Overrides
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
     {
         this.Log("Creating game.");
-        CreateGameView();
+        // Only default for now
+        _currentGameModeDef = GameModeDefList.GetDefById(GameModeIds.Default);
+        CreatePointMap(_currentGameModeDef);
+        ResetGameView();
+        _debugKeyboard = Keyboard.current;
     }
 
     // Update is called once per frame
-    // void Update()
-    // {
-        
-    // }
-    // void OnDestroy()
-    // {
-        
-    // }
+    void Update()
+    {
+        //! Debug
+        if (_debugKeyboard == null)
+            return;
+
+        if (_debugKeyboard.spaceKey.wasPressedThisFrame)
+        {
+            ResetGameView();
+        }
+    }
     #endregion
 #region Public Functions
     public Color DebugGetShipColorByPoint(Point point)
@@ -57,29 +71,27 @@ public class GameManager : MonoBehaviour, IGameManager
 
        return DebugGetShipColorById(shipLocation.Key);
     }
-
 #endregion
+
 #region Private Functions
-    private Color DebugGetShipColorById(Id<Ship> shipId)
+
+    private void ResetGameView()
     {
-        var colorRGB = ShipDefList.GetDefById(shipId).DebugColor;
-        Color color = new Color(colorRGB.r, colorRGB.g, colorRGB.b);
-        return color;
+        // Reset Game Locations.
+        // Use the same game mode def as before.
+        _shipLocations.Clear();
+        CreateGameView(_currentGameModeDef);
     }
 
-    private void CreateGameView()
+    private void CreateGameView(GameModeDef def)
     {
-        // Only default for now
-        GameModeDef def = GameModeDefList.GetDefById(GameModeIds.Default);
-
         if (def == null)
         {
             this.LogError("Game Mode def is null.");
+            return;
         }
-
-        CreatePointMap(totalRows: def.TotalRows, totalColumns: def.TotalColumns);
+        
         DetermineShipLocations(def);
-
         DebugPrintShipLocations();
 
         GameViewModel gameViewModel = new GameViewModel(def.Id, GetOccupiedPoints(), this);        
@@ -91,8 +103,17 @@ public class GameManager : MonoBehaviour, IGameManager
         _currentGameView.SetViewModel(gameViewModel);
     }
 
-    private void CreatePointMap(int totalRows, int totalColumns)
+    private void CreatePointMap(GameModeDef def)
     {
+        if (def == null)
+        {
+            this.LogError("Game Mode def is null.");
+            return;
+        }
+
+        int totalRows = def.TotalRows;
+        int totalColumns = def.TotalColumns;
+
         if (totalRows != totalColumns)
         {
             this.LogError("The number of rows must equal the number of columns!");
@@ -111,8 +132,6 @@ public class GameManager : MonoBehaviour, IGameManager
 
     private void DetermineShipLocations(GameModeDef def)
     {
-        this.Log("DetermineShipLocations | start");
-
         if (_pointMap.Count == 0)
         {
             this.LogError("_pointMap.Count is 0. Unable to determine ship locations.");
@@ -280,10 +299,17 @@ public class GameManager : MonoBehaviour, IGameManager
             {
                 sb.Append($" {point} ");
             }
-            sb.Append($"]");
+            sb.Append($"] | Count: {shipLoc.Value.Count}");
             sb.AppendLine();
         }
         this.Log(sb.ToString());
+    }
+
+    private Color DebugGetShipColorById(Id<Ship> shipId)
+    {
+        var colorRGB = ShipDefList.GetDefById(shipId).DebugColor;
+        Color color = new Color(colorRGB.r, colorRGB.g, colorRGB.b);
+        return color;
     }
     #endregion
 }
