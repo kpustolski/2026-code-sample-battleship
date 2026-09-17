@@ -7,6 +7,7 @@ So far, I've been looking into:
 * Model-View-ViewModel
 * Strongly typed Ids
 * Observable Properties
+* Strongly typed entity IDs
 * More to be added...
 
 More description TBD.
