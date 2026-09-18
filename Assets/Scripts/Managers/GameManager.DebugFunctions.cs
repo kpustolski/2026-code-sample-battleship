@@ -16,6 +16,13 @@ public partial class GameManager
        return DebugGetShipColorById(shipLocation.Key);
     }
 
+    private Color DebugGetShipColorById(Id<Ship> shipId)
+    {
+        var colorRGB = ShipDefList.GetDefById(shipId).DebugColor;
+        Color color = new Color(colorRGB.r, colorRGB.g, colorRGB.b);
+        return color;
+    }
+    
     private void DebugPrintShipLocations()
     {
         StringBuilder sb = new StringBuilder();
@@ -37,13 +44,6 @@ public partial class GameManager
             sb.AppendLine();
         }
         this.Log(sb.ToString());
-    }
-
-    private Color DebugGetShipColorById(Id<Ship> shipId)
-    {
-        var colorRGB = ShipDefList.GetDefById(shipId).DebugColor;
-        Color color = new Color(colorRGB.r, colorRGB.g, colorRGB.b);
-        return color;
     }
     #endregion
 }
