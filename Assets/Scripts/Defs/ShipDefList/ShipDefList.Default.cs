@@ -18,7 +18,7 @@ public static partial class ShipDefList
             Id = ShipIds.Battleship,
             Group = ShipGroupIds.Default,
             Size = 4,
-            DebugColor = (r: 255, g:165, b:0) //Orange
+            DebugColor = (r: 255, g:0, b:0) //red
         };
     }
 
