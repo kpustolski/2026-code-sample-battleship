@@ -35,11 +35,6 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
         SubscribeToViewModel(_gameViewModel);
     }
 
-    public void Reset()
-    {
-        // TODO: What happens when the game view is reset?
-    }
-    
     private void SubscribeToViewModel(GameViewModel viewModel)
     {
         if (viewModel == null)
@@ -81,7 +76,6 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
                     tileViewModel?.SetColor(color);
                 }
             }
-
         }
         catch (Exception e)
         {
