@@ -1,4 +1,12 @@
+using System.Collections.Generic;
+using UnityEngine;
+
 public interface IGameManager
 {
-    public void CreateGame();
+
+    // Functions
+    public Color DebugGetShipColorByPoint(Point point);
+
+    // Properties
+    public List<Point> PointMap {get;}
 }
