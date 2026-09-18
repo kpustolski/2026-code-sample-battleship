@@ -49,6 +49,7 @@ public static partial class ShipDefList
         return new ShipDef
         {
             Id = ShipIds.PatrolBoat,
+            Group = ShipGroupIds.Default,
             Size = 2,
             DebugColor = (r: 255, g:255, b:0) // Yellow
         };
