@@ -9,7 +9,11 @@ public class TileView : MonoBehaviour, IViewModelReceiver<TileViewModel>
     #region Unity References
     [Header("Asset References")]
     [SerializeField]
-    private Image _imageComponent;
+    private CanvasGroup _coverCanvasGroupComponent;
+    [SerializeField]
+    private Image _shipBackgroundComponent;
+    [SerializeField]
+    private Image _shipImageComponent;
     [SerializeField]
     private Button _buttonComponent;
     [SerializeField]
@@ -55,8 +59,11 @@ public class TileView : MonoBehaviour, IViewModelReceiver<TileViewModel>
         if (viewModel == null)
             return;
 
-        var colorSubscription = viewModel.Color.Subscribe(OnColorChange);
+        var colorSubscription = viewModel.DebugColor.Subscribe(OnColorChange);
         _viewModelSubscriptionList.Add(colorSubscription);
+
+        var shipSpriteSubscription = viewModel.Sprite.Subscribe(OnShipSpriteChange);
+        _viewModelSubscriptionList.Add(shipSpriteSubscription);
     }
 
     private void UnSubscribeToViewModel(TileViewModel viewModel)
@@ -73,12 +80,26 @@ public class TileView : MonoBehaviour, IViewModelReceiver<TileViewModel>
 
     private void OnColorChange(Color _, Color newValue)
     {
-        _imageComponent.color = newValue;
+        if (_shipBackgroundComponent == null)
+            return;
+        
+        //! Temp
+        
+        _shipBackgroundComponent.color = newValue;
+    }
+
+    private void OnShipSpriteChange(Sprite _, Sprite newValue)
+    {
+        // It is ok if the sprite is null since they can be "empty".
+        _shipImageComponent.sprite = newValue;
     }
 
     private void OnTileClicked()
     {
-        this.Log($"Point clicked: {_tileViewModel.Point}");
+        if (_coverCanvasGroupComponent == null)
+            return;
+
+        _coverCanvasGroupComponent.alpha = 0;
     }
     #endregion
 }
