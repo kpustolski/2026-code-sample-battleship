@@ -23,7 +23,6 @@ public class TileViewModel : IViewModel
         DebugColor.SetAsMutable(color);
     }
 
-    // TODO: Update to use observable properties?
     public void SetRenderDef(ShipRenderDef renderDef)
     {
         if (renderDef == null)
