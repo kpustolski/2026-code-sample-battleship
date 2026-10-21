@@ -14,13 +14,6 @@ public class TileViewModel : IViewModel
     public TileViewModel(Point point)
     {
         Point = point;
-        // ShipSprite = shipRenderDef.ShipSprite;
-        // Color.SetAsMutable(Color);
-    }
-
-    public void SetColor(Color color)
-    {
-        DebugColor.SetAsMutable(color);
     }
 
     public void SetRenderDef(ShipRenderDef renderDef)

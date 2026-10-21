@@ -22,9 +22,4 @@ public class GameViewModel : IViewModel
     {
         return _gameManager.GetShipRenderDefByPoint(point);
     }
-
-    // public Color DebugGetShipColorByPoint(Point point)
-    // {
-    //     return _gameManager.DebugGetShipColorByPoint(point);
-    // }
 }

@@ -71,8 +71,6 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
                 TileViewModel tileViewModel = _tileViewModelList.FirstOrDefault(viewModel => viewModel.Point.Equals(occupiedPoint));
                 if (tileViewModel != default)
                 {
-                    // color = _gameViewModel.DebugGetShipColorByPoint(occupiedPoint);
-                    // tileViewModel?.SetColor(color);
                     var renderDef = _gameViewModel.GetShipRenderDefByPoint(occupiedPoint);
                     tileViewModel?.SetRenderDef(renderDef);
                 }

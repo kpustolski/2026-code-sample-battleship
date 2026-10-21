@@ -7,7 +7,6 @@ using System.Text;
 using UnityEngine.InputSystem;
 using NUnit.Framework;
 
-//? Does this need to be a MonoBehavior
 public partial class GameManager : MonoBehaviour, IGameManager
 {
     #region Unity References
@@ -69,6 +68,7 @@ public partial class GameManager : MonoBehaviour, IGameManager
     public ShipRenderDef GetShipRenderDefByPoint(Point point)
     {
         // Get the ship location
+        // TODO: Can probably put this in a helper since it's also used in a debug function.
         var shipLocation = _shipLocations.FirstOrDefault((shipLoc =>
         {
             Point p = shipLoc.Value.FirstOrDefault(p => p == point);
