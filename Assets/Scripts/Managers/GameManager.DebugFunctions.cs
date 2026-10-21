@@ -13,14 +13,7 @@ public partial class GameManager
             return p != default;
         }));
 
-       return DebugGetShipColorById(shipLocation.Key);
-    }
-
-    private Color DebugGetShipColorById(Id<Ship> shipId)
-    {
-        var colorRGB = ShipDefList.GetDefById(shipId).DebugColor;
-        Color color = new Color(colorRGB.r, colorRGB.g, colorRGB.b);
-        return color;
+       return _defaultShipRenderDefList.GetShipRenderDefById(shipLocation.Key).DebugColor;
     }
     
     private void DebugPrintShipLocations()
@@ -31,7 +24,7 @@ public partial class GameManager
         
         foreach(var shipLoc in _shipLocations)
         {
-            color = DebugGetShipColorById(shipLoc.Key);
+            color = _defaultShipRenderDefList.GetShipRenderDefById(shipLoc.Key).DebugColor;
             htmlColor = $"#{ColorUtility.ToHtmlStringRGBA(color)}";
 
             sb.Append($"{shipLoc.Key} | <color={htmlColor}>Color</color> | Points: [");
