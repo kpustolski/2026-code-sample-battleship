@@ -1,0 +1,936 @@
+fileFormatVersion: 2
+guid: 587477d2a2e0b419b9947de4d65a4c6b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4025121168507599313
+    second: noun_Tugboat_7701388_@700 (1)_0
+  - first:
+      213: 7316027099762049772
+    second: noun_Tugboat_7701388_@700 (1)_1
+  - first:
+      213: -3665916653904283389
+    second: noun_Tugboat_7701388_@700 (1)_2
+  - first:
+      213: 5630742195890110529
+    second: noun_Tugboat_7701388_@700 (1)_3
+  - first:
+      213: -2731869769949304911
+    second: noun_Tugboat_7701388_@700 (1)_4
+  - first:
+      213: 482831657121017263
+    second: noun_Tugboat_7701388_@700 (1)_5
+  - first:
+      213: -3893717126767292397
+    second: noun_Tugboat_7701388_@700 (1)_6
+  - first:
+      213: -6196091825175480301
+    second: noun_Tugboat_7701388_@700 (1)_7
+  - first:
+      213: 217832408015733443
+    second: noun_Tugboat_7701388_@700 (1)_8
+  - first:
+      213: 5312221346460905054
+    second: noun_Tugboat_7701388_@700 (1)_9
+  - first:
+      213: -5057016958557858868
+    second: noun_Tugboat_7701388_@700 (1)_10
+  - first:
+      213: -2576974561163497159
+    second: noun_Tugboat_7701388_@700 (1)_11
+  - first:
+      213: 8642669002034776920
+    second: noun_Tugboat_7701388_@700 (1)_12
+  - first:
+      213: -5093395942045356483
+    second: noun_Tugboat_7701388_@700 (1)_13
+  - first:
+      213: 3253320967556792560
+    second: noun_Tugboat_7701388_@700 (1)_14
+  - first:
+      213: -5666487291350151880
+    second: noun_Tugboat_7701388_@700 (1)_15
+  - first:
+      213: 2258573594959675677
+    second: noun_Tugboat_7701388_@700 (1)_16
+  - first:
+      213: 7523008753222146984
+    second: noun_Tugboat_7701388_@700 (1)_17
+  - first:
+      213: 1451265057105361673
+    second: noun_Tugboat_7701388_@700 (1)_18
+  - first:
+      213: -324793272277778292
+    second: noun_Tugboat_7701388_@700 (1)_19
+  - first:
+      213: 6982976063618910677
+    second: noun_Tugboat_7701388_@700 (1)_20
+  - first:
+      213: -8420816562322672141
+    second: noun_Tugboat_7701388_@700 (1)_21
+  - first:
+      213: 4447767842260257787
+    second: noun_Tugboat_7701388_@700 (1)_22
+  - first:
+      213: 3106728932858209476
+    second: noun_Tugboat_7701388_@700 (1)_23
+  - first:
+      213: 572813721316183727
+    second: noun_Tugboat_7701388_@700 (1)_24
+  - first:
+      213: 898048275086920013
+    second: noun_Tugboat_7701388_@700 (1)_25
+  - first:
+      213: 4408317495474747735
+    second: noun_Tugboat_7701388_@700 (1)_26
+  - first:
+      213: 6599266864925537217
+    second: noun_Tugboat_7701388_@700 (1)_27
+  - first:
+      213: -5465704799422785974
+    second: noun_Tugboat_7701388_@700 (1)_28
+  - first:
+      213: 1045451404545146002
+    second: noun_Tugboat_7701388_@700 (1)_29
+  - first:
+      213: -3407987434454250479
+    second: noun_Tugboat_7701388_@700 (1)_30
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: noun_Tugboat_7701388_@700 (1)_0
+      rect:
+        serializedVersion: 2
+        x: 114
+        y: 191
+        width: 472
+        height: 418
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1d9fcc2706a1cd730800000000000000
+      internalID: 4025121168507599313
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_Tugboat_7701388_@700 (1)_1
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 68
+        width: 19
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ce2c270a2efb78560800000000000000
+      internalID: 7316027099762049772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_Tugboat_7701388_@700 (1)_2
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 67
+        width: 10
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 309b8d3e93c002dc0800000000000000
+      internalID: -3665916653904283389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_Tugboat_7701388_@700 (1)_3
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 67
+        width: 27
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 14045d7b13a642e40800000000000000
+      internalID: 5630742195890110529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_Tugboat_7701388_@700 (1)_4
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 68
+        width: 10
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b72b851be2761ad0800000000000000
+      internalID: -2731869769949304911
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_Tugboat_7701388_@700 (1)_5
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 67
+        width: 28
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fade20185dc53b600800000000000000
+      internalID: 482831657121017263
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_Tugboat_7701388_@700 (1)_6
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 67
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3105e2b27ecb6f9c0800000000000000
+      internalID: -3893717126767292397
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_Tugboat_7701388_@700 (1)_7
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 63
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 318b6b4305f030aa0800000000000000
+      internalID: -6196091825175480301
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_Tugboat_7701388_@700 (1)_8
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 67
+        width: 18
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c28854cb65e50300800000000000000
+      internalID: 217832408015733443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_Tugboat_7701388_@700 (1)_9
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 68
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5eac045b2dc8b940800000000000000
+      internalID: 5312221346460905054
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_Tugboat_7701388_@700 (1)_10
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 67
+        width: 21
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc358029eddd1d9b0800000000000000
+      internalID: -5057016958557858868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_Tugboat_7701388_@700 (1)_11
+      rect:
+        serializedVersion: 2
+        x: 226
+        y: 67
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 931b1ae3a4fbc3cd0800000000000000
+      internalID: -2576974561163497159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_Tugboat_7701388_@700 (1)_12
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 68
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 85b0091aaade0f770800000000000000
+      internalID: 8642669002034776920
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_Tugboat_7701388_@700 (1)_13
+      rect:
+        serializedVersion: 2
+        x: 259
+        y: 68
+        width: 10
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3e68fd606f9059b0800000000000000
+      internalID: -5093395942045356483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_Tugboat_7701388_@700 (1)_14
+      rect:
+        serializedVersion: 2
+        x: 269
+        y: 67
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f08d83ee2e162d20800000000000000
+      internalID: 3253320967556792560
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_Tugboat_7701388_@700 (1)_15
+      rect:
+        serializedVersion: 2
+        x: 282
+        y: 67
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83d0fc2b4d79c51b0800000000000000
+      internalID: -5666487291350151880
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_Tugboat_7701388_@700 (1)_16
+      rect:
+        serializedVersion: 2
+        x: 297
+        y: 67
+        width: 20
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d1106aad7b0185f10800000000000000
+      internalID: 2258573594959675677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_Tugboat_7701388_@700 (1)_17
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 42
+        width: 10
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8abd5f93a98176860800000000000000
+      internalID: 7523008753222146984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_Tugboat_7701388_@700 (1)_18
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 42
+        width: 10
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90bb3bb51ede32410800000000000000
+      internalID: 1451265057105361673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_Tugboat_7701388_@700 (1)_19
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 42
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c80427c5d3a1e7bf0800000000000000
+      internalID: -324793272277778292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_Tugboat_7701388_@700 (1)_20
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 42
+        width: 21
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d98f038bb388e060800000000000000
+      internalID: 6982976063618910677
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_Tugboat_7701388_@700 (1)_21
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 43
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f5f704b3ff332b80800000000000000
+      internalID: -8420816562322672141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_Tugboat_7701388_@700 (1)_22
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 42
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bfb04598945a9bd30800000000000000
+      internalID: 4447767842260257787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_Tugboat_7701388_@700 (1)_23
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 42
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c4217811815d1b20800000000000000
+      internalID: 3106728932858209476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_Tugboat_7701388_@700 (1)_24
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 42
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fae458d6b0b03f700800000000000000
+      internalID: 572813721316183727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_Tugboat_7701388_@700 (1)_25
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 42
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4945bbe522867c00800000000000000
+      internalID: 898048275086920013
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_Tugboat_7701388_@700 (1)_26
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 42
+        width: 10
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75979e6e76d7d2d30800000000000000
+      internalID: 4408317495474747735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_Tugboat_7701388_@700 (1)_27
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 42
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1c374edcf3e459b50800000000000000
+      internalID: 6599266864925537217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_Tugboat_7701388_@700 (1)_28
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 38
+        width: 8
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a46d147817ae524b0800000000000000
+      internalID: -5465704799422785974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_Tugboat_7701388_@700 (1)_29
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 42
+        width: 28
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 29cb8dd6380328e00800000000000000
+      internalID: 1045451404545146002
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_Tugboat_7701388_@700 (1)_30
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 43
+        width: 10
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11c0c521c7564b0d0800000000000000
+      internalID: -3407987434454250479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      noun_Tugboat_7701388_@700 (1)_0: 4025121168507599313
+      noun_Tugboat_7701388_@700 (1)_1: 7316027099762049772
+      noun_Tugboat_7701388_@700 (1)_10: -5057016958557858868
+      noun_Tugboat_7701388_@700 (1)_11: -2576974561163497159
+      noun_Tugboat_7701388_@700 (1)_12: 8642669002034776920
+      noun_Tugboat_7701388_@700 (1)_13: -5093395942045356483
+      noun_Tugboat_7701388_@700 (1)_14: 3253320967556792560
+      noun_Tugboat_7701388_@700 (1)_15: -5666487291350151880
+      noun_Tugboat_7701388_@700 (1)_16: 2258573594959675677
+      noun_Tugboat_7701388_@700 (1)_17: 7523008753222146984
+      noun_Tugboat_7701388_@700 (1)_18: 1451265057105361673
+      noun_Tugboat_7701388_@700 (1)_19: -324793272277778292
+      noun_Tugboat_7701388_@700 (1)_2: -3665916653904283389
+      noun_Tugboat_7701388_@700 (1)_20: 6982976063618910677
+      noun_Tugboat_7701388_@700 (1)_21: -8420816562322672141
+      noun_Tugboat_7701388_@700 (1)_22: 4447767842260257787
+      noun_Tugboat_7701388_@700 (1)_23: 3106728932858209476
+      noun_Tugboat_7701388_@700 (1)_24: 572813721316183727
+      noun_Tugboat_7701388_@700 (1)_25: 898048275086920013
+      noun_Tugboat_7701388_@700 (1)_26: 4408317495474747735
+      noun_Tugboat_7701388_@700 (1)_27: 6599266864925537217
+      noun_Tugboat_7701388_@700 (1)_28: -5465704799422785974
+      noun_Tugboat_7701388_@700 (1)_29: 1045451404545146002
+      noun_Tugboat_7701388_@700 (1)_3: 5630742195890110529
+      noun_Tugboat_7701388_@700 (1)_30: -3407987434454250479
+      noun_Tugboat_7701388_@700 (1)_4: -2731869769949304911
+      noun_Tugboat_7701388_@700 (1)_5: 482831657121017263
+      noun_Tugboat_7701388_@700 (1)_6: -3893717126767292397
+      noun_Tugboat_7701388_@700 (1)_7: -6196091825175480301
+      noun_Tugboat_7701388_@700 (1)_8: 217832408015733443
+      noun_Tugboat_7701388_@700 (1)_9: 5312221346460905054
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
