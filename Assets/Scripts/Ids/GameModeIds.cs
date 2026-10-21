@@ -1,3 +1,4 @@
+[IdSource(typeof(GameMode))]
 public static class GameModeIds
 {
     public static readonly Id<GameMode> None = new(nameof(None));

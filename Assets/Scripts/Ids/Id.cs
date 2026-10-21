@@ -1,20 +1,34 @@
 using System;
+using UnityEngine;
 
 /// <summary>
 /// Template struct for creating strongly typed Ids.
 /// Note: Would need to create JSON converter if I ever
 /// needed to serialize this.
 /// </summary>
+[Serializable]
 public struct Id<T> : IEquatable<Id<T>>
 {
     // Using a string variable type here instead
     // of something better memory-wise (like Guid)
     // so it's more readable at a glance.
-    public string Value {get;}
-
-    public Id(string value)
+    [SerializeField] private string _value;
+    
+    public string Value
     {
-        Value = value;
+        get
+        {
+            return _value;
+        }
+        set
+        {
+           _value = value;
+        }
+    }
+
+    public Id(string v)
+    {
+        _value = v;
     }
 
     public override string ToString()

@@ -1,4 +1,4 @@
-// TODO: Unit test to check for duplicates.
+[IdSource(typeof(Ship))]
 public static class ShipIds
 {
     public static readonly Id<Ship> None = new(nameof(None));
