@@ -18,8 +18,13 @@ public class GameViewModel : IViewModel
         OccupiedPointList.SetAsMutable(occupiedPointList);
     }
 
-    public Color DebugGetShipColorByPoint(Point point)
+    public ShipRenderDef GetShipRenderDefByPoint(Point point)
     {
-        return _gameManager.DebugGetShipColorByPoint(point);
+        return _gameManager.GetShipRenderDefByPoint(point);
     }
+
+    // public Color DebugGetShipColorByPoint(Point point)
+    // {
+    //     return _gameManager.DebugGetShipColorByPoint(point);
+    // }
 }

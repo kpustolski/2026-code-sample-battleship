@@ -18,6 +18,10 @@ public partial class GameManager : MonoBehaviour, IGameManager
     [Header("Prefabs")]
     [SerializeField]
     private GameView _gameViewPrefab;
+
+    [Header("Scriptable Object Lists")]
+    [SerializeField]
+    private ShipRenderDefList _defaultShipRenderDefList;
     #endregion
 
     #region Variables
@@ -58,6 +62,21 @@ public partial class GameManager : MonoBehaviour, IGameManager
         {
             ResetGameView();
         }
+    }
+    #endregion
+
+    #region Public Functions
+    public ShipRenderDef GetShipRenderDefByPoint(Point point)
+    {
+        // Get the ship location
+        var shipLocation = _shipLocations.FirstOrDefault((shipLoc =>
+        {
+            Point p = shipLoc.Value.FirstOrDefault(p => p == point);
+            return p != default;
+        }));
+
+        // shipLocation.Key is the ship id. 
+        return _defaultShipRenderDefList.GetShipRenderDefById(shipLocation.Key);
     }
     #endregion
 
