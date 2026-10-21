@@ -324,6 +324,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   _gameViewParentTransform: {fileID: 180220801}
   _gameViewPrefab: {fileID: 285618285692175147, guid: 2c35089b334a549998838ad6526bae10, type: 3}
+  _defaultShipRenderDefList: {fileID: 11400000, guid: 04ceb7158da5a40ad9bb2ac8f12737a4, type: 2}
 --- !u!4 &1435967993
 Transform:
   m_ObjectHideFlags: 0
