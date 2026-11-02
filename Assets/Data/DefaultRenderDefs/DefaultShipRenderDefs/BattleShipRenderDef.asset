@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d39c2196cfd1f417aa59abc944b2858e, type: 3}
-  m_Name: DefaultRenderDef
+  m_Name: BattleShipRenderDef
   m_EditorClassIdentifier: Assembly-CSharp::ShipRenderDef
   _shipId:
-    _value: 
-  _shipSprite: {fileID: 7526386627923395584, guid: 125751bbca422479581526fc7a9a6cca, type: 3}
-  _debugColor: {r: 0.37624598, g: 0.8768593, b: 0.8962264, a: 1}
+    _value: Battleship
+  _shipSprite: {fileID: 21300000, guid: b24c3226993414e5583c03a48d69b9bf, type: 3}
+  _debugColor: {r: 1, g: 0.51022494, b: 0, a: 1}
