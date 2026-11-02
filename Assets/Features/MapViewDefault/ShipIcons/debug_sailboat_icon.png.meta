@@ -1,0 +1,1014 @@
+fileFormatVersion: 2
+guid: f61bc165a03e647f99698dfc00336dbc
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -7998118493581603627
+    second: noun_sailboat_8495849_@700_0
+  - first:
+      213: 563075699285063491
+    second: noun_sailboat_8495849_@700_1
+  - first:
+      213: 7860842265830000398
+    second: noun_sailboat_8495849_@700_2
+  - first:
+      213: -3231241329954962989
+    second: noun_sailboat_8495849_@700_3
+  - first:
+      213: 9103477113673151125
+    second: noun_sailboat_8495849_@700_4
+  - first:
+      213: -1523757996789360779
+    second: noun_sailboat_8495849_@700_5
+  - first:
+      213: 921123381596841447
+    second: noun_sailboat_8495849_@700_6
+  - first:
+      213: -1521496741577169715
+    second: noun_sailboat_8495849_@700_7
+  - first:
+      213: 2141760585763758346
+    second: noun_sailboat_8495849_@700_8
+  - first:
+      213: -6897330150626295309
+    second: noun_sailboat_8495849_@700_9
+  - first:
+      213: 7878099074802199933
+    second: noun_sailboat_8495849_@700_10
+  - first:
+      213: 995629713216315207
+    second: noun_sailboat_8495849_@700_11
+  - first:
+      213: 2285042908187534126
+    second: noun_sailboat_8495849_@700_12
+  - first:
+      213: -2239927251877343150
+    second: noun_sailboat_8495849_@700_13
+  - first:
+      213: -8836876768911046059
+    second: noun_sailboat_8495849_@700_14
+  - first:
+      213: -6306527569554964571
+    second: noun_sailboat_8495849_@700_15
+  - first:
+      213: 8705019105260392919
+    second: noun_sailboat_8495849_@700_16
+  - first:
+      213: -8016155058728228541
+    second: noun_sailboat_8495849_@700_17
+  - first:
+      213: 2469315355182606819
+    second: noun_sailboat_8495849_@700_18
+  - first:
+      213: -1628736159087955210
+    second: noun_sailboat_8495849_@700_19
+  - first:
+      213: 7746992041145750554
+    second: noun_sailboat_8495849_@700_20
+  - first:
+      213: -2291890628127729966
+    second: noun_sailboat_8495849_@700_21
+  - first:
+      213: -8943750677242629738
+    second: noun_sailboat_8495849_@700_22
+  - first:
+      213: 4833079637962070818
+    second: noun_sailboat_8495849_@700_23
+  - first:
+      213: 1905750907458323779
+    second: noun_sailboat_8495849_@700_24
+  - first:
+      213: 7908690757704186238
+    second: noun_sailboat_8495849_@700_25
+  - first:
+      213: 6365677666323718464
+    second: noun_sailboat_8495849_@700_26
+  - first:
+      213: 6096901944705766821
+    second: noun_sailboat_8495849_@700_27
+  - first:
+      213: 9007848684816764850
+    second: noun_sailboat_8495849_@700_28
+  - first:
+      213: -1494678903444463009
+    second: noun_sailboat_8495849_@700_29
+  - first:
+      213: -1039897910965408342
+    second: noun_sailboat_8495849_@700_30
+  - first:
+      213: 6257409494085062231
+    second: noun_sailboat_8495849_@700_31
+  - first:
+      213: 6145208342693786533
+    second: noun_sailboat_8495849_@700_32
+  - first:
+      213: 122084223969182120
+    second: noun_sailboat_8495849_@700_33
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: noun_sailboat_8495849_@700_0
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 234
+        width: 490
+        height: 400
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5dc069e1b99f00190800000000000000
+      internalID: -7998118493581603627
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_sailboat_8495849_@700_1
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 166
+        width: 490
+        height: 45
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3477a8d7d5270d700800000000000000
+      internalID: 563075699285063491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_sailboat_8495849_@700_2
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 68
+        width: 19
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e078c2a6462571d60800000000000000
+      internalID: 7860842265830000398
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_sailboat_8495849_@700_3
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 68
+        width: 10
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3d1497851235823d0800000000000000
+      internalID: -3231241329954962989
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_sailboat_8495849_@700_4
+      rect:
+        serializedVersion: 2
+        x: 76
+        y: 67
+        width: 27
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 592f26dd33c065e70800000000000000
+      internalID: 9103477113673151125
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_sailboat_8495849_@700_5
+      rect:
+        serializedVersion: 2
+        x: 102
+        y: 68
+        width: 10
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57795b5dc268adae0800000000000000
+      internalID: -1523757996789360779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_sailboat_8495849_@700_6
+      rect:
+        serializedVersion: 2
+        x: 111
+        y: 67
+        width: 28
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7e5e262d5dc78cc00800000000000000
+      internalID: 921123381596841447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_sailboat_8495849_@700_7
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 67
+        width: 15
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc4e06756ce82eae0800000000000000
+      internalID: -1521496741577169715
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_sailboat_8495849_@700_8
+      rect:
+        serializedVersion: 2
+        x: 157
+        y: 63
+        width: 15
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a01a16cb7ef09bd10800000000000000
+      internalID: 2141760585763758346
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_sailboat_8495849_@700_9
+      rect:
+        serializedVersion: 2
+        x: 175
+        y: 68
+        width: 14
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3f1045985c2c740a0800000000000000
+      internalID: -6897330150626295309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_sailboat_8495849_@700_10
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 67
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d7d2bea5e51a45d60800000000000000
+      internalID: 7878099074802199933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_sailboat_8495849_@700_11
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 67
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 74f1518f2ff21dd00800000000000000
+      internalID: 995629713216315207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_sailboat_8495849_@700_12
+      rect:
+        serializedVersion: 2
+        x: 214
+        y: 67
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e232b071b6a16bf10800000000000000
+      internalID: 2285042908187534126
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_sailboat_8495849_@700_13
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 67
+        width: 21
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2505225380e2ae0e0800000000000000
+      internalID: -2239927251877343150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_sailboat_8495849_@700_14
+      rect:
+        serializedVersion: 2
+        x: 248
+        y: 68
+        width: 14
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 55ac721066b1d5580800000000000000
+      internalID: -8836876768911046059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_sailboat_8495849_@700_15
+      rect:
+        serializedVersion: 2
+        x: 267
+        y: 62
+        width: 28
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5aff772c696ba78a0800000000000000
+      internalID: -6306527569554964571
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_sailboat_8495849_@700_16
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 68
+        width: 10
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7d1d80c41c07ec870800000000000000
+      internalID: 8705019105260392919
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_sailboat_8495849_@700_17
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 68
+        width: 10
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 349ad0c0275e0c090800000000000000
+      internalID: -8016155058728228541
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_sailboat_8495849_@700_18
+      rect:
+        serializedVersion: 2
+        x: 312
+        y: 67
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3e9a3188b35c44220800000000000000
+      internalID: 2469315355182606819
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_sailboat_8495849_@700_19
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 68
+        width: 10
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f27abcb7119569e0800000000000000
+      internalID: -1628736159087955210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_sailboat_8495849_@700_20
+      rect:
+        serializedVersion: 2
+        x: 49
+        y: 43
+        width: 10
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1455425738d28b60800000000000000
+      internalID: 7746992041145750554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_sailboat_8495849_@700_21
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 43
+        width: 10
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d6566edd919130e0800000000000000
+      internalID: -2291890628127729966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_sailboat_8495849_@700_22
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 42
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6913b43252a61e380800000000000000
+      internalID: -8943750677242629738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_sailboat_8495849_@700_23
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 42
+        width: 21
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22b17efe25c821340800000000000000
+      internalID: 4833079637962070818
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_sailboat_8495849_@700_24
+      rect:
+        serializedVersion: 2
+        x: 107
+        y: 43
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3458e6d6a56927a10800000000000000
+      internalID: 1905750907458323779
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_sailboat_8495849_@700_25
+      rect:
+        serializedVersion: 2
+        x: 125
+        y: 42
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e797f53975051cd60800000000000000
+      internalID: 7908690757704186238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_sailboat_8495849_@700_26
+      rect:
+        serializedVersion: 2
+        x: 140
+        y: 42
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 041ecd75c1e675850800000000000000
+      internalID: 6365677666323718464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_sailboat_8495849_@700_27
+      rect:
+        serializedVersion: 2
+        x: 154
+        y: 42
+        width: 14
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a55394140c8c9450800000000000000
+      internalID: 6096901944705766821
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_sailboat_8495849_@700_28
+      rect:
+        serializedVersion: 2
+        x: 173
+        y: 42
+        width: 17
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2bf09f837ae420d70800000000000000
+      internalID: 9007848684816764850
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_sailboat_8495849_@700_29
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 43
+        width: 10
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f522cead475d14be0800000000000000
+      internalID: -1494678903444463009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_sailboat_8495849_@700_30
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 42
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aad6c3e0c5a8191f0800000000000000
+      internalID: -1039897910965408342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_sailboat_8495849_@700_31
+      rect:
+        serializedVersion: 2
+        x: 209
+        y: 38
+        width: 8
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 75ec81d18c8c6d650800000000000000
+      internalID: 6257409494085062231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_sailboat_8495849_@700_32
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 42
+        width: 28
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5a3b701dd6a284550800000000000000
+      internalID: 6145208342693786533
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: noun_sailboat_8495849_@700_33
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 43
+        width: 10
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a1cc5274fab1b100800000000000000
+      internalID: 122084223969182120
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      noun_sailboat_8495849_@700_0: -7998118493581603627
+      noun_sailboat_8495849_@700_1: 563075699285063491
+      noun_sailboat_8495849_@700_10: 7878099074802199933
+      noun_sailboat_8495849_@700_11: 995629713216315207
+      noun_sailboat_8495849_@700_12: 2285042908187534126
+      noun_sailboat_8495849_@700_13: -2239927251877343150
+      noun_sailboat_8495849_@700_14: -8836876768911046059
+      noun_sailboat_8495849_@700_15: -6306527569554964571
+      noun_sailboat_8495849_@700_16: 8705019105260392919
+      noun_sailboat_8495849_@700_17: -8016155058728228541
+      noun_sailboat_8495849_@700_18: 2469315355182606819
+      noun_sailboat_8495849_@700_19: -1628736159087955210
+      noun_sailboat_8495849_@700_2: 7860842265830000398
+      noun_sailboat_8495849_@700_20: 7746992041145750554
+      noun_sailboat_8495849_@700_21: -2291890628127729966
+      noun_sailboat_8495849_@700_22: -8943750677242629738
+      noun_sailboat_8495849_@700_23: 4833079637962070818
+      noun_sailboat_8495849_@700_24: 1905750907458323779
+      noun_sailboat_8495849_@700_25: 7908690757704186238
+      noun_sailboat_8495849_@700_26: 6365677666323718464
+      noun_sailboat_8495849_@700_27: 6096901944705766821
+      noun_sailboat_8495849_@700_28: 9007848684816764850
+      noun_sailboat_8495849_@700_29: -1494678903444463009
+      noun_sailboat_8495849_@700_3: -3231241329954962989
+      noun_sailboat_8495849_@700_30: -1039897910965408342
+      noun_sailboat_8495849_@700_31: 6257409494085062231
+      noun_sailboat_8495849_@700_32: 6145208342693786533
+      noun_sailboat_8495849_@700_33: 122084223969182120
+      noun_sailboat_8495849_@700_4: 9103477113673151125
+      noun_sailboat_8495849_@700_5: -1523757996789360779
+      noun_sailboat_8495849_@700_6: 921123381596841447
+      noun_sailboat_8495849_@700_7: -1521496741577169715
+      noun_sailboat_8495849_@700_8: 2141760585763758346
+      noun_sailboat_8495849_@700_9: -6897330150626295309
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

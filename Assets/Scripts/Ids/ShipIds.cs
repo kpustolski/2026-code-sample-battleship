@@ -1,4 +1,6 @@
-// TODO: Unit test to check for duplicates.
+// We need this attribute in order to create drop downs of strongly
+// typed ids in the Unity inspector.
+[IdSource(typeof(Ship))]
 public static class ShipIds
 {
     public static readonly Id<Ship> None = new(nameof(None));

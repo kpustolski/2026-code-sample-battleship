@@ -58,7 +58,6 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
 
     private void OnOccupiedPointListChange(List<Point> _, List<Point> newValue)
     {
-        Color color = default;
         // Reset the Map if it exists
         // TODO: Test try catch loop
         try
@@ -72,8 +71,8 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
                 TileViewModel tileViewModel = _tileViewModelList.FirstOrDefault(viewModel => viewModel.Point.Equals(occupiedPoint));
                 if (tileViewModel != default)
                 {
-                    color = _gameViewModel.DebugGetShipColorByPoint(occupiedPoint);
-                    tileViewModel?.SetColor(color);
+                    var renderDef = _gameViewModel.GetShipRenderDefByPoint(occupiedPoint);
+                    tileViewModel?.SetRenderDef(renderDef);
                 }
             }
         }
@@ -101,10 +100,9 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
 
     private void ResetTileMap()
     {
-        // For now, change the color of the tiles back to white
         foreach (var viewModel in _tileViewModelList)
         {
-            viewModel.SetColor(Color.white);
+            viewModel.Reset();
         }
     }
     

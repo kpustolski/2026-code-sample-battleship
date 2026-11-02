@@ -322,8 +322,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 363f325b545c04db7bb97686fe2cab6a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
+  _selectedGameMode:
+    _value: Default
   _gameViewParentTransform: {fileID: 180220801}
   _gameViewPrefab: {fileID: 285618285692175147, guid: 2c35089b334a549998838ad6526bae10, type: 3}
+  _gameModeRenderDefs:
+  - {fileID: 11400000, guid: 30cddc9471a474a029aa240e87b8aa80, type: 2}
 --- !u!4 &1435967993
 Transform:
   m_ObjectHideFlags: 0

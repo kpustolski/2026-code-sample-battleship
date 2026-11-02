@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d8473ef2eb7440559ec4cacfdf5e03a, type: 3}
+  m_Name: DefaultGroupShipRenderDefList
+  m_EditorClassIdentifier: Assembly-CSharp::ShipRenderDefList
+  ShipRenderDefs:
+  - {fileID: 11400000, guid: 83986fdfb9ba14257b97e675ae11cd0a, type: 2}
+  - {fileID: 11400000, guid: 6710625afceae434eabab4a89507c071, type: 2}
+  - {fileID: 11400000, guid: 91b20ae2239204159bd288a67fd2c89c, type: 2}
+  - {fileID: 11400000, guid: 46ad83e62aa2b4981abaaa8019b06cf5, type: 2}
+  - {fileID: 11400000, guid: bdb1de1ac6f6f47d69043e99aa4be081, type: 2}

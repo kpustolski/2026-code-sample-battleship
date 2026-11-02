@@ -1,20 +1,35 @@
 using UnityEngine.Tilemaps;
 using UnityEngine;
+using Unity.VisualScripting;
 
 public class TileViewModel : IViewModel
 {
-    // TODO: Do I need to know the point here?
-    public ObservableProperty<Color> Color {get; set;} = new();
+    public ObservableProperty<Color> DebugColor {get; set;} = new();
+    public ObservableProperty<Sprite> Sprite {get; set;} = new();
 
+    // TODO: Do I need to know the point here?
     public Point Point {get; private set;}
+    public ShipRenderDef RenderDef {get; private set;}
 
     public TileViewModel(Point point)
     {
         Point = point;
     }
 
-    public void SetColor(Color color)
+    public void SetRenderDef(ShipRenderDef renderDef)
     {
-        Color.SetAsMutable(color);
+        if (renderDef == null)
+            return;
+        
+        RenderDef = renderDef;
+
+        DebugColor.SetAsMutable(RenderDef.DebugColor);
+        Sprite.SetAsMutable(RenderDef.ShipSprite);
+    }
+
+    public void Reset()
+    {   
+        DebugColor.SetAsMutable(Color.white);
+        Sprite.SetAsMutable(null);
     }
 }
