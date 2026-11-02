@@ -54,6 +54,8 @@ public partial class GameManager : MonoBehaviour, IGameManager
 
         CreatePointMap(_currentGameModeDef);
         ResetGameView();
+
+        //!Debug
         _debugKeyboard = Keyboard.current;
     }
 
@@ -104,7 +106,7 @@ public partial class GameManager : MonoBehaviour, IGameManager
             return;
         }
         
-        DetermineShipLocations(def);
+        SetShipLocations(def);
         DebugPrintShipLocations();
 
         GameViewModel gameViewModel = new GameViewModel(def.Id, GetOccupiedPoints(), this);        
@@ -143,11 +145,11 @@ public partial class GameManager : MonoBehaviour, IGameManager
         }
     }
 
-    private void DetermineShipLocations(GameModeDef def)
+    private void SetShipLocations(GameModeDef def)
     {
         if (_pointMap.Count == 0)
         {
-            this.LogError("_pointMap.Count is 0. Unable to determine ship locations.");
+            this.LogError("_pointMap.Count is 0. Unable to set ship locations.");
             return;
         }
 
