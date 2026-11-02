@@ -6,11 +6,16 @@ using UnityEngine;
 
 /// <summary>
 /// Note: Generated with help from Claude Chat.
+/// This class is to help create drop downs of strongly types ids in
+/// the Unity Inspector.
 /// </summary>
 [CustomPropertyDrawer(typeof(Id<>))]
 public class IdDrawer : PropertyDrawer
 {
-    private struct Option { public string name; public string value; }
+    private struct Option { 
+        public string name; 
+        public string value; 
+    }
 
     // tag type -> options; rebuilt automatically after a domain reload (recompile).
     private static readonly Dictionary<Type, List<Option>> Cache = new Dictionary<Type, List<Option>>();
@@ -65,26 +70,55 @@ public class IdDrawer : PropertyDrawer
 
     private static List<Option> GetOptions(Type tag)
     {
-        if (Cache.TryGetValue(tag, out var cached)) return cached;
+        if (Cache.TryGetValue(tag, out var cached))
+        {
+            return cached;   
+        }
 
         var list = new List<Option>();
         var idType = typeof(Id<>).MakeGenericType(tag);
 
         // TypeCache is Unity's fast, domain-reload-aware type lookup.
+        // This set up requires us to use an attribute placed before the static class
+        // declaration.
         foreach (var type in TypeCache.GetTypesWithAttribute<IdSourceAttribute>())
         {
             bool matches = false;
             foreach (var attr in type.GetCustomAttributes<IdSourceAttribute>())
-                if (attr.Tag == tag) { matches = true; break; }
-            if (!matches) continue;
+            {
+                if (attr.Tag == tag) 
+                { 
+                    matches = true; 
+                    break; 
+                }
+            }
+
+            if (!matches)
+            {
+                continue;
+            }
 
             foreach (var f in type.GetFields(BindingFlags.Public | BindingFlags.Static))
             {
-                if (f.FieldType != idType) continue;
+                if (f.FieldType != idType)
+                {
+                    continue;
+                }
+
                 var id = f.GetValue(null);
                 string value = (string)idType.GetProperty("Value").GetValue(id);
-                if (string.IsNullOrEmpty(value)) continue;
-                list.Add(new Option { name = ObjectNames.NicifyVariableName(f.Name), value = value });
+                
+                if (string.IsNullOrEmpty(value)) 
+                {
+                    continue;
+                }
+
+                Option option = new Option { 
+                    name = ObjectNames.NicifyVariableName(f.Name), 
+                    value = value 
+                };
+
+                list.Add(option);
             }
         }
 
@@ -96,9 +130,15 @@ public class IdDrawer : PropertyDrawer
     private Type GetTagType()
     {
         var t = fieldInfo.FieldType;
-        if (t.IsArray) t = t.GetElementType();
+        if (t.IsArray) 
+        {
+            t = t.GetElementType();
+        }
         else if (t.IsGenericType && t.GetGenericTypeDefinition() == typeof(List<>))
+        {
             t = t.GetGenericArguments()[0];
+        }
+
         return t.IsGenericType ? t.GetGenericArguments()[0] : null;
     }
 }
