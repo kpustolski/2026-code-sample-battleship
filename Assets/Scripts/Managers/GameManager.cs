@@ -77,7 +77,6 @@ public partial class GameManager : MonoBehaviour, IGameManager
     public ShipRenderDef GetShipRenderDefByPoint(Point point)
     {
         // Get the ship location
-        // TODO: Can probably put this in a helper since it's also used in a debug function.
         var shipLocation = _shipLocations.FirstOrDefault((shipLoc =>
         {
             Point p = shipLoc.Value.FirstOrDefault(p => p == point);

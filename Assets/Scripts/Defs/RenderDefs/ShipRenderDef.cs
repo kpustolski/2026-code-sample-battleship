@@ -11,7 +11,7 @@ public class ShipRenderDef : ScriptableObject
     [SerializeField]
     private Sprite _shipSprite;
 
-    //TODO: Remove when finished
+    //TODO: Remove when finished project
     [Header("Debug Variables")]
     [SerializeField]
     private Color _debugColor;
