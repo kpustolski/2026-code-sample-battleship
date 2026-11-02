@@ -10,6 +10,10 @@ using NUnit.Framework;
 public partial class GameManager : MonoBehaviour, IGameManager
 {
     #region Unity References
+    [Header("Options")]
+    [SerializeField]
+    private Id<GameMode> _selectedGameMode = GameModeIds.Default;
+
     [Header("Asset References")]
     [SerializeField]
     private Transform _gameViewParentTransform;
@@ -44,7 +48,7 @@ public partial class GameManager : MonoBehaviour, IGameManager
     {
         this.Log("Creating game.");
         // Only default for now
-        _currentGameModeDef = GameModeDefList.GetDefById(GameModeIds.Default);
+        _currentGameModeDef = GameModeDefList.GetDefById(_selectedGameMode);
         CreatePointMap(_currentGameModeDef);
         ResetGameView();
         _debugKeyboard = Keyboard.current;
