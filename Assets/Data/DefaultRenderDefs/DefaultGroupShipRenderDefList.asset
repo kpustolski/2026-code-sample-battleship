@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: DefaultGroupShipRenderDefList
   m_EditorClassIdentifier: Assembly-CSharp::ShipRenderDefList
   ShipRenderDefs:
-  - {fileID: 11400000, guid: a6638b98bf2484a7ebc856798b9ffab4, type: 2}
   - {fileID: 11400000, guid: 83986fdfb9ba14257b97e675ae11cd0a, type: 2}
+  - {fileID: 11400000, guid: 6710625afceae434eabab4a89507c071, type: 2}
+  - {fileID: 11400000, guid: 91b20ae2239204159bd288a67fd2c89c, type: 2}
+  - {fileID: 11400000, guid: 46ad83e62aa2b4981abaaa8019b06cf5, type: 2}
+  - {fileID: 11400000, guid: bdb1de1ac6f6f47d69043e99aa4be081, type: 2}
