@@ -100,6 +100,10 @@ public class TileView : MonoBehaviour, IViewModelReceiver<TileViewModel>
             return;
 
         _coverCanvasGroupComponent.alpha = 0;
+
+        //TODO: If there's a ship, we need to track that it's been hit.
+        //TODO: If it's not a ship, we need to mark that the empty tile has been hit.
+        // TODO: Don't do anything if the tile was already revealed.
     }
     #endregion
 }

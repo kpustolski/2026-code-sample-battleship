@@ -11,6 +11,9 @@ public class TileViewModel : IViewModel
     public Point Point {get; private set;}
     public ShipRenderDef RenderDef {get; private set;}
 
+    // TODO: Dependency injection for the game manager here.
+    // TODO: We need to add logic to the GameManager to check
+    // TODO: if a ship has been hit or sunk.
     public TileViewModel(Point point)
     {
         Point = point;

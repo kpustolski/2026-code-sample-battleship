@@ -86,6 +86,17 @@ public partial class GameManager : MonoBehaviour, IGameManager
         // shipLocation.Key is the ship id. 
         return _currentGameModeRenderDef.GetShipRenderDefById(shipLocation.Key);
     }
+
+    public bool CheckForShipHit(Point hitPoint)
+    {
+        // TODO: Check if the point passed in has a ship on it.
+        // TODO: If it does, show it in the UI (this needs to be made).
+        // TODO: Determine if a ship is 'sunk'. If it is, add it to a 'sunkShip' list.
+        // TODO: This will come in handy when putting in the game loop and determining
+        // TODO: the win condition.
+        // TODO: Return true if ship was hit.
+        return false;
+    }
     #endregion
 
     #region Private Functions
