@@ -20,7 +20,7 @@ public class ShipRenderDefList : ScriptableObject
         // in it.
         if (renderDef == null)
         {
-            this.LogWarning($"Unable to find ship render def with id {shipId}. Using default render def instead.");
+            this.LogWarning($"Unable to find ship render def with id {shipId}. Defaulting to first element in ShipRenderDefs list.");
             return ShipRenderDefs[0];   
         }
             
