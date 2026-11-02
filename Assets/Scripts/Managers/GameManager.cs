@@ -22,9 +22,9 @@ public partial class GameManager : MonoBehaviour, IGameManager
     [SerializeField]
     private GameView _gameViewPrefab;
 
-    [Header("Scriptable Object Lists")]
+    [Header("Scriptable Objects")]
     [SerializeField]
-    private ShipRenderDefList _defaultShipRenderDefList;
+    private List<GameModeRenderDef> _gameModeRenderDefs = new List<GameModeRenderDef>();
     #endregion
 
     #region Variables
@@ -40,6 +40,7 @@ public partial class GameManager : MonoBehaviour, IGameManager
     #region Debug
     private Keyboard _debugKeyboard;
     private GameModeDef _currentGameModeDef;
+    private GameModeRenderDef _currentGameModeRenderDef;
     #endregion
 
     #region Unity Overrides
@@ -49,6 +50,8 @@ public partial class GameManager : MonoBehaviour, IGameManager
         this.Log("Creating game.");
         // Only default for now
         _currentGameModeDef = GameModeDefList.GetDefById(_selectedGameMode);
+        _currentGameModeRenderDef = GetGameModeRenderDef(_selectedGameMode);
+
         CreatePointMap(_currentGameModeDef);
         ResetGameView();
         _debugKeyboard = Keyboard.current;
@@ -80,7 +83,7 @@ public partial class GameManager : MonoBehaviour, IGameManager
         }));
 
         // shipLocation.Key is the ship id. 
-        return _defaultShipRenderDefList.GetShipRenderDefById(shipLocation.Key);
+        return _currentGameModeRenderDef.GetShipRenderDefById(shipLocation.Key);
     }
     #endregion
 
@@ -290,6 +293,33 @@ public partial class GameManager : MonoBehaviour, IGameManager
         }
 
         return points;
+    }
+
+    private GameModeRenderDef GetGameModeRenderDef(Id<GameMode> modeId)
+    {
+        if (_gameModeRenderDefs == null || _gameModeRenderDefs.Count == 0)
+        {
+            this.LogError($"Unable to get GameModeRenderDef! Make sure the GameModeRenderDef list in GameManager isn't empty!");
+            return null;
+        }
+
+        // If 'None' is passed in, grab whatever use the first element in the list
+        // as a fallback.
+        if (modeId == GameModeIds.None)
+        {
+            this.LogWarning($"Game mode id passed in is 'None'. Defaulting to first element in the _gameModeRenderDefs list.");
+            return _gameModeRenderDefs[0];
+        }
+
+        GameModeRenderDef renderDef = _gameModeRenderDefs.FirstOrDefault(mode => mode.GameModeId == modeId);
+
+        if (renderDef == null)
+        {
+            this.LogWarning($"Unable to find GameModeRenderDef with id {modeId}. Defaulting to first element in the _gameModeRenderDefs list.");
+            return _gameModeRenderDefs[0];
+        }
+
+        return renderDef;
     }
     #endregion
 }
