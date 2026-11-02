@@ -1,11 +1,13 @@
 using UnityEngine;
 
+/// <summary>
+/// Render def scriptable object specific to each Ship.
+/// </summary>
 [CreateAssetMenu(fileName = "ShipRenderDef", menuName = "Scriptable Objects/ShipRenderDef")]
 public class ShipRenderDef : ScriptableObject
 {
     [SerializeField]
     private Id<Ship> _shipId = ShipIds.Battleship;
-
     [SerializeField]
     private Sprite _shipSprite;
 

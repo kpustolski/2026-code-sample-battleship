@@ -2,6 +2,9 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+/// <summary>
+/// Render def scriptable object to hold themed groups of ShopRenderDef scriptable objects.
+/// </summary>
 [CreateAssetMenu(fileName = "ShipRenderDefList", menuName = "Scriptable Objects/ShipRenderDefList")]
 public class ShipRenderDefList : ScriptableObject
 {
