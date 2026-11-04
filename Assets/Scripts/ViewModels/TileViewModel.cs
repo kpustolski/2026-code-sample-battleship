@@ -38,4 +38,15 @@ public class TileViewModel : IViewModel
         DebugColor.SetAsMutable(Color.white);
         Sprite.SetAsMutable(null);
     }
+
+    public bool CheckForShipHit()
+    {
+        if (_gameManager == null)
+        {
+            this.LogError("Missing _gameManager instance.");
+            return false;
+        }
+
+        return _gameManager.CheckForShipHit(Point);;
+    }
 }

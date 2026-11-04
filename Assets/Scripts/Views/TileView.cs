@@ -97,9 +97,13 @@ public class TileView : MonoBehaviour, IViewModelReceiver<TileViewModel>
     private void OnTileClicked()
     {
         if (_coverCanvasGroupComponent == null)
-            return;
+        {
+            return;   
+        }
 
         _coverCanvasGroupComponent.alpha = 0;
+        
+        _tileViewModel.CheckForShipHit();
 
         //TODO: If there's a ship, we need to track that it's been hit.
         //TODO: If it's not a ship, we need to mark that the empty tile has been hit.
