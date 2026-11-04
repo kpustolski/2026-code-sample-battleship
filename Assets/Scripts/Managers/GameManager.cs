@@ -1,11 +1,8 @@
 using System.Collections.Generic;
-using System.ComponentModel.Design;
 using System;
 using UnityEngine;
 using System.Linq;
-using System.Text;
 using UnityEngine.InputSystem;
-using NUnit.Framework;
 
 public partial class GameManager : MonoBehaviour, IGameManager
 {
