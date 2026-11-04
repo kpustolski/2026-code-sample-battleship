@@ -7,15 +7,18 @@ public class TileViewModel : IViewModel
     public ObservableProperty<Color> DebugColor {get; set;} = new();
     public ObservableProperty<Sprite> Sprite {get; set;} = new();
 
-    // TODO: Do I need to know the point here?
     public Point Point {get; private set;}
     public ShipRenderDef RenderDef {get; private set;}
+
+    private IGameManager _gameManager;
 
     // TODO: Dependency injection for the game manager here.
     // TODO: We need to add logic to the GameManager to check
     // TODO: if a ship has been hit or sunk.
-    public TileViewModel(Point point)
+    public TileViewModel(Point point, IGameManager gameManager)
     {
+        _gameManager = gameManager;
+
         Point = point;
     }
 
