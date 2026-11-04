@@ -90,7 +90,14 @@ public class TileView : MonoBehaviour, IViewModelReceiver<TileViewModel>
 
     private void OnShipSpriteChange(Sprite _, Sprite newValue)
     {
-        // It is ok if the sprite is null since they can be "empty".
+        if (newValue == null)
+        {
+            // If there is no sprite, then it's an empty space.
+            // Color the space 'blue' for now.
+            _shipImageComponent.color = Color.blue;
+            return;
+        }
+
         _shipImageComponent.sprite = newValue;
     }
 
@@ -101,13 +108,18 @@ public class TileView : MonoBehaviour, IViewModelReceiver<TileViewModel>
             return;   
         }
 
+        // Uncover the tile
         _coverCanvasGroupComponent.alpha = 0;
-        
-        _tileViewModel.CheckForShipHit();
+        // Make sure the button is disabled so the player
+        // cannot select it again.
+        _buttonComponent.interactable = false;
+        // Check to see if a ship was hit.
+        bool shipHit = _tileViewModel.CheckForShipHit();
 
-        //TODO: If there's a ship, we need to track that it's been hit.
-        //TODO: If it's not a ship, we need to mark that the empty tile has been hit.
-        // TODO: Don't do anything if the tile was already revealed.
+        if (shipHit)
+        {
+            // TODO: Do something fancy.
+        }
     }
     #endregion
 }
