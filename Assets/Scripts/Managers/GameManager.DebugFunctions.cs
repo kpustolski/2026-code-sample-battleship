@@ -7,11 +7,7 @@ public partial class GameManager
     #region Debug Functions
     public Color DebugGetShipColorByPoint(Point point)
     {
-        var shipLocation = _shipLocations.FirstOrDefault((shipLoc =>
-        {
-            Point p = shipLoc.Value.FirstOrDefault(p => p == point);
-            return p != default;
-        }));
+        var shipLocation = GetShipLocation(point);
 
        return _currentGameModeRenderDef.GetShipRenderDefById(shipLocation.Key).DebugColor;
     }

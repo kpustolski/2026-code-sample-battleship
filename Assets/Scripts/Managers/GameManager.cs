@@ -77,11 +77,7 @@ public partial class GameManager : MonoBehaviour, IGameManager
     public ShipRenderDef GetShipRenderDefByPoint(Point point)
     {
         // Get the ship location
-        var shipLocation = _shipLocations.FirstOrDefault((shipLoc =>
-        {
-            Point p = shipLoc.Value.FirstOrDefault(p => p == point);
-            return p != default;
-        }));
+        var shipLocation = GetShipLocation(point);
 
         // shipLocation.Key is the ship id. 
         return _currentGameModeRenderDef.GetShipRenderDefById(shipLocation.Key);
@@ -332,6 +328,17 @@ public partial class GameManager : MonoBehaviour, IGameManager
         }
 
         return renderDef;
+    }
+
+    private KeyValuePair<Id<Ship>, List<Point>> GetShipLocation(Point point)
+    {
+        var shipLocation = _shipLocations.FirstOrDefault((shipLoc =>
+        {
+            Point p = shipLoc.Value.FirstOrDefault(p => p == point);
+            return p != default;
+        }));
+        
+        return shipLocation;
     }
     #endregion
 }
