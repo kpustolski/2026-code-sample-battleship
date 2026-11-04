@@ -12,9 +12,6 @@ public class TileViewModel : IViewModel
 
     private IGameManager _gameManager;
 
-    // TODO: Dependency injection for the game manager here.
-    // TODO: We need to add logic to the GameManager to check
-    // TODO: if a ship has been hit or sunk.
     public TileViewModel(Point point, IGameManager gameManager)
     {
         _gameManager = gameManager;
