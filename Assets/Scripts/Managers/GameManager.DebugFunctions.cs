@@ -34,5 +34,22 @@ public partial class GameManager
         }
         this.Log(sb.ToString());
     }
+
+    private void DebugPrintShipHealth()
+    {
+        StringBuilder sb = new StringBuilder();
+        Color color = default;
+        string htmlColor = default;
+        
+        foreach(var shipHealth in _shipHealth)
+        {
+            color = _currentGameModeRenderDef.GetShipRenderDefById(shipHealth.Key).DebugColor;
+            htmlColor = $"#{ColorUtility.ToHtmlStringRGBA(color)}";
+
+            sb.Append($"{shipHealth.Key} | <color={htmlColor}>Color</color> | Health: {shipHealth.Value}");
+            sb.AppendLine();
+        }
+        this.Log(sb.ToString());
+    }
     #endregion
 }
