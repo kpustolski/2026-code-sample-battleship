@@ -25,6 +25,9 @@ public partial class GameManager : MonoBehaviour, IGameManager
     #endregion
 
     #region Variables
+    /// <summary>
+    /// Stores the location of each ship.
+    /// </summary>
     private Dictionary<Id<Ship>, List<Point>> _shipLocations = new();
     /// <summary>
     /// Stores the health of each ship.
