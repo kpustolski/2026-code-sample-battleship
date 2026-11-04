@@ -130,6 +130,7 @@ public partial class GameManager : MonoBehaviour, IGameManager
         // Reset Game Locations.
         // Use the same game mode def as before.
         _shipLocations.Clear();
+        _shipHealth.Clear();
         CreateGameView(_currentGameModeDef);
     }
 
