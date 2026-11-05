@@ -20,6 +20,7 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
 
     //TODO Better way to store views and their view models?
     private List<TileView> _tileViewList = new List<TileView>();
+    private List<TileViewModel> _tileViewModelList = new List<TileViewModel>();
 
     // TODO: Put this in IViewModelReceiver?
     private List<IDisposable> _viewModelSubscriptionList = new List<IDisposable>();
@@ -62,12 +63,11 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
         try
         {
             // Reset tile views
-            _gameViewModel.ResetTileViewModels();
+            ResetTileMap();
 
             foreach (Point occupiedPoint in newValue)
             {
-                // Find the corresponding view model and set the tile color to red.
-                TileViewModel tileViewModel = _gameViewModel.GetTileViewModelByPoint(occupiedPoint);
+                TileViewModel tileViewModel = _tileViewModelList.FirstOrDefault(viewModel => viewModel.Point.Equals(occupiedPoint));
                 if (tileViewModel != default)
                 {
                     var renderDef = _gameViewModel.GetShipRenderDefByPoint(occupiedPoint);
@@ -80,17 +80,20 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
             this.LogError($"Unable to create a map view. Error: {e}");
         }
     }
+
     private void CreateTileMap()
     {
         // If tile views don't exist yet, create a new series of them.
         if (_tileViewList.Count == 0)
         {
-            foreach (var viewModel in _gameViewModel.TileViewModels)
+            foreach (var point in _gameViewModel.PointMap)
             {
-                TileView newView = CreateTileView(viewModel.Point);
+                TileViewModel viewModel = _gameViewModel.CreateTileViewModel(point);
+                TileView newView = CreateTileView(point);
                 newView.SetViewModel(viewModel);
 
                 _tileViewList.Add(newView);
+                _tileViewModelList.Add(viewModel);
             }
         }
     }
@@ -106,5 +109,13 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
         newView.gameObject.name = $"Tile_{point}";
 
         return newView;
+    }
+
+    public void ResetTileMap()
+    {
+        foreach (var viewModel in _tileViewModelList)
+        {
+            viewModel.Reset();
+        }
     }
 }
