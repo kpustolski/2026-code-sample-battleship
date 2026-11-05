@@ -35,6 +35,7 @@ public partial class GameManager : MonoBehaviour, IGameManager
     private Dictionary<Id<Ship>, int> _shipHealth = new();
     private List<Point> _pointMap = new List<Point>();
     private GameView _currentGameView;
+    private GameViewModel _currentGameViewModel;
     #endregion
 
     #region Properties
@@ -145,14 +146,21 @@ public partial class GameManager : MonoBehaviour, IGameManager
 
         //! Debug
         DebugPrintShipLocations();
-
-        GameViewModel gameViewModel = new GameViewModel(def.Id, GetOccupiedPoints(), this);        
+   
         if (_currentGameView == null)
         {
+            // I want to only need to have to create the game view model once instead
+            // of making it each time.
+            _currentGameViewModel = new GameViewModel(this);        
             _currentGameView = Instantiate(_gameViewPrefab, _gameViewParentTransform);
+            _currentGameView.SetViewModel(_currentGameViewModel);
         }
 
-        _currentGameView.SetViewModel(gameViewModel);
+        // If the game view already exists, then we need to reset the gameViewModel.
+        _currentGameViewModel.Reset(def.Id);
+        
+        var occupiedPoints = GetOccupiedPoints();
+        _currentGameViewModel.SetOccupiedPointList(occupiedPoints);
     }
 
     private void CreatePointMap(GameModeDef def)

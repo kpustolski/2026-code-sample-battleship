@@ -7,18 +7,15 @@ public class GameViewModel : IViewModel
 {
     public ObservableList<Point> OccupiedPointList {get; set;} = new();
 
-    public Id<GameMode> GameModeId {get; set;}
-
+    public Id<GameMode> GameModeId => _gameModeId;
     public List<Point> PointMap => _gameManager.PointMap;
 
     private IGameManager _gameManager;
+    private Id<GameMode> _gameModeId;
 
-    public GameViewModel(Id<GameMode> gameModeId, List<Point> occupiedPointList, IGameManager gameManager)
+    public GameViewModel(IGameManager gameManager)
     {
         _gameManager = gameManager;
-
-        GameModeId = gameModeId;
-        OccupiedPointList.SetAsMutable(occupiedPointList);
     }
 
     public ShipRenderDef GetShipRenderDefByPoint(Point point)
@@ -32,5 +29,15 @@ public class GameViewModel : IViewModel
     {
         TileViewModel newViewModel = new TileViewModel(point, _gameManager);
         return newViewModel;
+    }
+
+    public void SetOccupiedPointList(List<Point> occupiedPointList)
+    {
+        OccupiedPointList.SetAsMutable(occupiedPointList);
+    }
+
+    public void Reset(Id<GameMode> gameModeId)
+    {
+        _gameModeId = gameModeId;
     }
 }
