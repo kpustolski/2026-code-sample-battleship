@@ -60,10 +60,15 @@ public class TileView : MonoBehaviour, IViewModelReceiver<TileViewModel>
             return;
 
         var colorSubscription = viewModel.DebugColor.Subscribe(OnColorChange);
-        _viewModelSubscriptionList.Add(colorSubscription);
-
         var shipSpriteSubscription = viewModel.Sprite.Subscribe(OnShipSpriteChange);
+        var isButtonInteractable = viewModel.IsButtonInteractable.Subscribe(OnIsButtonInteractableChange);
+        var coverCanvasGroupAlpha = viewModel.CoverCanvasGroupAlpha.Subscribe(OnCoverCanvasGroupAlphaChange);
+
+
+        _viewModelSubscriptionList.Add(colorSubscription);
         _viewModelSubscriptionList.Add(shipSpriteSubscription);
+        _viewModelSubscriptionList.Add(isButtonInteractable);
+        _viewModelSubscriptionList.Add(coverCanvasGroupAlpha);
     }
 
     private void UnSubscribeToViewModel(TileViewModel viewModel)
@@ -71,7 +76,7 @@ public class TileView : MonoBehaviour, IViewModelReceiver<TileViewModel>
         if (viewModel == null)
             return;
     
-        // Make sure to remove the callback from the DidChange action.
+        // Make sure to remove the callback from the DidChange actions.
         foreach (var subscription in _viewModelSubscriptionList)
         {
             subscription.Dispose();
@@ -90,29 +95,42 @@ public class TileView : MonoBehaviour, IViewModelReceiver<TileViewModel>
 
     private void OnShipSpriteChange(Sprite _, Sprite newValue)
     {
+        _shipImageComponent.sprite = newValue;
+
         if (newValue == null)
         {
             // If there is no sprite, then it's an empty space.
             // Color the space 'blue' for now.
             _shipImageComponent.color = Color.blue;
+        }
+    }
+
+    private void OnIsButtonInteractableChange(bool _, bool newValue)
+    {
+        if (_buttonComponent == null)
+        {
             return;
         }
 
-        _shipImageComponent.sprite = newValue;
+        _buttonComponent.interactable = newValue;
+    }
+
+    private void OnCoverCanvasGroupAlphaChange(float _, float newValue)
+    {
+        if (_coverCanvasGroupComponent == null)
+        {
+            return;
+        }
+
+        _coverCanvasGroupComponent.alpha = newValue;
     }
 
     private void OnTileClicked()
     {
-        if (_coverCanvasGroupComponent == null)
-        {
-            return;   
-        }
-
         // Uncover the tile
-        _coverCanvasGroupComponent.alpha = 0;
-        // Make sure the button is disabled so the player
-        // cannot select it again.
-        _buttonComponent.interactable = false;
+        _tileViewModel.SetCoverImageAlpha(0.0f);
+        // Make sure the button is disabled so the player cannot select it again.
+        _tileViewModel.SetIsButtonInteractable(false);
         // Check to see if a ship was hit.
         bool shipHit = _tileViewModel.CheckForShipHit();
 
