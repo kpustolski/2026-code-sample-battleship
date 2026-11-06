@@ -8,6 +8,7 @@ public partial class GameModeDefList
             ShipGroup = ShipGroupIds.Default,
             TotalRows = 10,
             TotalColumns = 10,
+            TotalAttempts = 30
         };
     }
 }
