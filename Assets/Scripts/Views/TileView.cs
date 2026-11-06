@@ -29,13 +29,17 @@ public class TileView : MonoBehaviour, IViewModelReceiver<TileViewModel>
     private void OnEnable()
     {
         if (_buttonComponent != null)
-            _buttonComponent.onClick.AddListener(OnTileClicked);
+        {
+            _buttonComponent.onClick.AddListener(OnTileClicked);   
+        }
     }
 
     private void OnDisable()
     {
         if (_buttonComponent != null)
-            _buttonComponent.onClick.RemoveListener(OnTileClicked);
+        {
+            _buttonComponent.onClick.RemoveListener(OnTileClicked);   
+        }
     }
     #endregion
 
@@ -57,7 +61,9 @@ public class TileView : MonoBehaviour, IViewModelReceiver<TileViewModel>
     private void SubscribeToViewModel(TileViewModel viewModel)
     {
         if (viewModel == null)
-            return;
+        {
+            return;   
+        }
 
         var colorSubscription = viewModel.DebugColor.Subscribe(OnColorChange);
         var shipSpriteSubscription = viewModel.Sprite.Subscribe(OnShipSpriteChange);
@@ -74,7 +80,9 @@ public class TileView : MonoBehaviour, IViewModelReceiver<TileViewModel>
     private void UnSubscribeToViewModel(TileViewModel viewModel)
     {
         if (viewModel == null)
-            return;
+        {
+            return;   
+        }
     
         // Make sure to remove the callback from the DidChange actions.
         foreach (var subscription in _viewModelSubscriptionList)
