@@ -12,14 +12,12 @@ public class ShipHealthViewModel : IViewModel
     #region Private Variables
     private Id<Ship> _shipId;
     private int _startingHealth;
-    private IGameManager _gameManager;
     #endregion 
 
     #region Public Functions
-    public ShipHealthViewModel(Id<Ship> shipId, int startingHealth, IGameManager gameManager)
+    public ShipHealthViewModel(Id<Ship> shipId, int startingHealth)
     {
         _shipId = shipId;
-        _gameManager = gameManager;
         _startingHealth = startingHealth;
     }
 
