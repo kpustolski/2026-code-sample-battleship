@@ -191,8 +191,7 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
     #endregion
 
     #region Reset Functions
-// TODO: Move this.
-    public void ResetTileMap()
+    private void ResetTileMap()
     {
         foreach (var viewModel in _tileViewModelList)
         {
@@ -200,7 +199,7 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
         }
     }
 
-    public void ResetShipHealthViews()
+    private void ResetShipHealthViews()
     {
         foreach (var viewModel in _shipHealthViewModelList)
         {
