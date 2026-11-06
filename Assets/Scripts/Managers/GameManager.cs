@@ -31,6 +31,9 @@ public partial class GameManager : MonoBehaviour, IGameManager
     private Dictionary<Id<Ship>, List<Point>> _shipLocations = new();
     /// <summary>
     /// Stores the health of each ship.
+    /// Ideally this would be stored on the backend, 
+    /// but it'll live in the GameManager.cs since this project is
+    /// Client Side only.
     /// </summary>
     private Dictionary<Id<Ship>, int> _shipHealthList = new();
     /// <summary>
