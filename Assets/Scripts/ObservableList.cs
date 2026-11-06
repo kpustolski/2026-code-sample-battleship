@@ -28,6 +28,25 @@ public class ObservableList<T>
         }
     }
 
+    public void ReplaceElement(T newValue)
+    {
+        List<T> oldValue = new List<T>(Value);
+        var element = Value.FirstOrDefault(e => EqualityComparer<T>.Default.Equals(e, newValue));
+        if (element != null)
+        {
+            this.Log("Removing element!");
+            Value.Remove(element);
+            Value.Add(newValue);
+        }
+        this.DidChange?.Invoke(oldValue, Value);
+    }
+
+    public bool ContainsElement(T newValue)
+    {
+        var element = Value.FirstOrDefault(e => EqualityComparer<T>.Default.Equals(e, newValue));
+        return element != null;
+    }
+
     public IDisposable Subscribe(Action<List<T>, List<T>> callback)
     {
         callback(default, Value);
