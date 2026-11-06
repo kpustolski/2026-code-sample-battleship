@@ -9,10 +9,14 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
     [Header("Asset References")]
     [SerializeField]
     private Transform _tileViewParentTransform;
+    [SerializeField]
+    private Transform _shipHealthViewParentTransform;
 
     [Header("Prefabs")]
     [SerializeField]
     private TileView _tileViewPrefab;
+    [SerializeField]
+    private ShipHealthView _shipHealthViewPrefab;
     #endregion
 
     #region Variables
@@ -21,6 +25,9 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
     //TODO Better way to store views and their view models?
     private List<TileView> _tileViewList = new List<TileView>();
     private List<TileViewModel> _tileViewModelList = new List<TileViewModel>();
+
+    private List<ShipHealthView> _shipHealthViewList = new List<ShipHealthView>();
+    private List<ShipHealthViewModel> _shipHealthViewModelList = new List<ShipHealthViewModel>();
 
     // TODO: Put this in IViewModelReceiver?
     private List<IDisposable> _viewModelSubscriptionList = new List<IDisposable>();
@@ -31,6 +38,7 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
         UnSubscribeToViewModel(_gameViewModel);
         _gameViewModel = viewModel;
         
+        //TODO: What if I move this into OnOccupiedPointListChange?
         CreateTileMap();
         SubscribeToViewModel(_gameViewModel);
     }
@@ -38,16 +46,23 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
     private void SubscribeToViewModel(GameViewModel viewModel)
     {
         if (viewModel == null)
-            return;
+        {
+            return;   
+        }
 
         var occupiedPointListSubscription = viewModel.OccupiedPointList.Subscribe(OnOccupiedPointListChange);
+        var shipHealthListSubscription = viewModel.ShipHealthList.Subscribe(OnShipHealthListChange);
+
         _viewModelSubscriptionList.Add(occupiedPointListSubscription);
+        _viewModelSubscriptionList.Add(shipHealthListSubscription);
     }
 
     private void UnSubscribeToViewModel(GameViewModel viewModel)
     {
         if (viewModel == null)
-            return;
+        {
+            return;   
+        }
     
         // Make sure to remove the callback from the DidChange action.
         foreach (var subscription in _viewModelSubscriptionList)
@@ -64,6 +79,7 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
         {
             // Reset tile views
             ResetTileMap();
+            ResetShipHealthViews();
 
             foreach (Point occupiedPoint in newValue)
             {
@@ -78,6 +94,31 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
         catch (Exception e)
         {
             this.LogError($"Unable to create a map view. Error: {e}");
+        }
+    }
+
+    private void OnShipHealthListChange(List<ShipHealth> _, List<ShipHealth> newValue)
+    {
+        try
+        {
+            CreateShipHealthViews();
+
+            foreach (ShipHealth ship in newValue)
+            {
+                var viewModel = _shipHealthViewModelList.FirstOrDefault(viewModel => viewModel.ShipId == ship.ShipId);
+                if (viewModel != null)
+                {
+                    viewModel.SetHealth(ship.Health);
+                }
+                else
+                {
+                    this.LogWarning($"Unable to find ShipHealthViewModel for ship with id {ship.ShipId}.");
+                }
+            }
+        }
+        catch(Exception e)
+        {
+            this.LogError($"Unable to create ship health views. Error: {e}");
         }
     }
 
@@ -97,6 +138,23 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
             }
         }
     }
+
+    private void CreateShipHealthViews()
+    {
+        // If ship health views don't exist yet, create a new series of them.
+        if (_shipHealthViewList.Count == 0)
+        {
+            foreach (var ship in _gameViewModel.ShipHealthList.Value)
+            {
+                ShipHealthViewModel viewModel = _gameViewModel.CreateShipHealthViewModel(ship.ShipId, ship.Health);
+                ShipHealthView newView = CreateShipHealthView(ship.ShipId);
+                newView.SetViewModel(viewModel);
+
+                _shipHealthViewList.Add(newView);
+                _shipHealthViewModelList.Add(viewModel);      
+            }
+        }
+    }
     
     private TileView CreateTileView(Point point)
     {
@@ -111,9 +169,31 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
         return newView;
     }
 
+    private ShipHealthView CreateShipHealthView(Id<Ship> shipId)
+    {
+        if (_shipHealthViewPrefab == null)
+        {
+            throw new Exception("_shipHealthViewPrefab is null!");
+        }
+
+        ShipHealthView newView = Instantiate(_shipHealthViewPrefab, _shipHealthViewParentTransform);
+        newView.gameObject.name = $"HealthView_{shipId}";
+
+        return newView;
+    }
+
+// TODO: Move this.
     public void ResetTileMap()
     {
         foreach (var viewModel in _tileViewModelList)
+        {
+            viewModel.Reset();
+        }
+    }
+
+    public void ResetShipHealthViews()
+    {
+        foreach (var viewModel in _shipHealthViewModelList)
         {
             viewModel.Reset();
         }

@@ -6,6 +6,7 @@ using UnityEngine;
 public class GameViewModel : IViewModel
 {
     public ObservableList<Point> OccupiedPointList {get; set;} = new();
+    public ObservableList<ShipHealth> ShipHealthList {get; set;} = new();
 
     public Id<GameMode> GameModeId => _gameModeId;
     public List<Point> PointMap => _gameManager.PointMap;
@@ -31,9 +32,33 @@ public class GameViewModel : IViewModel
         return newViewModel;
     }
 
+    public ShipHealthViewModel CreateShipHealthViewModel(Id<Ship> shipId, int startingHealth)
+    {
+        ShipHealthViewModel newViewModel = new ShipHealthViewModel(shipId, startingHealth, _gameManager);
+        return newViewModel;
+    }
+
     public void SetOccupiedPointList(List<Point> occupiedPointList)
     {
         OccupiedPointList.SetAsMutable(occupiedPointList);
+    }
+
+    public void SetShipHealthList(List<ShipHealth> shipHealth)
+    {
+        ShipHealthList.SetAsMutable(shipHealth);
+    }
+
+    public void UpdateShipHealth(ShipHealth shipHealth)
+    {
+        var ship = ShipHealthList.Value.FirstOrDefault(health => health.ShipId == shipHealth.ShipId);
+        if (ship != null)
+        {
+            ShipHealthList.ReplaceElement(shipHealth);
+        }
+        else
+        {
+            this.LogWarning($"ShipHealthList does not contain ship id {shipHealth.ShipId}");
+        }
     }
 
     public void Reset(Id<GameMode> gameModeId)
