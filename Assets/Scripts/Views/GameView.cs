@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
@@ -11,6 +13,8 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
     private Transform _tileViewParentTransform;
     [SerializeField]
     private Transform _shipHealthViewParentTransform;
+    [SerializeField]
+    private TextMeshProUGUI _totalAttemptsLeftText;
 
     [Header("Prefabs")]
     [SerializeField]
@@ -55,9 +59,11 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
 
         var occupiedPointListSubscription = viewModel.OccupiedPointList.Subscribe(OnOccupiedPointListChange);
         var shipDtoListSubscription = viewModel.ShipDtoList.Subscribe(OnShipDtoListChange);
+        var totalAttemptsLeftSubscription = viewModel.TotalAttemptsLeft.Subscribe(OnTotalAttemptsLeftChange);
 
         _viewModelSubscriptionList.Add(occupiedPointListSubscription);
         _viewModelSubscriptionList.Add(shipDtoListSubscription);
+        _viewModelSubscriptionList.Add(totalAttemptsLeftSubscription);
     }
 
     private void UnSubscribeToViewModel(GameViewModel viewModel)
@@ -125,6 +131,17 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
         {
             this.LogError($"Unable to create ship health views. Error: {e}");
         }
+    }
+
+    private void OnTotalAttemptsLeftChange(int _, int newValue)
+    {
+        this.Log($"newValue: {newValue}");
+        if (_totalAttemptsLeftText == null)
+        {
+            return;
+        }
+
+        _totalAttemptsLeftText.text = $"Total Attempts Left: {newValue}";
     }
     #endregion
 
