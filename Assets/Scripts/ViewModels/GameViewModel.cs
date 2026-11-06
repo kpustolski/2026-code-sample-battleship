@@ -8,6 +8,7 @@ public class GameViewModel : IViewModel
     #region Observable Properties
     public ObservableList<Point> OccupiedPointList {get; set;} = new();
     public ObservableList<ShipDto> ShipDtoList {get; set;} = new();
+    public ObservableProperty<int> TotalAttemptsLeft {get; set;} = new();
     #endregion
 
     #region Properties
@@ -75,6 +76,11 @@ public class GameViewModel : IViewModel
         {
             this.LogWarning($"ShipHealthList does not contain ship id {shipDto.ShipId}");
         }
+    }
+
+    public void SetTotalAttemptsLeft(int attemptsLeft)
+    {
+        TotalAttemptsLeft.SetAsMutable(attemptsLeft);
     }
 
     public void Reset(Id<GameMode> gameModeId)
