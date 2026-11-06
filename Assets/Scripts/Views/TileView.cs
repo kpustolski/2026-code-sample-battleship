@@ -29,17 +29,21 @@ public class TileView : MonoBehaviour, IViewModelReceiver<TileViewModel>
     private void OnEnable()
     {
         if (_buttonComponent != null)
-            _buttonComponent.onClick.AddListener(OnTileClicked);
+        {
+            _buttonComponent.onClick.AddListener(OnTileClicked);   
+        }
     }
 
     private void OnDisable()
     {
         if (_buttonComponent != null)
-            _buttonComponent.onClick.RemoveListener(OnTileClicked);
+        {
+            _buttonComponent.onClick.RemoveListener(OnTileClicked);   
+        }
     }
     #endregion
 
-    #region Public Functions
+    #region IViewModelReceiver Functions
     public void SetViewModel(TileViewModel viewModel)
     {
         UnSubscribeToViewModel(_tileViewModel);
@@ -53,31 +57,42 @@ public class TileView : MonoBehaviour, IViewModelReceiver<TileViewModel>
     }
     #endregion
 
-    #region Private Functions
+    #region Subscription Functions
     private void SubscribeToViewModel(TileViewModel viewModel)
     {
         if (viewModel == null)
-            return;
+        {
+            return;   
+        }
 
         var colorSubscription = viewModel.DebugColor.Subscribe(OnColorChange);
-        _viewModelSubscriptionList.Add(colorSubscription);
-
         var shipSpriteSubscription = viewModel.Sprite.Subscribe(OnShipSpriteChange);
+        var isButtonInteractable = viewModel.IsButtonInteractable.Subscribe(OnIsButtonInteractableChange);
+        var coverCanvasGroupAlpha = viewModel.CoverCanvasGroupAlpha.Subscribe(OnCoverCanvasGroupAlphaChange);
+
+
+        _viewModelSubscriptionList.Add(colorSubscription);
         _viewModelSubscriptionList.Add(shipSpriteSubscription);
+        _viewModelSubscriptionList.Add(isButtonInteractable);
+        _viewModelSubscriptionList.Add(coverCanvasGroupAlpha);
     }
 
     private void UnSubscribeToViewModel(TileViewModel viewModel)
     {
         if (viewModel == null)
-            return;
+        {
+            return;   
+        }
     
-        // Make sure to remove the callback from the DidChange action.
+        // Make sure to remove the callback from the DidChange actions.
         foreach (var subscription in _viewModelSubscriptionList)
         {
             subscription.Dispose();
         }
     }
+    #endregion
 
+    #region Subscription Callbacks
     private void OnColorChange(Color _, Color newValue)
     {
         if (_shipBackgroundComponent == null)
@@ -90,16 +105,49 @@ public class TileView : MonoBehaviour, IViewModelReceiver<TileViewModel>
 
     private void OnShipSpriteChange(Sprite _, Sprite newValue)
     {
-        // It is ok if the sprite is null since they can be "empty".
         _shipImageComponent.sprite = newValue;
+
+        if (newValue == null)
+        {
+            // If there is no sprite, then it's an empty space.
+            // Color the space 'blue' for now.
+            _shipImageComponent.color = Color.blue;
+        }
+    }
+
+    private void OnIsButtonInteractableChange(bool _, bool newValue)
+    {
+        if (_buttonComponent == null)
+        {
+            return;
+        }
+
+        _buttonComponent.interactable = newValue;
+    }
+
+    private void OnCoverCanvasGroupAlphaChange(float _, float newValue)
+    {
+        if (_coverCanvasGroupComponent == null)
+        {
+            return;
+        }
+
+        _coverCanvasGroupComponent.alpha = newValue;
     }
 
     private void OnTileClicked()
     {
-        if (_coverCanvasGroupComponent == null)
-            return;
+        // Uncover the tile
+        _tileViewModel.SetCoverImageAlpha(0.0f);
+        // Make sure the button is disabled so the player cannot select it again.
+        _tileViewModel.SetIsButtonInteractable(false);
+        // Check to see if a ship was hit.
+        bool shipHit = _tileViewModel.CheckForShipHit();
 
-        _coverCanvasGroupComponent.alpha = 0;
+        if (shipHit)
+        {
+            // TODO: Do something fancy.
+        }
     }
     #endregion
 }

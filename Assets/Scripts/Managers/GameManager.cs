@@ -1,11 +1,8 @@
 using System.Collections.Generic;
-using System.ComponentModel.Design;
 using System;
 using UnityEngine;
 using System.Linq;
-using System.Text;
 using UnityEngine.InputSystem;
-using NUnit.Framework;
 
 public partial class GameManager : MonoBehaviour, IGameManager
 {
@@ -28,13 +25,30 @@ public partial class GameManager : MonoBehaviour, IGameManager
     #endregion
 
     #region Variables
+    /// <summary>
+    /// Stores the location of each ship.
+    /// </summary>
     private Dictionary<Id<Ship>, List<Point>> _shipLocations = new();
-    private List<Point> _pointMap = new List<Point>();
+    /// <summary>
+    /// Stores the health of each ship.
+    /// Ideally this would be stored on the backend, 
+    /// but it'll live in the GameManager.cs since this project is
+    /// Client Side only.
+    /// </summary>
+    private Dictionary<Id<Ship>, int> _shipHealthList = new();
+    /// <summary>
+    /// Stores the starting ShipDto objects that will
+    /// be passed into the GameViewModel instance.
+    /// </summary>
+    private List<ShipDto> _startingShipDtoList = new();
+    private List<Point> _pointMap = new();
     private GameView _currentGameView;
+    private GameViewModel _currentGameViewModel;
     #endregion
 
     #region Properties
     public List<Point> PointMap => _pointMap;
+    public List<ShipDto> StartingShipDtoList => _startingShipDtoList;
     #endregion
 
     #region Debug
@@ -77,26 +91,62 @@ public partial class GameManager : MonoBehaviour, IGameManager
     public ShipRenderDef GetShipRenderDefByPoint(Point point)
     {
         // Get the ship location
-        var shipLocation = _shipLocations.FirstOrDefault((shipLoc =>
-        {
-            Point p = shipLoc.Value.FirstOrDefault(p => p == point);
-            return p != default;
-        }));
+        var shipLocation = GetShipLocation(point);
 
         // shipLocation.Key is the ship id. 
         return _currentGameModeRenderDef.GetShipRenderDefById(shipLocation.Key);
     }
+
+    public bool CheckForShipHit(Point point)
+    {
+        // See if there is a ship at the point passed in.
+        var shipLocation = GetShipLocation(point);
+
+        // If the point does not match up with a ship's location,
+        // return false;
+        if (shipLocation.Key == default)
+        {
+            return false;
+        }
+
+        // A ship has been hit!
+        if (_shipHealthList.ContainsKey(shipLocation.Key))
+        {
+            int health = _shipHealthList[shipLocation.Key] - 1;
+            _shipHealthList[shipLocation.Key] = Mathf.Max(0, health);
+
+            //! Debug
+            DebugPrintShipHealth();
+
+            ShipDto shipDto = new ShipDto(shipLocation.Key, _shipHealthList[shipLocation.Key]);
+            _currentGameViewModel.UpdateShipDto(shipDto);
+
+            // TODO: Check for win condition.
+
+            return true;
+        }
+        else
+        {
+            this.LogError($"Ship with id {shipLocation.Key} has no entry in _shipHealthList.");
+        }
+        
+        return false;
+    }
     #endregion
 
-    #region Private Functions
+    #region Reset Functions
     private void ResetGameView()
     {
         // Reset Game Locations.
         // Use the same game mode def as before.
         _shipLocations.Clear();
+        _shipHealthList.Clear();
+        _startingShipDtoList.Clear();
         CreateGameView(_currentGameModeDef);
     }
+    #endregion
 
+    #region Creation Helpers
     private void CreateGameView(GameModeDef def)
     {
         if (def == null)
@@ -105,16 +155,34 @@ public partial class GameManager : MonoBehaviour, IGameManager
             return;
         }
         
-        SetShipLocations(def);
-        DebugPrintShipLocations();
+        List<ShipDef> shipDefs = ShipDefList.GetAllShipsInGroupById(def.ShipGroup);
+        SetShipLocations(shipDefs);
+        SetShipHealth(shipDefs);
+        SetShipDtoList();
 
-        GameViewModel gameViewModel = new GameViewModel(def.Id, GetOccupiedPoints(), this);        
+        //! Debug
+        DebugPrintShipLocations();
+   
         if (_currentGameView == null)
         {
+            // I want to only need to have to create the game view model once instead
+            // of making it each time.
+            _currentGameViewModel = new GameViewModel(this);        
             _currentGameView = Instantiate(_gameViewPrefab, _gameViewParentTransform);
+            _currentGameView.SetViewModel(_currentGameViewModel);
         }
 
-        _currentGameView.SetViewModel(gameViewModel);
+        // If the game view already exists, then we need to reset the gameViewModel.
+        _currentGameViewModel.Reset(def.Id);
+
+        // Make occupied points a property.
+        var occupiedPoints = GetOccupiedPoints();
+        _currentGameViewModel.SetOccupiedPointList(occupiedPoints);
+        
+        // Set up the starting ShipDto list in the Game View Model.
+        // the Game View Model will hold a copy of this list
+        // that will then be modified as the game progresses.
+        _currentGameViewModel.SetShipDtoList(StartingShipDtoList);
     }
 
     private void CreatePointMap(GameModeDef def)
@@ -143,8 +211,10 @@ public partial class GameManager : MonoBehaviour, IGameManager
             }
         }
     }
+    #endregion
 
-    private void SetShipLocations(GameModeDef def)
+    #region Set Helpers 
+    private void SetShipLocations(List<ShipDef> shipDefs)
     {
         if (_pointMap.Count == 0)
         {
@@ -153,7 +223,6 @@ public partial class GameManager : MonoBehaviour, IGameManager
         }
 
         System.Random random = new();
-        List<ShipDef> shipDefs = ShipDefList.GetAllShipsInGroupById(def.ShipGroup);
         // Make a copy of the point map to modify.
         List<Point> emptyPoints = new List<Point>(_pointMap);
         bool isLocationFound;
@@ -284,6 +353,32 @@ public partial class GameManager : MonoBehaviour, IGameManager
         }
     }
 
+    private void SetShipHealth(List<ShipDef> shipDefs)
+    {
+        if (shipDefs == null || shipDefs.Count == 0)
+        {
+            this.LogError("Unable to set ship health when there are no ships.");
+            return;
+        }
+
+        foreach (ShipDef def in shipDefs)
+        {
+            _shipHealthList.Add(def.Id, def.Size);
+        }
+    }
+
+    private void SetShipDtoList()
+    {
+        List<ShipDto> shipList = new List<ShipDto>();
+        foreach (var ship in _shipHealthList)
+        {
+            ShipDto shipDto = new ShipDto(ship.Key, ship.Value);
+            _startingShipDtoList.Add(shipDto);
+        }
+    }
+    #endregion
+
+    #region Get Helpers
     private List<Point> GetOccupiedPoints()
     {
         List<Point> points = new();
@@ -321,6 +416,17 @@ public partial class GameManager : MonoBehaviour, IGameManager
         }
 
         return renderDef;
+    }
+
+    private KeyValuePair<Id<Ship>, List<Point>> GetShipLocation(Point point)
+    {
+        var shipLocation = _shipLocations.FirstOrDefault((shipLoc =>
+        {
+            Point p = shipLoc.Value.FirstOrDefault(p => p == point);
+            return p != default;
+        }));
+        
+        return shipLocation;
     }
     #endregion
 }

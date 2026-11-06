@@ -28,6 +28,26 @@ public class ObservableList<T>
         }
     }
 
+    public void ReplaceElement(T newValue)
+    {
+        List<T> oldValue = new List<T>(Value);
+        var element = Value.FirstOrDefault(e => EqualityComparer<T>.Default.Equals(e, newValue));
+        if (element != null)
+        {
+            int elementIndex = Value.IndexOf(element);
+            Value.RemoveAt(elementIndex);
+            Value.Insert(elementIndex, newValue);
+        }
+
+        this.DidChange?.Invoke(oldValue, Value);
+    }
+
+    public bool ContainsElement(T newValue)
+    {
+        var element = Value.FirstOrDefault(e => EqualityComparer<T>.Default.Equals(e, newValue));
+        return element != null;
+    }
+
     public IDisposable Subscribe(Action<List<T>, List<T>> callback)
     {
         callback(default, Value);
@@ -35,7 +55,10 @@ public class ObservableList<T>
         return new Unsubscriber(() => DidChange -= callback);
     }
 
-    //TODO: Note from Calude
+    /// <summary>
+    /// Claude Chat suggested using this structure
+    /// for unsubscribing to Actions in the DidChange event delegate.
+    /// </summary>
     private sealed class Unsubscriber : IDisposable
     {
         private Action _unsubscribe;
