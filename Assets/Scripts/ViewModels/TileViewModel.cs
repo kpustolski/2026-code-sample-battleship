@@ -4,18 +4,27 @@ using Unity.VisualScripting;
 
 public class TileViewModel : IViewModel
 {
+    #region Constants
     private const float StartingCoverAlpha = 0.5f;
+    #endregion
 
+    #region Observable Properties
     public ObservableProperty<Color> DebugColor {get; set;} = new();
     public ObservableProperty<Sprite> Sprite {get; set;} = new();
     public ObservableProperty<float> CoverCanvasGroupAlpha {get; set;} = new();
     public ObservableProperty<bool> IsButtonInteractable {get; set;} = new();
+    #endregion
 
+    #region Properties
     public Point Point {get; private set;}
     public ShipRenderDef RenderDef {get; private set;}
+    #endregion
 
+    #region Private Variables
     private IGameManager _gameManager;
+    #endregion
 
+    #region Public Functions
     public TileViewModel(Point point, IGameManager gameManager)
     {
         _gameManager = gameManager;
@@ -62,4 +71,5 @@ public class TileViewModel : IViewModel
 
         return _gameManager.CheckForShipHit(Point);;
     }
+    #endregion
 }

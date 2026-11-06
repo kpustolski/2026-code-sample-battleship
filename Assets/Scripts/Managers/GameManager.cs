@@ -131,7 +131,7 @@ public partial class GameManager : MonoBehaviour, IGameManager
     }
     #endregion
 
-    #region Private Functions
+    #region Reset Functions
     private void ResetGameView()
     {
         // Reset Game Locations.
@@ -141,7 +141,9 @@ public partial class GameManager : MonoBehaviour, IGameManager
         _startingShipDtoList.Clear();
         CreateGameView(_currentGameModeDef);
     }
+    #endregion
 
+    #region Creation Helpers
     private void CreateGameView(GameModeDef def)
     {
         if (def == null)
@@ -206,7 +208,9 @@ public partial class GameManager : MonoBehaviour, IGameManager
             }
         }
     }
+    #endregion
 
+    #region Set Helpers 
     private void SetShipLocations(List<ShipDef> shipDefs)
     {
         if (_pointMap.Count == 0)
@@ -369,7 +373,9 @@ public partial class GameManager : MonoBehaviour, IGameManager
             _startingShipDtoList.Add(shipDto);
         }
     }
+    #endregion
 
+    #region Get Helpers
     private List<Point> GetOccupiedPoints()
     {
         List<Point> points = new();

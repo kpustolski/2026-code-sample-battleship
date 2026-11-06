@@ -5,16 +5,23 @@ using UnityEngine;
 
 public class GameViewModel : IViewModel
 {
+    #region Observable Properties
     public ObservableList<Point> OccupiedPointList {get; set;} = new();
     public ObservableList<ShipDto> ShipDtoList {get; set;} = new();
+    #endregion
 
+    #region Properties
     public Id<GameMode> GameModeId => _gameModeId;
     public List<Point> PointMap => _gameManager.PointMap;
     public List<ShipDto> StartingShipDtoList => _gameManager.StartingShipDtoList;
+    #endregion
 
+    #region Observable Properties
     private IGameManager _gameManager;
     private Id<GameMode> _gameModeId;
+    #endregion
 
+    #region Public Functions
     public GameViewModel(IGameManager gameManager)
     {
         _gameManager = gameManager;
@@ -66,4 +73,5 @@ public class GameViewModel : IViewModel
     {
         _gameModeId = gameModeId;
     }
+    #endregion
 }

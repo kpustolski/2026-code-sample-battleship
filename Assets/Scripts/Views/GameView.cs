@@ -19,7 +19,7 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
     private ShipHealthView _shipHealthViewPrefab;
     #endregion
 
-    #region Variables
+    #region Private Variables
     private GameViewModel _gameViewModel;
 
     //TODO Better way to store views and their view models?
@@ -33,6 +33,7 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
     private List<IDisposable> _viewModelSubscriptionList = new List<IDisposable>();
     #endregion
 
+    #region IViewModelReceiver Functions
     public void SetViewModel(GameViewModel viewModel)
     {
         UnSubscribeToViewModel(_gameViewModel);
@@ -42,7 +43,9 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
         CreateShipHealthViews();
         SubscribeToViewModel(_gameViewModel);
     }
+    #endregion
 
+    #region Subscription Functions
     private void SubscribeToViewModel(GameViewModel viewModel)
     {
         if (viewModel == null)
@@ -70,7 +73,9 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
             subscription.Dispose();
         }
     }
-
+    #endregion
+    
+    #region Subscription Callbacks
     private void OnOccupiedPointListChange(List<Point> _, List<Point> newValue)
     {
         // Reset the Map if it exists
@@ -121,7 +126,9 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
             this.LogError($"Unable to create ship health views. Error: {e}");
         }
     }
+    #endregion
 
+    #region Creation Functions
     private void CreateTileMap()
     {
         // If tile views don't exist yet, create a new series of them.
@@ -181,7 +188,9 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
 
         return newView;
     }
+    #endregion
 
+    #region Reset Functions
 // TODO: Move this.
     public void ResetTileMap()
     {
@@ -198,4 +207,5 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
             viewModel.Reset();
         }
     }
+    #endregion
 }

@@ -43,7 +43,7 @@ public class TileView : MonoBehaviour, IViewModelReceiver<TileViewModel>
     }
     #endregion
 
-    #region Public Functions
+    #region IViewModelReceiver Functions
     public void SetViewModel(TileViewModel viewModel)
     {
         UnSubscribeToViewModel(_tileViewModel);
@@ -57,7 +57,7 @@ public class TileView : MonoBehaviour, IViewModelReceiver<TileViewModel>
     }
     #endregion
 
-    #region Private Functions
+    #region Subscription Functions
     private void SubscribeToViewModel(TileViewModel viewModel)
     {
         if (viewModel == null)
@@ -90,7 +90,9 @@ public class TileView : MonoBehaviour, IViewModelReceiver<TileViewModel>
             subscription.Dispose();
         }
     }
+    #endregion
 
+    #region Subscription Callbacks
     private void OnColorChange(Color _, Color newValue)
     {
         if (_shipBackgroundComponent == null)

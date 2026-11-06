@@ -25,7 +25,7 @@ public class ShipHealthView : MonoBehaviour, IViewModelReceiver<ShipHealthViewMo
     }
     #endregion
 
-    #region Private Functions
+    #region Subscription Functions
     private void SubscribeToViewModel(ShipHealthViewModel viewModel)
     {
         if (viewModel == null)
@@ -50,7 +50,9 @@ public class ShipHealthView : MonoBehaviour, IViewModelReceiver<ShipHealthViewMo
             subscription.Dispose();
         }
     }
+    #endregion
 
+    #region Subscription Callbacks
     private void OnHealthChange(int _, int newValue)
     {
         if (_debugText == null)
