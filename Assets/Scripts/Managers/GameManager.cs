@@ -32,7 +32,7 @@ public partial class GameManager : MonoBehaviour, IGameManager
     /// <summary>
     /// Stores the health of each ship.
     /// </summary>
-    private Dictionary<Id<Ship>, int> _shipHealth = new();
+    private Dictionary<Id<Ship>, int> _shipHealthList = new();
     private List<Point> _pointMap = new List<Point>();
     private GameView _currentGameView;
     private GameViewModel _currentGameViewModel;
@@ -101,16 +101,16 @@ public partial class GameManager : MonoBehaviour, IGameManager
         }
 
         // A ship has been hit!
-        if (_shipHealth.ContainsKey(shipLocation.Key))
+        if (_shipHealthList.ContainsKey(shipLocation.Key))
         {
-            int health = _shipHealth[shipLocation.Key] - 1;
-            _shipHealth[shipLocation.Key] = Mathf.Max(0, health);
+            int health = _shipHealthList[shipLocation.Key] - 1;
+            _shipHealthList[shipLocation.Key] = Mathf.Max(0, health);
 
             //! Debug
             DebugPrintShipHealth();
 
-            ShipHealth shipHealth = new ShipHealth(shipLocation.Key, _shipHealth[shipLocation.Key]);
-            _currentGameViewModel.UpdateShipHealth(shipHealth);
+            ShipDto shipDto = new ShipDto(shipLocation.Key, _shipHealthList[shipLocation.Key]);
+            _currentGameViewModel.UpdateShipHealth(shipDto);
 
             // TODO: Check for win condition.
 
@@ -118,7 +118,7 @@ public partial class GameManager : MonoBehaviour, IGameManager
         }
         else
         {
-            this.LogError($"Ship with id {shipLocation.Key} has no entry in _shipHealth.");
+            this.LogError($"Ship with id {shipLocation.Key} has no entry in _shipHealthList.");
         }
         
         return false;
@@ -131,7 +131,7 @@ public partial class GameManager : MonoBehaviour, IGameManager
         // Reset Game Locations.
         // Use the same game mode def as before.
         _shipLocations.Clear();
-        _shipHealth.Clear();
+        _shipHealthList.Clear();
         CreateGameView(_currentGameModeDef);
     }
 
@@ -166,7 +166,7 @@ public partial class GameManager : MonoBehaviour, IGameManager
         _currentGameViewModel.SetOccupiedPointList(occupiedPoints);
         
         //TODO: Find a nicer way to do this. Should I convert the dictionary to a ShipHealth list?
-        var shipHealthList = GetShipHealthList();
+        var shipHealthList = GetShipDtoList();
         _currentGameViewModel.SetShipHealthList(shipHealthList);
     }
 
@@ -346,7 +346,7 @@ public partial class GameManager : MonoBehaviour, IGameManager
 
         foreach (ShipDef def in shipDefs)
         {
-            _shipHealth.Add(def.Id, def.Size);
+            _shipHealthList.Add(def.Id, def.Size);
         }
     }
 
@@ -400,16 +400,16 @@ public partial class GameManager : MonoBehaviour, IGameManager
         return shipLocation;
     }
 
-    private List<ShipHealth> GetShipHealthList()
+    private List<ShipDto> GetShipDtoList()
     {
-        List<ShipHealth> shipHealthList = new List<ShipHealth>();
-        foreach (var ship in _shipHealth)
+        List<ShipDto> shipList = new List<ShipDto>();
+        foreach (var ship in _shipHealthList)
         {
-            ShipHealth shipHealth = new ShipHealth(ship.Key, ship.Value);
-            shipHealthList.Add(shipHealth);
+            ShipDto shipDto = new ShipDto(ship.Key, ship.Value);
+            shipList.Add(shipDto);
         }
 
-        return shipHealthList;
+        return shipList;
     }
     #endregion
 }

@@ -41,7 +41,7 @@ public partial class GameManager
         Color color = default;
         string htmlColor = default;
         
-        foreach(var shipHealth in _shipHealth)
+        foreach(var shipHealth in _shipHealthList)
         {
             color = _currentGameModeRenderDef.GetShipRenderDefById(shipHealth.Key).DebugColor;
             htmlColor = $"#{ColorUtility.ToHtmlStringRGBA(color)}";

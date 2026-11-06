@@ -6,7 +6,7 @@ using UnityEngine;
 public class GameViewModel : IViewModel
 {
     public ObservableList<Point> OccupiedPointList {get; set;} = new();
-    public ObservableList<ShipHealth> ShipHealthList {get; set;} = new();
+    public ObservableList<ShipDto> ShipDtoList {get; set;} = new();
 
     public Id<GameMode> GameModeId => _gameModeId;
     public List<Point> PointMap => _gameManager.PointMap;
@@ -43,17 +43,17 @@ public class GameViewModel : IViewModel
         OccupiedPointList.SetAsMutable(occupiedPointList);
     }
 
-    public void SetShipHealthList(List<ShipHealth> shipHealth)
+    public void SetShipHealthList(List<ShipDto> shipHealth)
     {
-        ShipHealthList.SetAsMutable(shipHealth);
+        ShipDtoList.SetAsMutable(shipHealth);
     }
 
-    public void UpdateShipHealth(ShipHealth shipHealth)
+    public void UpdateShipHealth(ShipDto shipHealth)
     {
-        var ship = ShipHealthList.Value.FirstOrDefault(health => health.ShipId == shipHealth.ShipId);
+        var ship = ShipDtoList.Value.FirstOrDefault(health => health.ShipId == shipHealth.ShipId);
         if (ship != null)
         {
-            ShipHealthList.ReplaceElement(shipHealth);
+            ShipDtoList.ReplaceElement(shipHealth);
         }
         else
         {

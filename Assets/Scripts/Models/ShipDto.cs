@@ -1,11 +1,14 @@
 using System;
 
-public struct ShipHealth : IEquatable<ShipHealth>
+/// <summary>
+/// Data Transfer Object for Ships.
+/// </summary>
+public struct ShipDto: IEquatable<ShipDto>
 {
     public Id<Ship> ShipId {get; private set;}
     public int Health { get; private set;}
 
-    public ShipHealth(Id<Ship> shipId, int health)
+    public ShipDto(Id<Ship> shipId, int health)
     {
         ShipId = shipId;
         Health = health;
@@ -16,19 +19,19 @@ public struct ShipHealth : IEquatable<ShipHealth>
         return $"Id: {ShipId} | Health {Health}";
     }
     
-    public bool Equals(ShipHealth other)
+    public bool Equals(ShipDto other)
     {
         return this.ShipId == other.ShipId;
     }
 
     public override bool Equals(object obj)
     {
-        if (obj is not ShipHealth || obj is null)
+        if (obj is not ShipDto || obj is null)
         {
             return false;
         }
         
-        ShipHealth other = (ShipHealth)obj;
+        ShipDto other = (ShipDto)obj;
         return Equals(other);
     }
 
@@ -38,12 +41,12 @@ public struct ShipHealth : IEquatable<ShipHealth>
     }
 
 #region Operator Overloads
-    public static bool operator ==(ShipHealth left, ShipHealth right)
+    public static bool operator ==(ShipDto left, ShipDto right)
     {
         return left.Equals(right);
     }
 
-    public static bool operator !=(ShipHealth left, ShipHealth right)
+    public static bool operator !=(ShipDto left, ShipDto right)
     {
         return !left.Equals(right);
     }

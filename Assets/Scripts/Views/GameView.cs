@@ -51,10 +51,10 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
         }
 
         var occupiedPointListSubscription = viewModel.OccupiedPointList.Subscribe(OnOccupiedPointListChange);
-        var shipHealthListSubscription = viewModel.ShipHealthList.Subscribe(OnShipHealthListChange);
+        var shipDtoListSubscription = viewModel.ShipDtoList.Subscribe(OnShipDtoListChange);
 
         _viewModelSubscriptionList.Add(occupiedPointListSubscription);
-        _viewModelSubscriptionList.Add(shipHealthListSubscription);
+        _viewModelSubscriptionList.Add(shipDtoListSubscription);
     }
 
     private void UnSubscribeToViewModel(GameViewModel viewModel)
@@ -97,13 +97,13 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
         }
     }
 
-    private void OnShipHealthListChange(List<ShipHealth> _, List<ShipHealth> newValue)
+    private void OnShipDtoListChange(List<ShipDto> _, List<ShipDto> newValue)
     {
         try
         {
             CreateShipHealthViews();
 
-            foreach (ShipHealth ship in newValue)
+            foreach (ShipDto ship in newValue)
             {
                 var viewModel = _shipHealthViewModelList.FirstOrDefault(viewModel => viewModel.ShipId == ship.ShipId);
                 if (viewModel != null)
@@ -144,7 +144,7 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
         // If ship health views don't exist yet, create a new series of them.
         if (_shipHealthViewList.Count == 0)
         {
-            foreach (var ship in _gameViewModel.ShipHealthList.Value)
+            foreach (var ship in _gameViewModel.ShipDtoList.Value)
             {
                 ShipHealthViewModel viewModel = _gameViewModel.CreateShipHealthViewModel(ship.ShipId, ship.Health);
                 ShipHealthView newView = CreateShipHealthView(ship.ShipId);
