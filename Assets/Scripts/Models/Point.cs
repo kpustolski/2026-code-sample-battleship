@@ -4,8 +4,8 @@ using System.Text;
 
 public struct Point : IEquatable<Point>
 {
-    public float X {get;}
-    public float Y {get;}
+    public float X {get; private set;}
+    public float Y {get; private set;}
 
     public Point(float xCord, float yCord)
     {
