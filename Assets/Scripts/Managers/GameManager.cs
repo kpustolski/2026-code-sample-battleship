@@ -44,6 +44,7 @@ public partial class GameManager : MonoBehaviour, IGameManager
     private List<Point> _pointMap = new();
     private GameView _currentGameView;
     private GameViewModel _currentGameViewModel;
+    private int _totalAttemptsLeft;
     #endregion
 
     #region Properties
@@ -99,6 +100,10 @@ public partial class GameManager : MonoBehaviour, IGameManager
 
     public bool CheckForShipHit(Point point)
     {
+        // Decrease the number of attempts left.
+        _totalAttemptsLeft -= 1;
+        _currentGameViewModel.SetTotalAttemptsLeft(_totalAttemptsLeft);
+
         // See if there is a ship at the point passed in.
         var shipLocation = GetShipLocation(point);
 
@@ -174,6 +179,10 @@ public partial class GameManager : MonoBehaviour, IGameManager
 
         // If the game view already exists, then we need to reset the gameViewModel.
         _currentGameViewModel.Reset(def.Id);
+
+        // Set the number of attempts the player has to win the game.
+        _totalAttemptsLeft = def.MaximumAttempts;
+        _currentGameViewModel.SetTotalAttemptsLeft(_totalAttemptsLeft);
 
         // Make occupied points a property.
         var occupiedPoints = GetOccupiedPoints();
