@@ -105,9 +105,12 @@ public partial class GameManager : MonoBehaviour, IGameManager
         {
             int health = _shipHealth[shipLocation.Key] - 1;
             _shipHealth[shipLocation.Key] = Mathf.Max(0, health);
-            
+
             //! Debug
             DebugPrintShipHealth();
+
+            ShipHealth shipHealth = new ShipHealth(shipLocation.Key, _shipHealth[shipLocation.Key]);
+            _currentGameViewModel.UpdateShipHealth(shipHealth);
 
             // TODO: Check for win condition.
 
@@ -158,9 +161,13 @@ public partial class GameManager : MonoBehaviour, IGameManager
 
         // If the game view already exists, then we need to reset the gameViewModel.
         _currentGameViewModel.Reset(def.Id);
-        
+
         var occupiedPoints = GetOccupiedPoints();
         _currentGameViewModel.SetOccupiedPointList(occupiedPoints);
+        
+        //TODO: Find a nicer way to do this. Should I convert the dictionary to a ShipHealth list?
+        var shipHealthList = GetShipHealthList();
+        _currentGameViewModel.SetShipHealthList(shipHealthList);
     }
 
     private void CreatePointMap(GameModeDef def)
@@ -391,6 +398,18 @@ public partial class GameManager : MonoBehaviour, IGameManager
         }));
         
         return shipLocation;
+    }
+
+    private List<ShipHealth> GetShipHealthList()
+    {
+        List<ShipHealth> shipHealthList = new List<ShipHealth>();
+        foreach (var ship in _shipHealth)
+        {
+            ShipHealth shipHealth = new ShipHealth(ship.Key, ship.Value);
+            shipHealthList.Add(shipHealth);
+        }
+
+        return shipHealthList;
     }
     #endregion
 }
