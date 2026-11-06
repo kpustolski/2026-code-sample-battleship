@@ -33,13 +33,19 @@ public partial class GameManager : MonoBehaviour, IGameManager
     /// Stores the health of each ship.
     /// </summary>
     private Dictionary<Id<Ship>, int> _shipHealthList = new();
-    private List<Point> _pointMap = new List<Point>();
+    /// <summary>
+    /// Stores the starting ShipDto objects that will
+    /// be passed into the GameViewModel instance.
+    /// </summary>
+    private List<ShipDto> _startingShipDtoList = new();
+    private List<Point> _pointMap = new();
     private GameView _currentGameView;
     private GameViewModel _currentGameViewModel;
     #endregion
 
     #region Properties
     public List<Point> PointMap => _pointMap;
+    public List<ShipDto> StartingShipDtoList => _startingShipDtoList;
     #endregion
 
     #region Debug
@@ -110,7 +116,7 @@ public partial class GameManager : MonoBehaviour, IGameManager
             DebugPrintShipHealth();
 
             ShipDto shipDto = new ShipDto(shipLocation.Key, _shipHealthList[shipLocation.Key]);
-            _currentGameViewModel.UpdateShipHealth(shipDto);
+            _currentGameViewModel.UpdateShipDto(shipDto);
 
             // TODO: Check for win condition.
 
@@ -132,6 +138,7 @@ public partial class GameManager : MonoBehaviour, IGameManager
         // Use the same game mode def as before.
         _shipLocations.Clear();
         _shipHealthList.Clear();
+        _startingShipDtoList.Clear();
         CreateGameView(_currentGameModeDef);
     }
 
@@ -146,6 +153,7 @@ public partial class GameManager : MonoBehaviour, IGameManager
         List<ShipDef> shipDefs = ShipDefList.GetAllShipsInGroupById(def.ShipGroup);
         SetShipLocations(shipDefs);
         SetShipHealth(shipDefs);
+        SetShipDtoList();
 
         //! Debug
         DebugPrintShipLocations();
@@ -162,12 +170,14 @@ public partial class GameManager : MonoBehaviour, IGameManager
         // If the game view already exists, then we need to reset the gameViewModel.
         _currentGameViewModel.Reset(def.Id);
 
+        // Make occupied points a property.
         var occupiedPoints = GetOccupiedPoints();
         _currentGameViewModel.SetOccupiedPointList(occupiedPoints);
         
-        //TODO: Find a nicer way to do this. Should I convert the dictionary to a ShipHealth list?
-        var shipHealthList = GetShipDtoList();
-        _currentGameViewModel.SetShipHealthList(shipHealthList);
+        // Set up the starting ShipDto list in the Game View Model.
+        // the Game View Model will hold a copy of this list
+        // that will then be modified as the game progresses.
+        _currentGameViewModel.SetShipDtoList(StartingShipDtoList);
     }
 
     private void CreatePointMap(GameModeDef def)
@@ -350,6 +360,16 @@ public partial class GameManager : MonoBehaviour, IGameManager
         }
     }
 
+    private void SetShipDtoList()
+    {
+        List<ShipDto> shipList = new List<ShipDto>();
+        foreach (var ship in _shipHealthList)
+        {
+            ShipDto shipDto = new ShipDto(ship.Key, ship.Value);
+            _startingShipDtoList.Add(shipDto);
+        }
+    }
+
     private List<Point> GetOccupiedPoints()
     {
         List<Point> points = new();
@@ -398,18 +418,6 @@ public partial class GameManager : MonoBehaviour, IGameManager
         }));
         
         return shipLocation;
-    }
-
-    private List<ShipDto> GetShipDtoList()
-    {
-        List<ShipDto> shipList = new List<ShipDto>();
-        foreach (var ship in _shipHealthList)
-        {
-            ShipDto shipDto = new ShipDto(ship.Key, ship.Value);
-            shipList.Add(shipDto);
-        }
-
-        return shipList;
     }
     #endregion
 }

@@ -38,8 +38,8 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
         UnSubscribeToViewModel(_gameViewModel);
         _gameViewModel = viewModel;
         
-        //TODO: What if I move this into OnOccupiedPointListChange?
         CreateTileMap();
+        CreateShipHealthViews();
         SubscribeToViewModel(_gameViewModel);
     }
 
@@ -79,6 +79,8 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
         {
             // Reset tile views
             ResetTileMap();
+            // The occupied point list changes when we reset the game.
+            // So we'll want to also reset the health views as well.
             ResetShipHealthViews();
 
             foreach (Point occupiedPoint in newValue)
@@ -101,8 +103,6 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
     {
         try
         {
-            CreateShipHealthViews();
-
             foreach (ShipDto ship in newValue)
             {
                 var viewModel = _shipHealthViewModelList.FirstOrDefault(viewModel => viewModel.ShipId == ship.ShipId);
@@ -144,7 +144,7 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
         // If ship health views don't exist yet, create a new series of them.
         if (_shipHealthViewList.Count == 0)
         {
-            foreach (var ship in _gameViewModel.ShipDtoList.Value)
+            foreach (var ship in _gameViewModel.StartingShipDtoList)
             {
                 ShipHealthViewModel viewModel = _gameViewModel.CreateShipHealthViewModel(ship.ShipId, ship.Health);
                 ShipHealthView newView = CreateShipHealthView(ship.ShipId);

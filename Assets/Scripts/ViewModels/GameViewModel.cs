@@ -10,6 +10,7 @@ public class GameViewModel : IViewModel
 
     public Id<GameMode> GameModeId => _gameModeId;
     public List<Point> PointMap => _gameManager.PointMap;
+    public List<ShipDto> StartingShipDtoList => _gameManager.StartingShipDtoList;
 
     private IGameManager _gameManager;
     private Id<GameMode> _gameModeId;
@@ -43,21 +44,21 @@ public class GameViewModel : IViewModel
         OccupiedPointList.SetAsMutable(occupiedPointList);
     }
 
-    public void SetShipHealthList(List<ShipDto> shipHealth)
+    public void SetShipDtoList(List<ShipDto> shipDtoList)
     {
-        ShipDtoList.SetAsMutable(shipHealth);
+        ShipDtoList.SetAsMutable(shipDtoList);
     }
 
-    public void UpdateShipHealth(ShipDto shipHealth)
+    public void UpdateShipDto(ShipDto shipDto)
     {
-        var ship = ShipDtoList.Value.FirstOrDefault(health => health.ShipId == shipHealth.ShipId);
+        var ship = ShipDtoList.Value.FirstOrDefault(health => health.ShipId == shipDto.ShipId);
         if (ship != null)
         {
-            ShipDtoList.ReplaceElement(shipHealth);
+            ShipDtoList.ReplaceElement(shipDto);
         }
         else
         {
-            this.LogWarning($"ShipHealthList does not contain ship id {shipHealth.ShipId}");
+            this.LogWarning($"ShipHealthList does not contain ship id {shipDto.ShipId}");
         }
     }
 
