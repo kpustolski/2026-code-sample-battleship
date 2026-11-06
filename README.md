@@ -3,8 +3,8 @@
 
 Mind the dust. This project is currently a work in progress!
 
-## Screenshots
-<img width="400" alt="Screenshot 2026-09-17 at 5 11 29 PM" src="https://github.com/user-attachments/assets/6170edf1-83e2-401a-bcc2-328ea1453e2c" />
+## Up-to-date Screenshots
+<img width="500" alt="Screenshot 2026-11-06 at 2 36 41 PM" src="https://github.com/user-attachments/assets/61a7299e-7869-45a6-9341-1079c9ae2447" />
 
 ## Debug Icon Sources
 
