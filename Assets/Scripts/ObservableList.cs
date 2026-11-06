@@ -55,7 +55,10 @@ public class ObservableList<T>
         return new Unsubscriber(() => DidChange -= callback);
     }
 
-    //TODO: Note from Calude
+    /// <summary>
+    /// Claude Chat suggested using this structure
+    /// for unsubscribing to Actions in the DidChange event delegate.
+    /// </summary>
     private sealed class Unsubscriber : IDisposable
     {
         private Action _unsubscribe;
