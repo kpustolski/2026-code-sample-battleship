@@ -34,10 +34,11 @@ public class ObservableList<T>
         var element = Value.FirstOrDefault(e => EqualityComparer<T>.Default.Equals(e, newValue));
         if (element != null)
         {
-            this.Log("Removing element!");
-            Value.Remove(element);
-            Value.Add(newValue);
+            int elementIndex = Value.IndexOf(element);
+            Value.RemoveAt(elementIndex);
+            Value.Insert(elementIndex, newValue);
         }
+
         this.DidChange?.Invoke(oldValue, Value);
     }
 
