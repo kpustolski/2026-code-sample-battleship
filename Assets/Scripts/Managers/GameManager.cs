@@ -181,7 +181,7 @@ public partial class GameManager : MonoBehaviour, IGameManager
         _currentGameViewModel.Reset(def.Id);
 
         // Set the number of attempts the player has to win the game.
-        _totalAttemptsLeft = def.MaximumAttempts;
+        _totalAttemptsLeft = def.TotalAttempts;
         _currentGameViewModel.SetTotalAttemptsLeft(_totalAttemptsLeft);
 
         // Make occupied points a property.
