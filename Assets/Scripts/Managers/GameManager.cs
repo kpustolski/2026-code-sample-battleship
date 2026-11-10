@@ -100,22 +100,16 @@ public partial class GameManager : MonoBehaviour, IGameManager
 
     public bool CheckForShipHit(Point point)
     {
+        bool didHitShip = false;
         // Decrease the number of attempts left.
-        _totalAttemptsLeft -= 1;
+        _totalAttemptsLeft = Mathf.Max(0, _totalAttemptsLeft - 1);
         _currentGameViewModel.SetTotalAttemptsLeft(_totalAttemptsLeft);
 
         // See if there is a ship at the point passed in.
         var shipLocation = GetShipLocation(point);
 
-        // If the point does not match up with a ship's location,
-        // return false;
-        if (shipLocation.Key == default)
-        {
-            return false;
-        }
-
         // A ship has been hit!
-        if (_shipHealthList.ContainsKey(shipLocation.Key))
+        if (shipLocation.Key != default && _shipHealthList.ContainsKey(shipLocation.Key))
         {
             int health = _shipHealthList[shipLocation.Key] - 1;
             _shipHealthList[shipLocation.Key] = Mathf.Max(0, health);
@@ -126,16 +120,22 @@ public partial class GameManager : MonoBehaviour, IGameManager
             ShipDto shipDto = new ShipDto(shipLocation.Key, _shipHealthList[shipLocation.Key]);
             _currentGameViewModel.UpdateShipDto(shipDto);
 
-            // TODO: Check for win condition.
-
-            return true;
+            didHitShip = true;
         }
-        else
+
+        // Check for win condition.
+        bool allShipsSunk = _shipHealthList.All(ship => ship.Value == 0);
+        if (allShipsSunk)
         {
-            this.LogError($"Ship with id {shipLocation.Key} has no entry in _shipHealthList.");
+            this.Log("You win!");
+        }
+
+        if (!allShipsSunk && _totalAttemptsLeft <= 0)
+        {
+            this.Log("You lose!");
         }
         
-        return false;
+        return didHitShip;
     }
     #endregion
 
