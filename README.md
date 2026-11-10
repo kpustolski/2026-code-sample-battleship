@@ -14,4 +14,11 @@ Mind the dust. This project is currently a work in progress!
 * Tugboat by Hamz Studio from <a href="https://thenounproject.com/browse/icons/term/tugboat/" target="_blank" title="Tugboat Icons">Noun Project</a> (CC BY 3.0)
 * Ship by Maxicons from <a href="https://thenounproject.com/browse/icons/term/ship/" target="_blank" title="Ship Icons">Noun Project</a> (CC BY 3.0)
 
-More description TBD.
+
+## Generative AI Usage Disclosure
+For this project I am using Claude Chat to help review known programming design patterns when I'm unable to find adequate results with web search engines (Google, Duck Duck Go, etc.). There are very specific pieces of code in this repository where I did need some problem solving support, such as making a dropdown available in the Unity Inspector for strongly typed ids. I've added comments to the code where this applies. If code does not have comments specifically about Claude, it's safe to assume I wrote it myself.
+
+No generative AI has been used on any of the prefabs or art assets in the project.
+
+
+
