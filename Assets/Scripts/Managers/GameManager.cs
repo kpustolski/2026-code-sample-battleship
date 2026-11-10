@@ -106,18 +106,18 @@ public partial class GameManager : MonoBehaviour, IGameManager
         _currentGameViewModel.SetTotalAttemptsLeft(_totalAttemptsLeft);
 
         // See if there is a ship at the point passed in.
+        // [Key: Ship Id, Value: Health]
         var shipLocation = GetShipLocation(point);
 
         // A ship has been hit!
         if (shipLocation.Key != default && _shipHealthList.ContainsKey(shipLocation.Key))
         {
-            int health = _shipHealthList[shipLocation.Key] - 1;
-            _shipHealthList[shipLocation.Key] = Mathf.Max(0, health);
+            _shipHealthList[shipLocation.Key] = Mathf.Max(0, _shipHealthList[shipLocation.Key] - 1);
 
             //! Debug
             DebugPrintShipHealth();
 
-            ShipDto shipDto = new ShipDto(shipLocation.Key, _shipHealthList[shipLocation.Key]);
+            ShipDto shipDto = new ShipDto(shipId: shipLocation.Key, health: _shipHealthList[shipLocation.Key]);
             _currentGameViewModel.UpdateShipDto(shipDto);
 
             didHitShip = true;
