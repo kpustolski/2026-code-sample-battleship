@@ -48,29 +48,26 @@ public class ObservableList<T>
         return element != null;
     }
 
-    public IDisposable Subscribe(Action<List<T>, List<T>> callback)
+    public void Subscribe(Action<List<T>, List<T>> callback)
     {
+        if (callback == null)
+        {
+            this.LogError("Callback is null!");
+            return;
+        }
+
         callback(default, Value);
         DidChange += callback;
-        return new Unsubscriber(() => DidChange -= callback);
     }
 
-    /// <summary>
-    /// Claude Chat suggested using this structure
-    /// for unsubscribing to Actions in the DidChange event delegate.
-    /// </summary>
-    private sealed class Unsubscriber : IDisposable
+    public void Unsubscribe(Action<List<T>, List<T>> callback)
     {
-        private Action _unsubscribe;
-
-        public Unsubscriber(Action unsubscribe)
+        if (callback == null)
         {
-            _unsubscribe = unsubscribe;
+            this.LogError("Callback is null!");
+            return;
         }
 
-        public void Dispose()
-        {
-            _unsubscribe?.Invoke();
-        }
+        DidChange -= callback;
     }
 }

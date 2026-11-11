@@ -27,18 +27,26 @@ public class ObservableProperty<T>
         }
     }
 
-    public IDisposable Subscribe(Action<T, T> callback)
+    public void Subscribe(Action<T, T> callback)
     {
+        if (callback == null)
+        {
+            this.LogError("Callback is null!");
+            return;
+        }
+
         callback(default, Value);
         DidChange += callback;
-        return new Unsubscriber(() => DidChange -= callback);
     }
 
-    // Note from Calude
-    private sealed class Unsubscriber : IDisposable
+    public void Unsubscribe(Action<T, T> callback)
     {
-        private readonly Action _unsubscribe;
-        public Unsubscriber(Action unsubscribe) => _unsubscribe = unsubscribe;
-        public void Dispose() => _unsubscribe();
+        if (callback == null)
+        {
+            this.LogError("Callback is null!");
+            return;
+        }
+
+        DidChange -= callback;
     }
 }
