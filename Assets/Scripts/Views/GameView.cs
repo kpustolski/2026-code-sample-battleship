@@ -32,9 +32,6 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
 
     private List<ShipHealthView> _shipHealthViewList = new List<ShipHealthView>();
     private List<ShipHealthViewModel> _shipHealthViewModelList = new List<ShipHealthViewModel>();
-
-    // TODO: Put this in IViewModelReceiver?
-    private List<IDisposable> _viewModelSubscriptionList = new List<IDisposable>();
     #endregion
 
     #region IViewModelReceiver Functions
@@ -57,13 +54,9 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
             return;   
         }
 
-        var occupiedPointListSubscription = viewModel.OccupiedPointList.Subscribe(OnOccupiedPointListChange);
-        var shipDtoListSubscription = viewModel.ShipDtoList.Subscribe(OnShipDtoListChange);
-        var totalAttemptsLeftSubscription = viewModel.TotalAttemptsLeft.Subscribe(OnTotalAttemptsLeftChange);
-
-        _viewModelSubscriptionList.Add(occupiedPointListSubscription);
-        _viewModelSubscriptionList.Add(shipDtoListSubscription);
-        _viewModelSubscriptionList.Add(totalAttemptsLeftSubscription);
+        viewModel.OccupiedPointList.Subscribe(OnOccupiedPointListChange);
+        viewModel.ShipDtoList.Subscribe(OnShipDtoListChange);
+        viewModel.TotalAttemptsLeft.Subscribe(OnTotalAttemptsLeftChange);
     }
 
     private void UnSubscribeToViewModel(GameViewModel viewModel)
@@ -73,11 +66,9 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
             return;   
         }
     
-        // Make sure to remove the callback from the DidChange action.
-        foreach (var subscription in _viewModelSubscriptionList)
-        {
-            subscription.Dispose();
-        }
+        viewModel.OccupiedPointList.Unsubscribe(OnOccupiedPointListChange);
+        viewModel.ShipDtoList.Unsubscribe(OnShipDtoListChange);
+        viewModel.TotalAttemptsLeft.Unsubscribe(OnTotalAttemptsLeftChange);
     }
     #endregion
     
