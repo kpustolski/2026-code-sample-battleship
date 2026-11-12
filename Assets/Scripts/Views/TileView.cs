@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -81,12 +79,6 @@ public class TileView : MonoBehaviour, IViewModelReceiver<TileViewModel>
         viewModel.Sprite.Unsubscribe(OnShipSpriteChange);
         viewModel.IsButtonInteractable.Unsubscribe(OnIsButtonInteractableChange);
         viewModel.CoverCanvasGroupAlpha.Unsubscribe(OnCoverCanvasGroupAlphaChange);
-    
-        // // Make sure to remove the callback from the DidChange actions.
-        // foreach (var subscription in _viewModelSubscriptionList)
-        // {
-        //     subscription.Dispose();
-        // }
     }
     #endregion
 
