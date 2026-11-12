@@ -11,15 +11,10 @@ public class OverlayViewModel : IViewModel
     #region Properties
     public Action ActionButtonCallback {get; private set;}
     #endregion
-
-    #region Private Variables
-    private IGameManager _gameManager;
-    #endregion
     
     #region Public Functions
-    public OverlayViewModel(IGameManager gameManager, string titleTextString, string actionButtonTextString, bool showView, Action actionButtonCallback = null)
+    public OverlayViewModel(string titleTextString, string actionButtonTextString, bool showView, Action actionButtonCallback = null)
     {
-        _gameManager = gameManager;
         ActionButtonCallback = actionButtonCallback;
 
         SetTitleTextString(titleTextString);

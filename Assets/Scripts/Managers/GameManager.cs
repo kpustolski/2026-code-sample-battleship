@@ -273,7 +273,6 @@ public partial class GameManager : MonoBehaviour, IGameManager
         if (_currentGameOverOverlayView == null)
         {
             _currentGameOverOverlayViewModel = new OverlayViewModel(
-                gameManager: this, 
                 titleTextString: titleTextString,
                 actionButtonTextString: actionButtonTextString,
                 showView: showView,
