@@ -14,10 +14,14 @@ public partial class GameManager : MonoBehaviour, IGameManager
     [Header("Asset References")]
     [SerializeField]
     private Transform _gameViewParentTransform;
+    [SerializeField]
+    private Transform _overlayViewParentTransform;
 
     [Header("Prefabs")]
     [SerializeField]
     private GameView _gameViewPrefab;
+    [SerializeField]
+    private OverlayView _overlayViewPrefab;
 
     [Header("Scriptable Objects")]
     [SerializeField]
@@ -42,6 +46,9 @@ public partial class GameManager : MonoBehaviour, IGameManager
     /// </summary>
     private List<ShipDto> _startingShipDtoList = new();
     private List<Point> _pointMap = new();
+
+    private OverlayView _currentGameOverOverlayView;
+    private OverlayViewModel _currentGameOverOverlayViewModel;
     private GameView _currentGameView;
     private GameViewModel _currentGameViewModel;
     private int _totalAttemptsLeft;
@@ -127,21 +134,29 @@ public partial class GameManager : MonoBehaviour, IGameManager
         bool allShipsSunk = _shipHealthList.All(ship => ship.Value == 0);
         if (allShipsSunk)
         {
-            this.Log("You win!");
+            UpdateGameOverOverlayView(
+                titleTextString: Constants.YouWinString, 
+                actionButtonTextString: Constants.PlayAgainString,
+                showView: true);
         }
 
         if (!allShipsSunk && _totalAttemptsLeft <= 0)
         {
-            this.Log("You lose!");
+            UpdateGameOverOverlayView(titleTextString: Constants.YouLoseString, 
+            actionButtonTextString: Constants.PlayAgainString,
+            showView: true);
         }
         
         return didHitShip;
     }
-    #endregion
 
-    #region Reset Functions
-    private void ResetGameView()
+    public void ResetGameView()
     {
+        if (_currentGameOverOverlayViewModel != null)
+        {
+            _currentGameOverOverlayViewModel.SetShowOverlayView(false);
+        }
+
         // Reset Game Locations.
         // Use the same game mode def as before.
         _shipLocations.Clear();
@@ -219,6 +234,44 @@ public partial class GameManager : MonoBehaviour, IGameManager
                 _pointMap.Add(point);
             }
         }
+    }
+
+    private void UpdateGameOverOverlayView(string titleTextString, string actionButtonTextString, bool showView)
+    {
+        if (_overlayViewPrefab == null)
+        {
+            this.LogError("_overlayViewPrefab is null. Unable to create overlay view.");
+            return;
+        }
+
+        // Create a new game over overlay view if one hasn't been created yet.
+        // This view will persist in the object hierarchy after it is created.
+        if (_currentGameOverOverlayView == null)
+        {
+            _currentGameOverOverlayViewModel = new OverlayViewModel(
+                gameManager: this, 
+                titleTextString: titleTextString,
+                actionButtonTextString: actionButtonTextString,
+                showView: showView,
+                actionButtonCallback: ()=>
+                {
+                    _currentGameOverOverlayViewModel.SetShowOverlayView(false);
+                    ResetGameView();
+                });
+
+            _currentGameOverOverlayView = Instantiate(_overlayViewPrefab, _overlayViewParentTransform);
+            _currentGameOverOverlayView.SetViewModel(_currentGameOverOverlayViewModel);
+        }
+        // Otherwise a game overlay view already exists.
+        else
+        {
+            if (!string.IsNullOrEmpty(titleTextString))
+            {
+                _currentGameOverOverlayViewModel.SetTitleTextString(titleTextString);
+            }
+        }
+
+        _currentGameOverOverlayViewModel.SetShowOverlayView(showView);
     }
     #endregion
 
