@@ -3,8 +3,9 @@
 
 Mind the dust. This project is currently a work in progress!
 
-## Up-to-date Screenshots
-<img width="500" alt="Screenshot 2026-11-06 at 2 36 41 PM" src="https://github.com/user-attachments/assets/61a7299e-7869-45a6-9341-1079c9ae2447" />
+## Work In Progress Video
+
+https://github.com/user-attachments/assets/10205139-9669-4721-b863-2cf18650f4f2
 
 ## Debug Icon Sources
 
