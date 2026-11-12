@@ -4,4 +4,5 @@ public class GameModeDef
     public Id<ShipGroup> ShipGroup;
     public int TotalRows;
     public int TotalColumns;
+    public int TotalAttempts;
 }

@@ -12,7 +12,8 @@ public struct Id<T> : IEquatable<Id<T>>
     // Using a string variable type here instead
     // of something better memory-wise (like Guid)
     // so it's more readable at a glance.
-    [SerializeField] private string _value;
+    [SerializeField] 
+    private string _value;
     
     public string Value
     {
@@ -61,6 +62,10 @@ public struct Id<T> : IEquatable<Id<T>>
         return Value.GetHashCode(StringComparison.Ordinal);
     }
 
+/// <summary>
+/// Operator overloads as suggested by Claude Chat after
+/// reviewing the strongly typed id concept.
+/// </summary>
 #region Operator Overloads
     public static bool operator ==(Id<T> left, Id<T> right)
     {

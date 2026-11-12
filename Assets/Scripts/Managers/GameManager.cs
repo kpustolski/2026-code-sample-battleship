@@ -14,10 +14,14 @@ public partial class GameManager : MonoBehaviour, IGameManager
     [Header("Asset References")]
     [SerializeField]
     private Transform _gameViewParentTransform;
+    [SerializeField]
+    private Transform _overlayViewParentTransform;
 
     [Header("Prefabs")]
     [SerializeField]
     private GameView _gameViewPrefab;
+    [SerializeField]
+    private OverlayView _overlayViewPrefab;
 
     [Header("Scriptable Objects")]
     [SerializeField]
@@ -42,8 +46,14 @@ public partial class GameManager : MonoBehaviour, IGameManager
     /// </summary>
     private List<ShipDto> _startingShipDtoList = new();
     private List<Point> _pointMap = new();
+
+    private OverlayView _currentGameOverOverlayView;
+    private OverlayViewModel _currentGameOverOverlayViewModel;
+    private OverlayView _currentTitleOverlayView;
+    private OverlayViewModel _currentTitleOverlayViewModel;
     private GameView _currentGameView;
     private GameViewModel _currentGameViewModel;
+    private int _totalAttemptsLeft;
     #endregion
 
     #region Properties
@@ -68,6 +78,7 @@ public partial class GameManager : MonoBehaviour, IGameManager
 
         CreatePointMap(_currentGameModeDef);
         ResetGameView();
+        CreateTitleOverlayView();
 
         //!Debug
         _debugKeyboard = Keyboard.current;
@@ -99,44 +110,56 @@ public partial class GameManager : MonoBehaviour, IGameManager
 
     public bool CheckForShipHit(Point point)
     {
+        bool didHitShip = false;
+        // Decrease the number of attempts left.
+        _totalAttemptsLeft = Mathf.Max(0, _totalAttemptsLeft - 1);
+        _currentGameViewModel.SetTotalAttemptsLeft(_totalAttemptsLeft);
+
         // See if there is a ship at the point passed in.
+        // [Key: Ship Id, Value: Health]
         var shipLocation = GetShipLocation(point);
 
-        // If the point does not match up with a ship's location,
-        // return false;
-        if (shipLocation.Key == default)
-        {
-            return false;
-        }
-
         // A ship has been hit!
-        if (_shipHealthList.ContainsKey(shipLocation.Key))
+        if (shipLocation.Key != default && _shipHealthList.ContainsKey(shipLocation.Key))
         {
-            int health = _shipHealthList[shipLocation.Key] - 1;
-            _shipHealthList[shipLocation.Key] = Mathf.Max(0, health);
+            _shipHealthList[shipLocation.Key] = Mathf.Max(0, _shipHealthList[shipLocation.Key] - 1);
 
             //! Debug
             DebugPrintShipHealth();
 
-            ShipDto shipDto = new ShipDto(shipLocation.Key, _shipHealthList[shipLocation.Key]);
+            ShipDto shipDto = new ShipDto(shipId: shipLocation.Key, health: _shipHealthList[shipLocation.Key]);
             _currentGameViewModel.UpdateShipDto(shipDto);
 
-            // TODO: Check for win condition.
-
-            return true;
+            didHitShip = true;
         }
-        else
+
+        // Check for win condition.
+        bool allShipsSunk = _shipHealthList.All(ship => ship.Value == 0);
+        if (allShipsSunk)
         {
-            this.LogError($"Ship with id {shipLocation.Key} has no entry in _shipHealthList.");
+            UpdateGameOverOverlayView(
+                titleTextString: Constants.YouWinString, 
+                actionButtonTextString: Constants.PlayAgainString,
+                showView: true);
+        }
+
+        if (!allShipsSunk && _totalAttemptsLeft <= 0)
+        {
+            UpdateGameOverOverlayView(titleTextString: Constants.YouLoseString, 
+            actionButtonTextString: Constants.PlayAgainString,
+            showView: true);
         }
         
-        return false;
+        return didHitShip;
     }
-    #endregion
 
-    #region Reset Functions
-    private void ResetGameView()
+    public void ResetGameView()
     {
+        if (_currentGameOverOverlayViewModel != null)
+        {
+            _currentGameOverOverlayViewModel.SetShowOverlayView(false);
+        }
+
         // Reset Game Locations.
         // Use the same game mode def as before.
         _shipLocations.Clear();
@@ -175,6 +198,10 @@ public partial class GameManager : MonoBehaviour, IGameManager
         // If the game view already exists, then we need to reset the gameViewModel.
         _currentGameViewModel.Reset(def.Id);
 
+        // Set the number of attempts the player has to win the game.
+        _totalAttemptsLeft = def.TotalAttempts;
+        _currentGameViewModel.SetTotalAttemptsLeft(_totalAttemptsLeft);
+
         // Make occupied points a property.
         var occupiedPoints = GetOccupiedPoints();
         _currentGameViewModel.SetOccupiedPointList(occupiedPoints);
@@ -210,6 +237,64 @@ public partial class GameManager : MonoBehaviour, IGameManager
                 _pointMap.Add(point);
             }
         }
+    }
+
+    private void CreateTitleOverlayView()
+    {
+        if (_overlayViewPrefab == null)
+        {
+            this.LogError("_overlayViewPrefab is null. Unable to create overlay view.");
+            return;
+        }
+
+        _currentTitleOverlayViewModel = new OverlayViewModel(
+            titleTextString: "Welcome!",
+            actionButtonTextString: "Play",
+            showView: true,
+            actionButtonCallback: () =>
+            {
+                _currentTitleOverlayViewModel.SetShowOverlayView(false);
+            });
+        
+        _currentTitleOverlayView = Instantiate(_overlayViewPrefab, _overlayViewParentTransform);
+        _currentTitleOverlayView.SetViewModel(_currentTitleOverlayViewModel);
+    }
+
+    private void UpdateGameOverOverlayView(string titleTextString, string actionButtonTextString, bool showView)
+    {
+        if (_overlayViewPrefab == null)
+        {
+            this.LogError("_overlayViewPrefab is null. Unable to create overlay view.");
+            return;
+        }
+
+        // Create a new game over overlay view if one hasn't been created yet.
+        // This view will persist in the object hierarchy after it is created.
+        if (_currentGameOverOverlayView == null)
+        {
+            _currentGameOverOverlayViewModel = new OverlayViewModel(
+                titleTextString: titleTextString,
+                actionButtonTextString: actionButtonTextString,
+                showView: showView,
+                actionButtonCallback: ()=>
+                {
+                    _currentGameOverOverlayViewModel.SetShowOverlayView(false);
+                    ResetGameView();
+                });
+
+            _currentGameOverOverlayView = Instantiate(_overlayViewPrefab, _overlayViewParentTransform);
+            _currentGameOverOverlayView.SetViewModel(_currentGameOverOverlayViewModel);
+        }
+        // Otherwise a game overlay view already exists.
+        else
+        {
+            if (!string.IsNullOrEmpty(titleTextString))
+            {
+                _currentGameOverOverlayViewModel.SetTitleTextString(titleTextString);
+            }
+        }
+
+        _currentGameOverOverlayViewModel.SetShowOverlayView(showView);
     }
     #endregion
 

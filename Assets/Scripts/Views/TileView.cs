@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -22,7 +20,6 @@ public class TileView : MonoBehaviour, IViewModelReceiver<TileViewModel>
 
     #region Private Variables
     private TileViewModel _tileViewModel;
-    private List<IDisposable> _viewModelSubscriptionList = new List<IDisposable>();
     #endregion
 
     #region Unity Overrides
@@ -65,16 +62,10 @@ public class TileView : MonoBehaviour, IViewModelReceiver<TileViewModel>
             return;   
         }
 
-        var colorSubscription = viewModel.DebugColor.Subscribe(OnColorChange);
-        var shipSpriteSubscription = viewModel.Sprite.Subscribe(OnShipSpriteChange);
-        var isButtonInteractable = viewModel.IsButtonInteractable.Subscribe(OnIsButtonInteractableChange);
-        var coverCanvasGroupAlpha = viewModel.CoverCanvasGroupAlpha.Subscribe(OnCoverCanvasGroupAlphaChange);
-
-
-        _viewModelSubscriptionList.Add(colorSubscription);
-        _viewModelSubscriptionList.Add(shipSpriteSubscription);
-        _viewModelSubscriptionList.Add(isButtonInteractable);
-        _viewModelSubscriptionList.Add(coverCanvasGroupAlpha);
+        viewModel.DebugColor.Subscribe(OnColorChange);
+        viewModel.Sprite.Subscribe(OnShipSpriteChange);
+        viewModel.IsButtonInteractable.Subscribe(OnIsButtonInteractableChange);
+        viewModel.CoverCanvasGroupAlpha.Subscribe(OnCoverCanvasGroupAlphaChange);
     }
 
     private void UnSubscribeToViewModel(TileViewModel viewModel)
@@ -83,12 +74,11 @@ public class TileView : MonoBehaviour, IViewModelReceiver<TileViewModel>
         {
             return;   
         }
-    
-        // Make sure to remove the callback from the DidChange actions.
-        foreach (var subscription in _viewModelSubscriptionList)
-        {
-            subscription.Dispose();
-        }
+
+        viewModel.DebugColor.Unsubscribe(OnColorChange);
+        viewModel.Sprite.Unsubscribe(OnShipSpriteChange);
+        viewModel.IsButtonInteractable.Unsubscribe(OnIsButtonInteractableChange);
+        viewModel.CoverCanvasGroupAlpha.Unsubscribe(OnCoverCanvasGroupAlphaChange);
     }
     #endregion
 

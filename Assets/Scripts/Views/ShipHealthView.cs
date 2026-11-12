@@ -1,5 +1,3 @@
-using System;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
@@ -13,7 +11,6 @@ public class ShipHealthView : MonoBehaviour, IViewModelReceiver<ShipHealthViewMo
 
     #region Private Variables
     private ShipHealthViewModel _viewModel;
-    private List<IDisposable> _viewModelSubscriptionList = new List<IDisposable>();
     #endregion
 
     #region IViewModelReceiver Functions
@@ -33,8 +30,7 @@ public class ShipHealthView : MonoBehaviour, IViewModelReceiver<ShipHealthViewMo
             return;   
         }
         
-        var healthSubscription = viewModel.Health.Subscribe(OnHealthChange);
-        _viewModelSubscriptionList.Add(healthSubscription);
+        viewModel.Health.Subscribe(OnHealthChange);
     }
 
     private void UnSubscribeToViewModel(ShipHealthViewModel viewModel)
@@ -44,11 +40,7 @@ public class ShipHealthView : MonoBehaviour, IViewModelReceiver<ShipHealthViewMo
             return;
         }
 
-        // Make sure to remove the callback from the DidChange action.
-        foreach (var subscription in _viewModelSubscriptionList)
-        {
-            subscription.Dispose();
-        }
+        viewModel.Health.Unsubscribe(OnHealthChange);
     }
     #endregion
 
