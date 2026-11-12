@@ -49,6 +49,8 @@ public partial class GameManager : MonoBehaviour, IGameManager
 
     private OverlayView _currentGameOverOverlayView;
     private OverlayViewModel _currentGameOverOverlayViewModel;
+    private OverlayView _currentTitleOverlayView;
+    private OverlayViewModel _currentTitleOverlayViewModel;
     private GameView _currentGameView;
     private GameViewModel _currentGameViewModel;
     private int _totalAttemptsLeft;
@@ -76,6 +78,7 @@ public partial class GameManager : MonoBehaviour, IGameManager
 
         CreatePointMap(_currentGameModeDef);
         ResetGameView();
+        CreateTitleOverlayView();
 
         //!Debug
         _debugKeyboard = Keyboard.current;
@@ -234,6 +237,27 @@ public partial class GameManager : MonoBehaviour, IGameManager
                 _pointMap.Add(point);
             }
         }
+    }
+
+    private void CreateTitleOverlayView()
+    {
+        if (_overlayViewPrefab == null)
+        {
+            this.LogError("_overlayViewPrefab is null. Unable to create overlay view.");
+            return;
+        }
+
+        _currentTitleOverlayViewModel = new OverlayViewModel(
+            titleTextString: "Welcome!",
+            actionButtonTextString: "Play",
+            showView: true,
+            actionButtonCallback: () =>
+            {
+                _currentTitleOverlayViewModel.SetShowOverlayView(false);
+            });
+        
+        _currentTitleOverlayView = Instantiate(_overlayViewPrefab, _overlayViewParentTransform);
+        _currentTitleOverlayView.SetViewModel(_currentTitleOverlayViewModel);
     }
 
     private void UpdateGameOverOverlayView(string titleTextString, string actionButtonTextString, bool showView)
