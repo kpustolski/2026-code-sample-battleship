@@ -5,7 +5,8 @@ using Unity.VisualScripting;
 public class TileViewModel : IViewModel
 {
     #region Constants
-    private const float StartingCoverAlpha = 0.5f;
+    // TODO: Change to 1.0f after testing
+    private const float StartingCoverAlpha = 0.8f;
     #endregion
 
     #region Observable Properties
