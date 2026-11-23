@@ -99,9 +99,10 @@ public class TileView : MonoBehaviour, IViewModelReceiver<TileViewModel>
 
         if (newValue == null)
         {
+            //! Debug
             // If there is no sprite, then it's an empty space.
             // Color the space 'blue' for now.
-            _shipImageComponent.color = Color.blue;
+            // _shipImageComponent.color = Color.blue;
         }
     }
 
