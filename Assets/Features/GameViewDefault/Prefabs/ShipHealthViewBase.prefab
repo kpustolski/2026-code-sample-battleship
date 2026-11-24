@@ -526,6 +526,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ShipHealthView
   _shipNameText: {fileID: 8798821006410600930}
+  _shipIconImage: {fileID: 158237565642156762}
+  _skullIconContainer: {fileID: 4608074590046015106}
   _dotViewsParentTransform: {fileID: 2754882406832325292}
   _dotViewPrefab: {fileID: 3080728303086624590, guid: 22b98640e67774b5a95f11940033c8b6, type: 3}
 --- !u!1 &8904858890113642325
