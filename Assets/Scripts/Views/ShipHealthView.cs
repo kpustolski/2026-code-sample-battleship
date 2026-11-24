@@ -46,6 +46,9 @@ public class ShipHealthView : MonoBehaviour, IViewModelReceiver<ShipHealthViewMo
         
         Reset();
         CreateDotViews();
+        // It should be ok to set these once and not have them
+        // adhere to the Observable Property setup.
+        // They remain the same throughout the game.
         _shipNameText.text = _viewModel.ShipName;
         _shipIconImage.sprite = _viewModel.RenderDef.ShipSprite;
 
