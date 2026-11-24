@@ -5,6 +5,7 @@ public static partial class ShipDefList
         return new ShipDef
         {
             Id = ShipIds.Carrier,
+            Name = "Carrier",
             Group = ShipGroupIds.Default,
             Size = 5,
         };
@@ -15,6 +16,7 @@ public static partial class ShipDefList
         return new ShipDef
         {
             Id = ShipIds.Battleship,
+            Name = "Battleship",
             Group = ShipGroupIds.Default,
             Size = 4,
         };
@@ -25,6 +27,7 @@ public static partial class ShipDefList
         return new ShipDef
         {
             Id = ShipIds.Destroyer,
+            Name = "Destroyer",
             Group = ShipGroupIds.Default,
             Size = 3,
         };
@@ -35,6 +38,7 @@ public static partial class ShipDefList
         return new ShipDef
         {
             Id = ShipIds.Submarine,
+            Name = "Submarine",           
             Group = ShipGroupIds.Default,
             Size = 3,
         };
@@ -45,6 +49,7 @@ public static partial class ShipDefList
         return new ShipDef
         {
             Id = ShipIds.PatrolBoat,
+            Name = "Patrol Boat",
             Group = ShipGroupIds.Default,
             Size = 2,
         };
