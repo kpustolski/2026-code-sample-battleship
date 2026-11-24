@@ -108,6 +108,11 @@ public partial class GameManager : MonoBehaviour, IGameManager
         return _currentGameModeRenderDef.GetShipRenderDefById(shipLocation.Key);
     }
 
+    public ShipRenderDef GetShipRenderDefById(Id<Ship> shipId)
+    {
+        return _currentGameModeRenderDef.GetShipRenderDefById(shipId);
+    }
+
     public bool CheckForShipHit(Point point)
     {
         bool didHitShip = false;

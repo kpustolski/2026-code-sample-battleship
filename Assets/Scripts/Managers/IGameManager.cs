@@ -4,6 +4,7 @@ public interface IGameManager
 {
     // Functions
     public ShipRenderDef GetShipRenderDefByPoint(Point point);
+    public ShipRenderDef GetShipRenderDefById(Id<Ship> shipId);
     public bool CheckForShipHit(Point point);
 
     // Properties
