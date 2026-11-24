@@ -125,13 +125,20 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
 
     private void OnTotalAttemptsLeftChange(int _, int newValue)
     {
-        this.Log($"newValue: {newValue}");
+        string attemptsLeftString = $"Total Attempts Left: {newValue}";
+
         if (_totalAttemptsLeftText == null)
         {
             return;
         }
 
-        _totalAttemptsLeftText.text = $"Total Attempts Left: {newValue}";
+        // Change the color of the number string to red once the color passes a specific threshold.
+        if (newValue <= Constants.AttemptsLeftColorThreshold)
+        {
+            attemptsLeftString = $"Total Attempts Left: <color=\"red\">{newValue}</color>";
+        }
+
+        _totalAttemptsLeftText.text = attemptsLeftString;
     }
     #endregion
 
