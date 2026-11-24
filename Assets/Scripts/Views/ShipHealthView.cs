@@ -1,7 +1,7 @@
 using System.Collections.Generic;
-using Microsoft.Unity.VisualStudio.Editor;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ShipHealthView : MonoBehaviour, IViewModelReceiver<ShipHealthViewModel>
 {
@@ -12,7 +12,7 @@ public class ShipHealthView : MonoBehaviour, IViewModelReceiver<ShipHealthViewMo
     [SerializeField]
     private Image _shipIconImage;
     [SerializeField]
-    private Image _skullIconImage;
+    private RectTransform _skullIconContainer;
     [SerializeField]
     private RectTransform _dotViewsParentTransform;
 
