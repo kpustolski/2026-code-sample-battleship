@@ -47,6 +47,7 @@ public class ShipHealthView : MonoBehaviour, IViewModelReceiver<ShipHealthViewMo
         Reset();
         CreateDotViews();
         _shipNameText.text = _viewModel.ShipName;
+        _shipIconImage.sprite = _viewModel.RenderDef.ShipSprite;
 
         viewModel.Health.Subscribe(OnHealthChange);
     }

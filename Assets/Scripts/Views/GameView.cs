@@ -160,7 +160,8 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
         {
             foreach (var ship in _gameViewModel.StartingShipDtoList)
             {
-                ShipHealthViewModel viewModel = _gameViewModel.CreateShipHealthViewModel(ship.ShipId, ship.ShipName, ship.Health);
+                ShipRenderDef renderDef = _gameViewModel.GetShipRenderDefById(ship.ShipId);
+                ShipHealthViewModel viewModel = _gameViewModel.CreateShipHealthViewModel(ship.ShipId, ship.ShipName, ship.Health, renderDef);
                 ShipHealthView newView = CreateShipHealthView(ship.ShipId);
                 newView.SetViewModel(viewModel);
 
