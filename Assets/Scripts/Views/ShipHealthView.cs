@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using Microsoft.Unity.VisualStudio.Editor;
 using TMPro;
 using UnityEngine;
 
@@ -6,11 +8,23 @@ public class ShipHealthView : MonoBehaviour, IViewModelReceiver<ShipHealthViewMo
     #region Unity References
     [Header("Asset References")]
     [SerializeField]
-    private TextMeshProUGUI _debugText;
+    private TextMeshProUGUI _shipNameText;
+    [SerializeField]
+    private Image _shipIconImage;
+    [SerializeField]
+    private Image _skullIconImage;
+    [SerializeField]
+    private RectTransform _dotViewsParentTransform;
+
+    [Header("Prefabs")]
+    //TODO: Make dotView classes
+    [SerializeField]
+    private GameObject _dotViewPrefab;
     #endregion
 
     #region Private Variables
     private ShipHealthViewModel _viewModel;
+    private List<GameObject> _dotViewsList = new List<GameObject>();
     #endregion
 
     #region IViewModelReceiver Functions
@@ -30,6 +44,10 @@ public class ShipHealthView : MonoBehaviour, IViewModelReceiver<ShipHealthViewMo
             return;   
         }
         
+        Reset();
+        CreateDotViews();
+        _shipNameText.text = _viewModel.ShipName;
+
         viewModel.Health.Subscribe(OnHealthChange);
     }
 
@@ -47,13 +65,42 @@ public class ShipHealthView : MonoBehaviour, IViewModelReceiver<ShipHealthViewMo
     #region Subscription Callbacks
     private void OnHealthChange(int _, int newValue)
     {
-        if (_debugText == null)
+        // if (_debugText == null)
+        // {
+        //     return;
+        // }
+
+        // //! Temp
+        // _debugText.text = $"{_viewModel.ShipId}: {_viewModel.Health.Value} / {_viewModel.StartingHealth}";
+    }
+    #endregion
+
+    #region Helpers
+    private void CreateDotViews()
+    {
+        if (_dotViewPrefab == null)
         {
             return;
         }
 
-        //! Temp
-        _debugText.text = $"{_viewModel.ShipId}: {_viewModel.Health.Value} / {_viewModel.StartingHealth}";
+        if (_dotViewsList.Count == 0)
+        {
+            for (int i = 0; i < _viewModel.StartingHealth; i++)
+            {
+                GameObject newDot = Instantiate(_dotViewPrefab, _dotViewsParentTransform);
+                _dotViewsList.Add(newDot);
+            }
+        }
+    }
+
+    private void Reset()
+    {
+        foreach (var dot in _dotViewsList)
+        {
+            Destroy(dot.gameObject);
+        }
+
+        _dotViewsList.Clear();
     }
     #endregion
 }

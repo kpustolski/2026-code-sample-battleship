@@ -48,9 +48,9 @@ public class GameViewModel : IViewModel
     /// This helper can be placed in GameView.cs, but I wanted to keep the view model
     /// helpers together for organizaitonal purposes.
     /// </summary>
-    public ShipHealthViewModel CreateShipHealthViewModel(Id<Ship> shipId, int startingHealth)
+    public ShipHealthViewModel CreateShipHealthViewModel(Id<Ship> shipId, string shipName, int startingHealth)
     {
-        ShipHealthViewModel newViewModel = new ShipHealthViewModel(shipId, startingHealth);
+        ShipHealthViewModel newViewModel = new ShipHealthViewModel(shipId, shipName, startingHealth);
         return newViewModel;
     }
 

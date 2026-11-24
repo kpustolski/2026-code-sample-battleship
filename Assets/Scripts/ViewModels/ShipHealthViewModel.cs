@@ -5,20 +5,17 @@ public class ShipHealthViewModel : IViewModel
     #endregion
 
     #region Properties
-    public Id<Ship> ShipId => _shipId;
-    public int StartingHealth => _startingHealth;
+    public Id<Ship> ShipId {get; private set;}
+    public string ShipName {get; private set;}
+    public int StartingHealth {get; private set;}
     #endregion
 
-    #region Private Variables
-    private Id<Ship> _shipId;
-    private int _startingHealth;
-    #endregion 
-
     #region Public Functions
-    public ShipHealthViewModel(Id<Ship> shipId, int startingHealth)
+    public ShipHealthViewModel(Id<Ship> shipId, string shipName, int startingHealth)
     {
-        _shipId = shipId;
-        _startingHealth = startingHealth;
+        ShipId = shipId;
+        ShipName = shipName;
+        StartingHealth = startingHealth;
     }
 
     public void SetHealth(int health)
