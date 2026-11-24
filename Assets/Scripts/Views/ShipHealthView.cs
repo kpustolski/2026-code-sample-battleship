@@ -76,6 +76,9 @@ public class ShipHealthView : MonoBehaviour, IViewModelReceiver<ShipHealthViewMo
 
         // //! Temp
         // _debugText.text = $"{_viewModel.ShipId}: {_viewModel.Health.Value} / {_viewModel.StartingHealth}";
+
+        // Show the skull icon if the ship is sunk!
+        _skullIconContainer.gameObject.SetActive(newValue == 0);
     }
     #endregion
 
