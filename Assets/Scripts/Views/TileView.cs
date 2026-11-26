@@ -22,6 +22,10 @@ public class TileView : MonoBehaviour, IViewModelReceiver<TileViewModel>
     private TileViewModel _tileViewModel;
     #endregion
 
+    #region Public Variables
+    public TileViewModel ViewModel => _tileViewModel;
+    #endregion
+
     #region Unity Overrides
     private void OnEnable()
     {

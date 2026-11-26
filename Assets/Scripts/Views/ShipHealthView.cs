@@ -26,6 +26,10 @@ public class ShipHealthView : MonoBehaviour, IViewModelReceiver<ShipHealthViewMo
     private List<DotView> _dotViewsList = new List<DotView>();
     #endregion
 
+    #region Public Variables
+    public ShipHealthViewModel ViewModel => _viewModel;
+    #endregion
+
     #region IViewModelReceiver Functions
     public void SetViewModel(ShipHealthViewModel viewModel)
     {

@@ -25,12 +25,8 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
     #region Private Variables
     private GameViewModel _gameViewModel;
 
-    //TODO Better way to store views and their view models?
     private List<TileView> _tileViewList = new List<TileView>();
-    private List<TileViewModel> _tileViewModelList = new List<TileViewModel>();
-
     private List<ShipHealthView> _shipHealthViewList = new List<ShipHealthView>();
-    private List<ShipHealthViewModel> _shipHealthViewModelList = new List<ShipHealthViewModel>();
     #endregion
 
     #region IViewModelReceiver Functions
@@ -86,11 +82,11 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
 
             foreach (Point occupiedPoint in newValue)
             {
-                TileViewModel tileViewModel = _tileViewModelList.FirstOrDefault(viewModel => viewModel.Point.Equals(occupiedPoint));
-                if (tileViewModel != default)
+                TileView tileView = _tileViewList.FirstOrDefault(view => view.ViewModel.Point.Equals(occupiedPoint));
+                if (tileView != default)
                 {
                     var renderDef = _gameViewModel.GetShipRenderDefByPoint(occupiedPoint);
-                    tileViewModel?.SetRenderDef(renderDef);
+                    tileView.ViewModel.SetRenderDef(renderDef);
                 }
             }
         }
@@ -106,10 +102,10 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
         {
             foreach (ShipDto ship in newValue)
             {
-                var viewModel = _shipHealthViewModelList.FirstOrDefault(viewModel => viewModel.ShipId == ship.ShipId);
-                if (viewModel != null)
+                ShipHealthView view = _shipHealthViewList.FirstOrDefault(view => view.ViewModel.ShipId == ship.ShipId);
+                if (view != null)
                 {
-                    viewModel.SetHealth(ship.Health);
+                    view.ViewModel.SetHealth(ship.Health);
                 }
                 else
                 {
@@ -158,7 +154,6 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
                 newView.SetViewModel(viewModel);
 
                 _tileViewList.Add(newView);
-                _tileViewModelList.Add(viewModel);
             }
         }
     }
@@ -176,7 +171,6 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
                 newView.SetViewModel(viewModel);
 
                 _shipHealthViewList.Add(newView);
-                _shipHealthViewModelList.Add(viewModel);      
             }
         }
     }
@@ -211,17 +205,17 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
     #region Reset Functions
     private void ResetTileMap()
     {
-        foreach (var viewModel in _tileViewModelList)
+        foreach (var viewModel in _tileViewList)
         {
-            viewModel.Reset();
+            viewModel.ViewModel.Reset();
         }
     }
 
     private void ResetShipHealthViews()
     {
-        foreach (var viewModel in _shipHealthViewModelList)
+        foreach (var view in _shipHealthViewList)
         {
-            viewModel.Reset();
+            view.ViewModel.Reset();
         }
     }
     #endregion
