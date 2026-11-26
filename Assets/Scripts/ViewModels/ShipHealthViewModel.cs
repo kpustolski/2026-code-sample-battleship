@@ -19,6 +19,8 @@ public class ShipHealthViewModel : IViewModel
         RenderDef = renderDef;
         ShipName = shipName;
         StartingHealth = startingHealth;
+
+        SetHealth(StartingHealth);
     }
 
     public void SetHealth(int health)
@@ -28,7 +30,7 @@ public class ShipHealthViewModel : IViewModel
 
     public void Reset()
     {
-        // TODO: When this view is more complex, what would be it's default state?
+        SetHealth(StartingHealth);
     }
     #endregion
 }
