@@ -134,9 +134,8 @@ public class ShipHealthView : MonoBehaviour, IViewModelReceiver<ShipHealthViewMo
             {
                 DotViewModel viewModel = new DotViewModel(isGameObjectActive: true, IsToggleOn: false);
                 DotView newDot = Instantiate(_dotViewPrefab, _dotViewsParentTransform);
-                newDot.SetViewModel(viewModel);
-
                 newDot.name = $"{nameof(DotView)}_{i}";
+                newDot.SetViewModel(viewModel);
 
                 _dotViewsList.Add(newDot);
             }
