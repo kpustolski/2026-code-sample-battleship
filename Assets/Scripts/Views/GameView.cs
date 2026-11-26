@@ -125,6 +125,9 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
 
     private void OnTotalAttemptsLeftChange(int _, int newValue)
     {
+        // In a more complex project, there would be a whole localization system that
+        // would map to the appropriate text. However, since this project's scope
+        // does not include localization, I'm setting the text directly in code.
         string attemptsLeftString = $"Total Attempts Left: {newValue}";
 
         if (_totalAttemptsLeftText == null)
@@ -186,7 +189,7 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
         }
 
         TileView newView = Instantiate(_tileViewPrefab, _tileViewParentTransform);
-        newView.gameObject.name = $"Tile_{point}";
+        newView.gameObject.name = $"{nameof(TileView)}_{point}";
 
         return newView;
     }
@@ -199,7 +202,7 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
         }
 
         ShipHealthView newView = Instantiate(_shipHealthViewPrefab, _shipHealthViewParentTransform);
-        newView.gameObject.name = $"HealthView_{shipId}";
+        newView.gameObject.name = $"{nameof(ShipHealthView)}_{shipId}";
 
         return newView;
     }
