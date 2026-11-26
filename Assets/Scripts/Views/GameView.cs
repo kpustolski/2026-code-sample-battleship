@@ -24,7 +24,6 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
 
     #region Private Variables
     private GameViewModel _gameViewModel;
-
     private List<TileView> _tileViewList = new List<TileView>();
     private List<ShipHealthView> _shipHealthViewList = new List<ShipHealthView>();
     #endregion
