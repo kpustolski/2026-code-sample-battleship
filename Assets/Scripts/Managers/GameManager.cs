@@ -46,6 +46,7 @@ public partial class GameManager : MonoBehaviour, IGameManager
     /// </summary>
     private List<ShipDto> _startingShipDtoList = new();
     private List<Point> _pointMap = new();
+    private List<ShipDef> _currentShipDefList = new();
 
     private OverlayView _currentGameOverOverlayView;
     private OverlayViewModel _currentGameOverOverlayViewModel;
@@ -132,7 +133,15 @@ public partial class GameManager : MonoBehaviour, IGameManager
             //! Debug
             DebugPrintShipHealth();
 
-            ShipDto shipDto = new ShipDto(shipId: shipLocation.Key, "Debug" ,health: _shipHealthList[shipLocation.Key]);
+            ShipDef shipDef = _currentShipDefList.FirstOrDefault(def => def.Id == shipLocation.Key);
+            string shipName = "[Missing]";
+            if (shipDef == null)
+            {
+                this.LogWarning($"Unable to find ShipDef with id {shipLocation.Key}");
+            }
+
+            shipName = shipDef.Name;
+            ShipDto shipDto = new ShipDto(shipId: shipLocation.Key, shipName ,health: _shipHealthList[shipLocation.Key]);
             _currentGameViewModel.UpdateShipDto(shipDto);
 
             didHitShip = true;
@@ -183,10 +192,11 @@ public partial class GameManager : MonoBehaviour, IGameManager
             return;
         }
         
-        List<ShipDef> shipDefs = ShipDefList.GetAllShipsInGroupById(def.ShipGroup);
-        SetShipLocations(shipDefs);
-        SetShipHealth(shipDefs);
-        SetShipDtoList(shipDefs);
+        _currentShipDefList = ShipDefList.GetAllShipsInGroupById(def.ShipGroup);
+
+        SetShipLocations(_currentShipDefList);
+        SetShipHealth(_currentShipDefList);
+        SetShipDtoList(_currentShipDefList);
 
         //! Debug
         DebugPrintShipLocations();
