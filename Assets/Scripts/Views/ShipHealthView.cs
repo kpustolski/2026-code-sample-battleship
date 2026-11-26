@@ -22,20 +22,20 @@ public class ShipHealthView : MonoBehaviour, IViewModelReceiver<ShipHealthViewMo
     #endregion
 
     #region Private Variables
-    private ShipHealthViewModel _viewModel;
+    private ShipHealthViewModel _shipHealthViewModel;
     private List<DotView> _dotViewsList = new List<DotView>();
     #endregion
 
     #region Public Variables
-    public ShipHealthViewModel ViewModel => _viewModel;
+    public ShipHealthViewModel ViewModel => _shipHealthViewModel;
     #endregion
 
     #region IViewModelReceiver Functions
     public void SetViewModel(ShipHealthViewModel viewModel)
     {
-        UnSubscribeToViewModel(_viewModel);
-        _viewModel = viewModel;
-        SubscribeToViewModel(_viewModel);
+        UnSubscribeToViewModel(_shipHealthViewModel);
+        _shipHealthViewModel = viewModel;
+        SubscribeToViewModel(_shipHealthViewModel);
     }
     #endregion
 
@@ -52,8 +52,8 @@ public class ShipHealthView : MonoBehaviour, IViewModelReceiver<ShipHealthViewMo
         // It should be ok to set these once and not have them
         // adhere to the Observable Property setup.
         // They remain the same throughout the game.
-        _shipNameText.text = _viewModel.ShipName;
-        _shipIconImage.sprite = _viewModel.RenderDef.ShipSprite;
+        _shipNameText.text = _shipHealthViewModel.ShipName;
+        _shipIconImage.sprite = _shipHealthViewModel.RenderDef.ShipSprite;
 
         viewModel.Health.Subscribe(OnHealthChange);
     }
@@ -83,7 +83,7 @@ public class ShipHealthView : MonoBehaviour, IViewModelReceiver<ShipHealthViewMo
         // between the ship's starting health and current health.
         // For example, if the ship's health is 3/5, that means the ship was hit 2 times.
         // 2 dot views would be toggled on in the UI.
-        int healthDelta = _viewModel.StartingHealth - newValue;
+        int healthDelta = _shipHealthViewModel.StartingHealth - newValue;
         if (healthDelta == 0)
         {
             ResetDotViewToggles();
@@ -134,7 +134,7 @@ public class ShipHealthView : MonoBehaviour, IViewModelReceiver<ShipHealthViewMo
 
         if (_dotViewsList.Count == 0)
         {
-            for (int i = 0; i < _viewModel.StartingHealth; i++)
+            for (int i = 0; i < _shipHealthViewModel.StartingHealth; i++)
             {
                 DotViewModel viewModel = new DotViewModel(isGameObjectActive: true, IsToggleOn: false);
                 DotView newDot = Instantiate(_dotViewPrefab, _dotViewsParentTransform);
