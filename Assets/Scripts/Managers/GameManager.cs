@@ -49,7 +49,6 @@ public partial class GameManager : MonoBehaviour, IGameManager
     private List<ShipDef> _currentShipDefList = new();
 
     private OverlayView _currentGameOverOverlayView;
-    private OverlayViewModel _currentGameOverOverlayViewModel;
     private OverlayView _currentTitleOverlayView;
     private OverlayViewModel _currentTitleOverlayViewModel;
     private GameView _currentGameView;
@@ -166,9 +165,9 @@ public partial class GameManager : MonoBehaviour, IGameManager
 
     public void ResetGameView()
     {
-        if (_currentGameOverOverlayViewModel != null)
+        if (_currentGameOverOverlayView.ViewModel != null)
         {
-            _currentGameOverOverlayViewModel.SetShowOverlayView(false);
+            _currentGameOverOverlayView.ViewModel.SetShowOverlayView(false);
         }
 
         // Reset Game Locations.
@@ -248,6 +247,7 @@ public partial class GameManager : MonoBehaviour, IGameManager
         }
     }
 
+    //TODO: Create different overlay for title screen.
     private void CreateTitleOverlayView()
     {
         if (_overlayViewPrefab == null)
@@ -256,19 +256,18 @@ public partial class GameManager : MonoBehaviour, IGameManager
             return;
         }
 
-        _currentTitleOverlayViewModel = new OverlayViewModel(
+        OverlayViewModel viewModel = new OverlayViewModel(
             titleTextString: "Welcome!",
             actionButtonTextString: "Play",
             showView: true,
-            actionButtonCallback: () =>
-            {
-                _currentTitleOverlayViewModel.SetShowOverlayView(false);
-            });
+            actionButtonCallback: null
+            );
         
         _currentTitleOverlayView = Instantiate(_overlayViewPrefab, _overlayViewParentTransform);
-        _currentTitleOverlayView.SetViewModel(_currentTitleOverlayViewModel);
+        _currentTitleOverlayView.SetViewModel(viewModel);
     }
 
+    //TODO: Create different overlay for end game screen.
     private void UpdateGameOverOverlayView(string titleTextString, string actionButtonTextString, bool showView)
     {
         if (_overlayViewPrefab == null)
@@ -281,29 +280,28 @@ public partial class GameManager : MonoBehaviour, IGameManager
         // This view will persist in the object hierarchy after it is created.
         if (_currentGameOverOverlayView == null)
         {
-            _currentGameOverOverlayViewModel = new OverlayViewModel(
+            OverlayViewModel viewModel = new OverlayViewModel(
                 titleTextString: titleTextString,
                 actionButtonTextString: actionButtonTextString,
                 showView: showView,
                 actionButtonCallback: ()=>
                 {
-                    _currentGameOverOverlayViewModel.SetShowOverlayView(false);
                     ResetGameView();
                 });
 
             _currentGameOverOverlayView = Instantiate(_overlayViewPrefab, _overlayViewParentTransform);
-            _currentGameOverOverlayView.SetViewModel(_currentGameOverOverlayViewModel);
+            _currentGameOverOverlayView.SetViewModel(viewModel);
         }
         // Otherwise a game overlay view already exists.
         else
         {
             if (!string.IsNullOrEmpty(titleTextString))
             {
-                _currentGameOverOverlayViewModel.SetTitleTextString(titleTextString);
+                _currentGameOverOverlayView.ViewModel.SetTitleTextString(titleTextString);
             }
         }
 
-        _currentGameOverOverlayViewModel.SetShowOverlayView(showView);
+        _currentGameOverOverlayView.ViewModel.SetShowOverlayView(showView);
     }
     #endregion
 

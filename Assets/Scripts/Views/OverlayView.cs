@@ -13,6 +13,10 @@ public class OverlayView : MonoBehaviour, IViewModelReceiver<OverlayViewModel>
     [SerializeField]
     private Button _actionButton;
     #endregion
+
+    #region Public Properties
+    public OverlayViewModel ViewModel => _overlayViewModel;
+    #endregion
     
     #region Private Variables
     private OverlayViewModel _overlayViewModel;
@@ -103,6 +107,7 @@ public class OverlayView : MonoBehaviour, IViewModelReceiver<OverlayViewModel>
 
     private void OnActionButtonClicked()
     {
+        _overlayViewModel.SetShowOverlayView(false);
         _overlayViewModel.ActionButtonCallback.Invoke();
     }
     #endregion
