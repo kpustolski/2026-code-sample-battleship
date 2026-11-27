@@ -179,7 +179,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 0}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -286,7 +286,6 @@ MonoBehaviour:
   _shipBackgroundComponent: {fileID: 1369588597282203387}
   _shipImageComponent: {fileID: 3413244371616714700}
   _buttonComponent: {fileID: 411109921756244624}
-  _debugPointText: {fileID: 0}
 --- !u!1 &7638151842956101243
 GameObject:
   m_ObjectHideFlags: 0
