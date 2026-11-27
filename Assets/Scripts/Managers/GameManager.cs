@@ -130,9 +130,6 @@ public partial class GameManager : MonoBehaviour, IGameManager
         {
             _shipHealthList[shipLocation.Key] = Mathf.Max(0, _shipHealthList[shipLocation.Key] - 1);
 
-            //! Debug
-            DebugPrintShipHealth();
-
             ShipDef shipDef = _currentShipDefList.FirstOrDefault(def => def.Id == shipLocation.Key);
             string shipName = "[Missing]";
             if (shipDef == null)
@@ -197,9 +194,6 @@ public partial class GameManager : MonoBehaviour, IGameManager
         SetShipLocations(_currentShipDefList);
         SetShipHealth(_currentShipDefList);
         SetShipDtoList(_currentShipDefList);
-
-        //! Debug
-        DebugPrintShipLocations();
    
         if (_currentGameView == null)
         {
