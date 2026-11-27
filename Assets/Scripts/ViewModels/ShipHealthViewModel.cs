@@ -1,3 +1,4 @@
+
 public class ShipHealthViewModel : IViewModel
 {
     #region Observable Properties
@@ -5,20 +6,21 @@ public class ShipHealthViewModel : IViewModel
     #endregion
 
     #region Properties
-    public Id<Ship> ShipId => _shipId;
-    public int StartingHealth => _startingHealth;
+    public Id<Ship> ShipId {get; private set;}
+    public string ShipName {get; private set;}
+    public ShipRenderDef RenderDef {get; private set;}
+    public int StartingHealth {get; private set;}
     #endregion
 
-    #region Private Variables
-    private Id<Ship> _shipId;
-    private int _startingHealth;
-    #endregion 
-
     #region Public Functions
-    public ShipHealthViewModel(Id<Ship> shipId, int startingHealth)
+    public ShipHealthViewModel(Id<Ship> shipId, string shipName, int startingHealth, ShipRenderDef renderDef)
     {
-        _shipId = shipId;
-        _startingHealth = startingHealth;
+        ShipId = shipId;
+        RenderDef = renderDef;
+        ShipName = shipName;
+        StartingHealth = startingHealth;
+
+        SetHealth(StartingHealth);
     }
 
     public void SetHealth(int health)
@@ -28,7 +30,7 @@ public class ShipHealthViewModel : IViewModel
 
     public void Reset()
     {
-        // TODO: When this view is more complex, what would be it's default state?
+        SetHealth(StartingHealth);
     }
     #endregion
 }

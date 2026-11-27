@@ -14,12 +14,14 @@ public class TileView : MonoBehaviour, IViewModelReceiver<TileViewModel>
     private Image _shipImageComponent;
     [SerializeField]
     private Button _buttonComponent;
-    [SerializeField]
-    private TextMeshProUGUI _debugPointText;
     #endregion
 
     #region Private Variables
     private TileViewModel _tileViewModel;
+    #endregion
+
+    #region Public Variables
+    public TileViewModel ViewModel => _tileViewModel;
     #endregion
 
     #region Unity Overrides
@@ -46,11 +48,6 @@ public class TileView : MonoBehaviour, IViewModelReceiver<TileViewModel>
         UnSubscribeToViewModel(_tileViewModel);
         _tileViewModel = viewModel;
         SubscribeToViewModel(_tileViewModel);
-
-        //! Debug
-        _debugPointText.text = _tileViewModel.Point.ToString();
-        _debugPointText.color = Color.black;
-        _debugPointText.fontWeight = FontWeight.Bold;
     }
     #endregion
 
@@ -89,20 +86,12 @@ public class TileView : MonoBehaviour, IViewModelReceiver<TileViewModel>
             return;
         
         //! Temp
-        
         _shipBackgroundComponent.color = newValue;
     }
 
     private void OnShipSpriteChange(Sprite _, Sprite newValue)
     {
         _shipImageComponent.sprite = newValue;
-
-        if (newValue == null)
-        {
-            // If there is no sprite, then it's an empty space.
-            // Color the space 'blue' for now.
-            _shipImageComponent.color = Color.blue;
-        }
     }
 
     private void OnIsButtonInteractableChange(bool _, bool newValue)

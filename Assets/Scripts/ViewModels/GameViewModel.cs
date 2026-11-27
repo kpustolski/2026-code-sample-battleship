@@ -32,6 +32,11 @@ public class GameViewModel : IViewModel
         return _gameManager.GetShipRenderDefByPoint(point);
     }
 
+    public ShipRenderDef GetShipRenderDefById(Id<Ship> shipId)
+    {
+        return _gameManager.GetShipRenderDefById(shipId);
+    }
+
     /// <summary>
     /// Creates a TileViewModel.
     /// This helper is here so it's easier to pass in the game manager dependency
@@ -48,9 +53,9 @@ public class GameViewModel : IViewModel
     /// This helper can be placed in GameView.cs, but I wanted to keep the view model
     /// helpers together for organizaitonal purposes.
     /// </summary>
-    public ShipHealthViewModel CreateShipHealthViewModel(Id<Ship> shipId, int startingHealth)
+    public ShipHealthViewModel CreateShipHealthViewModel(Id<Ship> shipId, string shipName, int startingHealth, ShipRenderDef renderDef)
     {
-        ShipHealthViewModel newViewModel = new ShipHealthViewModel(shipId, startingHealth);
+        ShipHealthViewModel newViewModel = new ShipHealthViewModel(shipId, shipName, startingHealth, renderDef);
         return newViewModel;
     }
 

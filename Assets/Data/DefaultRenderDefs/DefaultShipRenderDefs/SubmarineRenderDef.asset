@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::ShipRenderDef
   _shipId:
     _value: Submarine
-  _shipSprite: {fileID: 21300000, guid: 125751bbca422479581526fc7a9a6cca, type: 3}
-  _debugColor: {r: 0.6836612, g: 0, b: 1, a: 1}
+  _shipSprite: {fileID: 21300000, guid: 72e63bc6458ab401e8bc098d81fded14, type: 3}
+  _debugColor: {r: 1, g: 1, b: 1, a: 1}

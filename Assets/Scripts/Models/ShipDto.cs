@@ -6,17 +6,19 @@ using System;
 public struct ShipDto: IEquatable<ShipDto>
 {
     public Id<Ship> ShipId {get; private set;}
+    public string ShipName { get; private set;}
     public int Health { get; private set;}
 
-    public ShipDto(Id<Ship> shipId, int health)
+    public ShipDto(Id<Ship> shipId, string shipName, int health)
     {
         ShipId = shipId;
+        ShipName = shipName;
         Health = health;
     }
 
     public override string ToString()
     {   
-        return $"Id: {ShipId} | Health {Health}";
+        return $"Id: {ShipId} | Name {ShipName} | Health {Health}";
     }
     
     public bool Equals(ShipDto other)

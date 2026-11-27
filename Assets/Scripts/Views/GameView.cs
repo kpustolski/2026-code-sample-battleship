@@ -24,13 +24,8 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
 
     #region Private Variables
     private GameViewModel _gameViewModel;
-
-    //TODO Better way to store views and their view models?
     private List<TileView> _tileViewList = new List<TileView>();
-    private List<TileViewModel> _tileViewModelList = new List<TileViewModel>();
-
     private List<ShipHealthView> _shipHealthViewList = new List<ShipHealthView>();
-    private List<ShipHealthViewModel> _shipHealthViewModelList = new List<ShipHealthViewModel>();
     #endregion
 
     #region IViewModelReceiver Functions
@@ -86,11 +81,11 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
 
             foreach (Point occupiedPoint in newValue)
             {
-                TileViewModel tileViewModel = _tileViewModelList.FirstOrDefault(viewModel => viewModel.Point.Equals(occupiedPoint));
-                if (tileViewModel != default)
+                TileView tileView = _tileViewList.FirstOrDefault(view => view.ViewModel.Point.Equals(occupiedPoint));
+                if (tileView != default)
                 {
                     var renderDef = _gameViewModel.GetShipRenderDefByPoint(occupiedPoint);
-                    tileViewModel?.SetRenderDef(renderDef);
+                    tileView.ViewModel.SetRenderDef(renderDef);
                 }
             }
         }
@@ -106,10 +101,10 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
         {
             foreach (ShipDto ship in newValue)
             {
-                var viewModel = _shipHealthViewModelList.FirstOrDefault(viewModel => viewModel.ShipId == ship.ShipId);
-                if (viewModel != null)
+                ShipHealthView view = _shipHealthViewList.FirstOrDefault(view => view.ViewModel.ShipId == ship.ShipId);
+                if (view != null)
                 {
-                    viewModel.SetHealth(ship.Health);
+                    view.ViewModel.SetHealth(ship.Health);
                 }
                 else
                 {
@@ -125,13 +120,23 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
 
     private void OnTotalAttemptsLeftChange(int _, int newValue)
     {
-        this.Log($"newValue: {newValue}");
+        // In a more complex project, there would be a whole localization system that
+        // would map to the appropriate text. However, since this project's scope
+        // does not include localization, I'm setting the text directly in code.
+        string attemptsLeftString = $"Total Attempts Left: {newValue}";
+
         if (_totalAttemptsLeftText == null)
         {
             return;
         }
 
-        _totalAttemptsLeftText.text = $"Total Attempts Left: {newValue}";
+        // Change the color of the number string to red once the color passes a specific threshold.
+        if (newValue <= Constants.AttemptsLeftColorThreshold)
+        {
+            attemptsLeftString = $"Total Attempts Left: <color=\"red\">{newValue}</color>";
+        }
+
+        _totalAttemptsLeftText.text = attemptsLeftString;
     }
     #endregion
 
@@ -148,7 +153,6 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
                 newView.SetViewModel(viewModel);
 
                 _tileViewList.Add(newView);
-                _tileViewModelList.Add(viewModel);
             }
         }
     }
@@ -160,12 +164,12 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
         {
             foreach (var ship in _gameViewModel.StartingShipDtoList)
             {
-                ShipHealthViewModel viewModel = _gameViewModel.CreateShipHealthViewModel(ship.ShipId, ship.Health);
+                ShipRenderDef renderDef = _gameViewModel.GetShipRenderDefById(ship.ShipId);
+                ShipHealthViewModel viewModel = _gameViewModel.CreateShipHealthViewModel(ship.ShipId, ship.ShipName, ship.Health, renderDef);
                 ShipHealthView newView = CreateShipHealthView(ship.ShipId);
                 newView.SetViewModel(viewModel);
 
                 _shipHealthViewList.Add(newView);
-                _shipHealthViewModelList.Add(viewModel);      
             }
         }
     }
@@ -178,7 +182,7 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
         }
 
         TileView newView = Instantiate(_tileViewPrefab, _tileViewParentTransform);
-        newView.gameObject.name = $"Tile_{point}";
+        newView.gameObject.name = $"{nameof(TileView)}_{point}";
 
         return newView;
     }
@@ -191,7 +195,7 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
         }
 
         ShipHealthView newView = Instantiate(_shipHealthViewPrefab, _shipHealthViewParentTransform);
-        newView.gameObject.name = $"HealthView_{shipId}";
+        newView.gameObject.name = $"{nameof(ShipHealthView)}_{shipId}";
 
         return newView;
     }
@@ -200,17 +204,17 @@ public class GameView : MonoBehaviour, IViewModelReceiver<GameViewModel>
     #region Reset Functions
     private void ResetTileMap()
     {
-        foreach (var viewModel in _tileViewModelList)
+        foreach (var viewModel in _tileViewList)
         {
-            viewModel.Reset();
+            viewModel.ViewModel.Reset();
         }
     }
 
     private void ResetShipHealthViews()
     {
-        foreach (var viewModel in _shipHealthViewModelList)
+        foreach (var view in _shipHealthViewList)
         {
-            viewModel.Reset();
+            view.ViewModel.Reset();
         }
     }
     #endregion
